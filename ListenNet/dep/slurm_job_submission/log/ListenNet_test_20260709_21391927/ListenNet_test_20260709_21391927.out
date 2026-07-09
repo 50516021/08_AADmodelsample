@@ -1,0 +1,51 @@
+Current device is cpu
+============================================================================================================
+Arguments =
+	_action_groups: [<argparse._ArgumentGroup object at 0x7f70a787cf10>, <argparse._ArgumentGroup object at 0x7f6fa4152ce0>]
+	_actions: [_HelpAction(option_strings=['-h', '--help'], dest='help', nargs=0, const=None, default='==SUPPRESS==', type=None, choices=None, required=False, help='show this help message and exit', metavar=None)]
+	_defaults: {}
+	_has_negative_number_optionals: []
+	_mutually_exclusive_groups: []
+	_negative_number_matcher: re.compile('^-\\d+$|^-\\d*\\.\\d+$')
+	_option_string_actions: {'-h': _HelpAction(option_strings=['-h', '--help'], dest='help', nargs=0, const=None, default='==SUPPRESS==', type=None, choices=None, required=False, help='show this help message and exit', metavar=None), '--help': _HelpAction(option_strings=['-h', '--help'], dest='help', nargs=0, const=None, default='==SUPPRESS==', type=None, choices=None, required=False, help='show this help message and exit', metavar=None)}
+	_optionals: <argparse._ArgumentGroup object at 0x7f6fa4152ce0>
+	_positionals: <argparse._ArgumentGroup object at 0x7f70a787cf10>
+	_registries: {'action': {None: <class 'argparse._StoreAction'>, 'store': <class 'argparse._StoreAction'>, 'store_const': <class 'argparse._StoreConstAction'>, 'store_true': <class 'argparse._StoreTrueAction'>, 'store_false': <class 'argparse._StoreFalseAction'>, 'append': <class 'argparse._AppendAction'>, 'append_const': <class 'argparse._AppendConstAction'>, 'count': <class 'argparse._CountAction'>, 'help': <class 'argparse._HelpAction'>, 'version': <class 'argparse._VersionAction'>, 'parsers': <class 'argparse._SubParsersAction'>, 'extend': <class 'argparse._ExtendAction'>}, 'type': {None: <function ArgumentParser.__init__.<locals>.identity at 0x7f6fa4163a30>}}
+	_subparsers: None
+	add_help: True
+	allow_abbrev: True
+	argument_default: None
+	batch_size: 32
+	class_num: 2
+	conflict_handler: error
+	data_path: ../../../01_OriginalData/Dataset_csv/KUL/pre_data/
+	dataset: KUL
+	description: None
+	eeg_channel: 64
+	epilog: None
+	exit_on_error: True
+	formatter_class: <class 'argparse.HelpFormatter'>
+	fromfile_prefix_chars: None
+	fs: 128
+	label_path: ../../../01_OriginalData/Dataset_csv/KUL/label/
+	lam: 0.2
+	log_interval: 10
+	log_path: ./writer/Subject_dependent_AAD/KUL/0.1s/result/
+	lr: 0.0005
+	lr_decayrate: 0.5
+	max_epoch: 100
+	model_save_path: ./writer/Subject_dependent_AAD/KUL//0.1s/savemodel/
+	overlap: 0.5
+	patience: 20
+	prefix_chars: -
+	prog: main_akira.py
+	seed: 42
+	subject_number: 16
+	trail_number: 8
+	usage: None
+	weight_decay: 0.0001
+	win_len: 13
+	win_time: 0.1
+	window_lap: 6.5
+============================================================================================================
+========== Finished ==========
