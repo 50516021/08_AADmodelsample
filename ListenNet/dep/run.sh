@@ -3,4 +3,6 @@
 set -e
 set -u
 
-python main.py 
+# python main.py 
+
+python main_akira.py 
