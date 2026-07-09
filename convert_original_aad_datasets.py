@@ -7,6 +7,10 @@ Output layout:
 
 The script avoids pandas so it still works when the local pandas installation
 is unavailable or binary-incompatible.
+
+20260709 (Listennet) Data from the original datasets is not modified. The converted files are written
+to a separate output directory. The output directory is created if it does not exist.
+
 """
 
 from __future__ import annotations
