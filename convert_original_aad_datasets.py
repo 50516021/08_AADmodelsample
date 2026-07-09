@@ -26,6 +26,8 @@ from scipy.io import loadmat
 
 
 KUL_EEG_KEEP = 64
+KUL_TRIAL_KEEP = 8
+KUL_SAMPLE_KEEP = 46080
 DTU_EEG_KEEP = 64
 
 
@@ -53,7 +55,7 @@ def _write_label_csv(path: Path, labels: list[int]) -> None:
     _ensure_dir(path.parent)
     with path.open("w", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["label"])
+        writer.writerow([0])
         for label in labels:
             writer.writerow([int(label)])
 
@@ -93,9 +95,11 @@ def convert_kul(source_root: Path, output_root: Path, overwrite: bool) -> None:
             continue
 
         mat = loadmat(subject_file, squeeze_me=True, struct_as_record=False)
-        trials = np.asarray(mat["trials"]).ravel()
+        trials = np.asarray(mat["trials"]).ravel()[:KUL_TRIAL_KEEP]
+        if len(trials) < KUL_TRIAL_KEEP:
+            raise ValueError(f"KUL subject {subject_id} in {subject_file} has only {len(trials)} trials")
 
-        label_values: list[int] = []
+        label_values: list[int] = [0]
         _ensure_dir(subject_dir)
 
         for trial_index, trial in enumerate(trials, start=1):
@@ -106,6 +110,10 @@ def convert_kul(source_root: Path, output_root: Path, overwrite: bool) -> None:
                 raise ValueError(f"KUL trial {trial_index} in {subject_file} has only {eeg.shape[1]} channels")
 
             eeg = eeg[:, :KUL_EEG_KEEP]
+            if eeg.shape[0] >= KUL_SAMPLE_KEEP:
+                eeg = eeg[:KUL_SAMPLE_KEEP, :]
+            else:
+                eeg = np.pad(eeg, ((0, KUL_SAMPLE_KEEP - eeg.shape[0]), (0, 0)), mode="constant")
             sample_index = np.arange(1, eeg.shape[0] + 1, dtype=np.int64)
             trial_id = np.full((eeg.shape[0], 1), trial_index, dtype=np.int64)
             sample_col = sample_index.reshape(-1, 1)

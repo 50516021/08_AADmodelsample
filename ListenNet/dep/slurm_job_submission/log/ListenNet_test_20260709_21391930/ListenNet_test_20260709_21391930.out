@@ -1,0 +1,81 @@
+========== Job Information ==========
+Hostname : skl-a-48.rc.rit.edu
+Date     : Thu Jul  9 06:55:15 AM EDT 2026
+GPU(s):
+Thu Jul  9 06:55:15 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.45.04              Driver Version: 595.45.04      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:3B:00.0 Off |                    0 |
+| N/A   32C    P0             31W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.10.19
+uv 0.9.2
+========== Running ==========
+Current device is cpu
+============================================================================================================
+Arguments =
+	_action_groups: [<argparse._ArgumentGroup object at 0x7f0ec0eccf10>, <argparse._ArgumentGroup object at 0x7f0dbd77ed10>]
+	_actions: [_HelpAction(option_strings=['-h', '--help'], dest='help', nargs=0, const=None, default='==SUPPRESS==', type=None, choices=None, required=False, help='show this help message and exit', metavar=None)]
+	_defaults: {}
+	_has_negative_number_optionals: []
+	_mutually_exclusive_groups: []
+	_negative_number_matcher: re.compile('^-\\d+$|^-\\d*\\.\\d+$')
+	_option_string_actions: {'-h': _HelpAction(option_strings=['-h', '--help'], dest='help', nargs=0, const=None, default='==SUPPRESS==', type=None, choices=None, required=False, help='show this help message and exit', metavar=None), '--help': _HelpAction(option_strings=['-h', '--help'], dest='help', nargs=0, const=None, default='==SUPPRESS==', type=None, choices=None, required=False, help='show this help message and exit', metavar=None)}
+	_optionals: <argparse._ArgumentGroup object at 0x7f0dbd77ed10>
+	_positionals: <argparse._ArgumentGroup object at 0x7f0ec0eccf10>
+	_registries: {'action': {None: <class 'argparse._StoreAction'>, 'store': <class 'argparse._StoreAction'>, 'store_const': <class 'argparse._StoreConstAction'>, 'store_true': <class 'argparse._StoreTrueAction'>, 'store_false': <class 'argparse._StoreFalseAction'>, 'append': <class 'argparse._AppendAction'>, 'append_const': <class 'argparse._AppendConstAction'>, 'count': <class 'argparse._CountAction'>, 'help': <class 'argparse._HelpAction'>, 'version': <class 'argparse._VersionAction'>, 'parsers': <class 'argparse._SubParsersAction'>, 'extend': <class 'argparse._ExtendAction'>}, 'type': {None: <function ArgumentParser.__init__.<locals>.identity at 0x7f0dbd793b50>}}
+	_subparsers: None
+	add_help: True
+	allow_abbrev: True
+	argument_default: None
+	batch_size: 32
+	class_num: 2
+	conflict_handler: error
+	data_path: ../../../01_OriginalData/Dataset_csv/KUL/pre_data/
+	dataset: KUL
+	description: None
+	eeg_channel: 64
+	epilog: None
+	exit_on_error: True
+	formatter_class: <class 'argparse.HelpFormatter'>
+	fromfile_prefix_chars: None
+	fs: 128
+	label_path: ../../../01_OriginalData/Dataset_csv/KUL/label/
+	lam: 0.2
+	log_interval: 10
+	log_path: ./writer/Subject_dependent_AAD/KUL/0.1s/result/
+	lr: 0.0005
+	lr_decayrate: 0.5
+	max_epoch: 100
+	model_save_path: ./writer/Subject_dependent_AAD/KUL//0.1s/savemodel/
+	overlap: 0.5
+	patience: 20
+	prefix_chars: -
+	prog: main_akira.py
+	seed: 42
+	subject_number: 16
+	trail_number: 8
+	usage: None
+	weight_decay: 0.0001
+	win_len: 13
+	win_time: 0.1
+	window_lap: 6.5
+============================================================================================================
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/1
+Sub_id:  1
+train_data_shape(49752, 1, 64, 13),valid_data_shape(5528, 1, 64, 13), test_data_shape(6144, 1, 64, 13)

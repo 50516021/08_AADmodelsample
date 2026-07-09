@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 371, in <module>
+    best_epoch, test_acc = single_subject(args, sub_id, train_eeg, test_eeg, train_label, test_label)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 289, in single_subject
+    model = ListenNet(num_classes=args.class_num, chans=args.eeg_channel, samples=args.win_len,
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/model.py", line 91, in __init__
+    self.channel_weight2 = nn.Parameter( torch.randn(depth, depth).cuda().float(), requires_grad=True)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py", line 298, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: No CUDA GPUs are available

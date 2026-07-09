@@ -44,14 +44,22 @@ def get_KUL_data(args, sub_id):
     sublabel_path = args.label_path  + "S" +  str(sub_id) + "No.csv"
     sub_data_dir = os.listdir(sub_path)
     sub_data_dir.sort()
+    sub_data_dir = sub_data_dir[:args.trail_number]
     for k in range(len(sub_data_dir)):
         filename = sub_path + '/' + sub_data_dir[k]
         data_pf = pd.read_csv(filename, header=None)
         eeg_data = data_pf.iloc[:, 2:].values # （46080，64）
+        if eeg_data.shape[0] >= 46080:
+            eeg_data = eeg_data[:46080, :]
+        else:
+            eeg_data = np.pad(eeg_data, ((0, 46080 - eeg_data.shape[0]), (0, 0)), mode='constant')
         
         alldata.append(eeg_data)
     label_pf = pd.read_csv(sublabel_path, header=None)
-    all_label = label_pf.iloc[1:, 0].values 
+    all_label = pd.to_numeric(label_pf.iloc[:, 0], errors='coerce').dropna().astype(np.int64).values
+    if len(all_label) == args.trail_number + 1 and all_label[0] == 0:
+        all_label = all_label[1:]
+    all_label = all_label[:args.trail_number]
     print('Finish get the data from: ', args.data_path + str(sub_id))
     return alldata, all_label
 

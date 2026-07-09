@@ -27,11 +27,9 @@ from sklearn.model_selection import train_test_split
 from ptflops import get_model_complexity_info
 from importlib import reload
 from model import *
-from utils_dep import *
+from utils_dep_akira import *
 from function import *
 
-# writer = SummaryWriter()
-os.environ["CUDA_VISIBLE_DEVICES"] = "5"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Current device is", device)
 
