@@ -316,10 +316,10 @@ if __name__ == '__main__':
     #         'DTU':[18, 64, 60, 128, "/Dataset/DTU/128/data/", "/Dataset/DTU/128/label/"], 
     #         #'AVED':[10 ,32, 16, 128, "/Dataset/AVED/audio-only/","/Dataset/AVED/audio-only/"]}
     #         'AVED':[10 ,32, 16, 128, "/Dataset/AVED/audio-video/","/Dataset/AVED/audio-video/"]}
-    options = {'KUL':[16, 64, 8, 128, "../../01_OriginalData/Dataset_csv/KUL/pre_data/", "../../01_OriginalData/Dataset_csv/KUL/label/"], 
-        'DTU':[18, 64, 60, 128, "../../01_OriginalData/Dataset_csv/DTU/128/data/", "../../01_OriginalData/Dataset_csv/DTU/128/label/"], 
-        #'AVED':[10 ,32, 16, 128, "../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/","../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"]}
-        'AVED':[10 ,32, 16, 128, "../../01_OriginalData/Dataset_csv/AVED/audio-video/","../../01_OriginalData/Dataset_csv/AVED/audio-video/"]}
+    options = {'KUL':[16, 64, 8, 128, "../../../01_OriginalData/Dataset_csv/KUL/pre_data/", "../../../01_OriginalData/Dataset_csv/KUL/label/"], 
+        'DTU':[18, 64, 60, 128, "../../../01_OriginalData/Dataset_csv/DTU/128/data/", "../../../01_OriginalData/Dataset_csv/DTU/128/label/"], 
+        #'AVED':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"]}
+        'AVED':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-video/","../../../01_OriginalData/Dataset_csv/AVED/audio-video/"]}
     args.subject_number = options[args.dataset][0]
     args.eeg_channel = options[args.dataset][1]
     args.trail_number = options[args.dataset][2]
