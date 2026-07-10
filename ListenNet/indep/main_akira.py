@@ -1,35 +1,41 @@
-'''
+"""
 
-20260709 Path modification
-20200710 epoch by epoch logging
-'''
+20260710 logging epoch by epoch
 
+"""
 
 from __future__ import division
 from __future__ import print_function
 import os
 import math
+
 import numpy as np
 import pandas as pd
 
-import argparse
 import logging
+import argparse
+import copy
 
 import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
+
 from torch.optim.optimizer import Optimizer
 from typing import Optional
 import torchinfo
+import matplotlib.pyplot as plt
 
 from collections import OrderedDict
-from sklearn.model_selection import train_test_split
-
+from importlib import reload
 from ptflops import get_model_complexity_info
-from model import *
-from utils_dep_akira import *
-from function_akira import *
 
+from utils_indep_akira import *
+from function import *
+from model import *
+
+
+# writer = SummaryWriter()
+os.environ["CUDA_VISIBLE_DEVICES"] = "6"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Current device is", device)
 
@@ -39,18 +45,17 @@ def makePath(path):
     return path
 
 def get_logger(name, log_path, length):
+    reload(logging)
+
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
-    for handler in list(logger.handlers):
-        handler.close()
-        logger.removeHandler(handler)
 
     logfile = makePath(log_path) + "/Train"+str(length)+"s_sub" + str(name) + ".log"
     with open(logfile, 'w') as f:
-        f.write("timestamp | message\n")
+        f.write("epoch, acc\n")
 
     fh = logging.FileHandler(logfile, mode='w')
-    fh.setLevel(logging.INFO)
+    fh.setLevel(logging.DEBUG)
     fh.setFormatter(logging.Formatter("%(asctime)s | %(message)s", datefmt="%Y-%m-%d %H:%M:%S"))
     logger.addHandler(fh)
 
@@ -59,12 +64,10 @@ def get_logger(name, log_path, length):
         ch.setLevel(logging.INFO)
         ch.setFormatter(logging.Formatter("%(asctime)s | %(message)s", datefmt="%Y-%m-%d %H:%M:%S"))
         logger.addHandler(ch)
-
+        
+        
     logger.info("Logging started: %s", logfile)
     return logger
-
-def count_parameters(model):
-    return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 class StepwiseLR_GRL: 
     def __init__(self, optimizer: Optimizer, init_lr: Optional[float] = 0.001,
@@ -113,7 +116,8 @@ class Trynetwork():
         self.val_df = pd.DataFrame()  
         self.train_df = pd.DataFrame()  
         self.epoch_df = pd.DataFrame()  
-        
+    
+
     def __getModel__(self):
         return self.model
 
@@ -121,27 +125,21 @@ class Trynetwork():
         self.model.train()
         train_dicts_per_epoch = OrderedDict()
         Batch_size, Cls_loss, Train_acc = [], [], []
-        preds = []
-        trues = []
         for i_batch, batch_data  in enumerate(self.datasets['train']):
             seq_data,  train_label = batch_data
             train_label = train_label.squeeze(-1)
-            seq_data,  train_label = seq_data.cuda().float(), train_label.cuda()
-            returnFeature, source_softmax = self.model(seq_data)
+            seq_data,  train_label = seq_data.cuda().float(), train_label.cuda().long()
+            _, source_softmax = self.model(seq_data)
+            nll_loss = self.criterion(source_softmax, train_label)  
 
-            nll_loss = self.criterion(source_softmax, train_label.long())  
-        
             Batch_size.append(len(train_label))
             _, predicted = torch.max(source_softmax.data, 1)
-            batch_acc = np.equal(predicted.cpu().detach().numpy(), train_label.long().cpu().detach().numpy()).sum() / len(
+            batch_acc = np.equal(predicted.cpu().detach().numpy(), train_label.cpu().detach().numpy()).sum() / len(
                 train_label)
             # Forward pass
             Train_acc.append(batch_acc)
             cls_loss_np = nll_loss.cpu().detach().numpy()
             Cls_loss.append(cls_loss_np)
-
-            preds.append(source_softmax.detach())
-            trues.append(train_label.float())
 
             # Backward and optimize
             self.optimizer.zero_grad()
@@ -150,10 +148,10 @@ class Trynetwork():
 
             if self.model_constraint is not None:
                 self.model_constraint.apply(self.model)
-       
+
         epoch_acc = sum(Train_acc) / len(Train_acc) * 100
         epoch_loss = sum(Cls_loss) / len(Cls_loss)
-       
+
         cls_loss = {'train_loss': epoch_loss}
         train_acc = {'train_acc': epoch_acc}
         train_dicts_per_epoch.update(cls_loss)
@@ -161,8 +159,6 @@ class Trynetwork():
         train_dicts_per_epoch = {k: [v] for k, v in train_dicts_per_epoch.items()}
         self.train_df = pd.concat([self.train_df, pd.DataFrame(train_dicts_per_epoch)], ignore_index=True)
         self.train_df = self.train_df[list(train_dicts_per_epoch.keys())]  # 让epoch_df中的顺序和row_dict中的一致
-
-        # self.model.set_dlabel(self.datasets['train'])
         return epoch_loss , epoch_acc
     
     def test_batch(self, seq_input, target):
@@ -170,30 +166,28 @@ class Trynetwork():
         with torch.no_grad():
             val_seqinput = seq_input.cuda().float()
             val_target = target.cuda().long()
-            returnFeature, val_fc1 = self.model(val_seqinput)
+            _, val_fc1 = self.model(val_seqinput)
             loss = self.criterion(val_fc1, val_target)
             _, preds = torch.max(val_fc1.data, 1)  
             preds = preds.cpu().detach().numpy()
             loss = loss.cpu().detach().numpy()
         return preds, loss
 
-    def evaluate_step(self,  Flag_test, setname):
-        if Flag_test:
-            setname = 'test'
-        else:
-            setname = 'valid'
+    def evaluate_step(self,  datasets):
+        datasets['test'] = self.datasets['test']
         result_dicts_per_monitor = OrderedDict()  
-       
         with torch.no_grad():
+            for setname in datasets:  
+                assert setname != 'train', 'dataset without train set'
+                assert setname in ["test"]  
             Batch_size, Epochs_loss, Epochs_acc = [], [], []
-            for i_batch, batch_data in enumerate(self.datasets[setname]):
-                seq_input, target = batch_data
+            for i_batch, batch_data in enumerate(self.datasets['test']):
+                seq_input,  target = batch_data
                 target = target.squeeze(-1)
                 pred, loss = self.test_batch(seq_input,  target)  
                 Epochs_loss.append(loss)
                 Batch_size.append(len(target))
                 Epochs_acc.append(np.equal(pred, target.numpy()).sum())  
-        
         epoch_acc = sum(Epochs_acc) / sum(Batch_size) * 100
         epoch_loss = sum(Epochs_loss) / len(Epochs_loss)
         key_loss = setname + '_loss'
@@ -204,13 +198,15 @@ class Trynetwork():
         result_dicts_per_monitor.update(acc)
         result_dicts_per_monitor = {k: [v] for k, v in result_dicts_per_monitor.items()}
         self.val_df = pd.concat([self.val_df, pd.DataFrame(result_dicts_per_monitor)], ignore_index=True)
-        self.val_df = self.val_df[list(result_dicts_per_monitor.keys())]  
+        self.val_df = self.val_df[list(result_dicts_per_monitor.keys())]  # 让epoch_df中的顺序和row_dict中的一致
         return epoch_loss, epoch_acc
 
 
     def train(self, args, testsub_id):
+        # 打印模型参数量
+
         torchinfo.summary(self.model)
-        # Note 
+
         '''macs, params = get_model_complexity_info(self.model, 
                                                 (1, args.eeg_channel, args.win_len), 
                                                  print_per_layer_stat=True)
@@ -220,75 +216,65 @@ class Trynetwork():
         testsub_name = 'S' + str(testsub_id)
         
         best_epoch = 0
-        best_valid = float('inf')
+        best_acc = 0
         for epoch in range(1, args.max_epoch + 1):
             train_loss,train_acc = self.train_step(args, epoch)
-            val_loss, val_acc = self.evaluate_step(False, {})
-
-            logging.info(
-                'TestSub: %s | Epoch %2d/%2d Finsh | Now_lr %.4f/%.4f | Train Loss %.4f | Valid Loss %.4f | Train Acc %.4f | Valid Acc %.4f',
-                testsub_name,
-                epoch,
-                args.max_epoch,
-                self.optimizer.param_groups[0]["lr"],
-                args.lr,
-                train_loss,
-                val_loss,
-                train_acc,
-                val_acc,
-            )
-            if val_loss < best_valid and val_loss >= 0.0001:
-                save_model(args, testsub_name, best_valid, val_loss, self.model, epoch)
-                best_valid = val_loss
+            val_loss, val_acc = self.evaluate_step({})
+            # self.scheduler_down.step()
+            print('TestSub:', testsub_name,
+                  'Epoch {:2d} Finsh | Now_lr {:2.4f}/{:2.4f}|Train Loss {:2.4f} | Valid Loss {:2.4f} | Train Acc {:5.4f}| Valid Acc {:5.4f}'.format(epoch,
+                                                                                                                                                self.optimizer.param_groups[0]["lr"], args.lr,
+                                                                                                                                                train_loss,
+                                                                                                                                                val_loss,
+                                                                                                                                                train_acc,
+                                                                                                                                                val_acc))
+            if val_acc > best_acc:
+                save_model(args, testsub_name, best_acc, val_acc, self.model, epoch)
+                best_acc = val_acc
                 best_epoch = epoch
                 stale = 0
             else:
                 stale += 1
                 if stale > args.patience:
-                    logging.info("Early stopping at epoch %d!", epoch)
+                    print(f"Early stopping at epoch {epoch}!")
                     break
             self.epoch_df = pd.concat([self.train_df, self.val_df], axis=1)
         model = load_model(args.model_save_path, testsub_name)
         self.model = model
-
-        '''start_event = torch.cuda.Event(enable_timing=True)
-        end_event = torch.cuda.Event(enable_timing=True)
-
-        start_event.record()'''
-        test_loss, model_test_acc = self.evaluate_step(True, {})
-        '''end_event.record()
-        torch.cuda.synchronize()
-        inference_time = start_event.elapsed_time(end_event)'''
-
-        logging.info("-" * 50)
-        logging.info('Test_Subject :%s | Best epoch:%d | Test Loss:%2.4f | Savemodel Acc %2.4f',
-                 testsub_name,
-                 best_epoch,
-                 test_loss,
-                 model_test_acc)
-        logging.info("-" * 50)
+        test_loss, model_test_acc = self.evaluate_step({})
+        print("-" * 50)
+        print('Test_Subject :{:s} |Best epoch:{:d} | Test Loss:{:2.4f} | Savemodel Acc {:2.4f}'.format(testsub_name,
+                                                                                                    best_epoch,
+                                                                                                    test_loss,
+                                                                                                    model_test_acc))
+        print("-" * 50)
         return best_epoch, model_test_acc
+
+def cross_subject(args, test_id, sub_ids, alldata, alllabel):
+    ## LOSO
+    if test_id in sub_ids:
+        test_index = sub_ids.index(test_id)
+    tempt_data,  tempt_label = copy.deepcopy(alldata), copy.deepcopy(alllabel)
+    test_data,  test_label = copy.deepcopy(tempt_data.pop(test_index)), copy.deepcopy(tempt_label.pop(test_index)) 
+    train_data, train_label = copy.deepcopy(tempt_data),  copy.deepcopy(tempt_label)
     
-
-
-def single_subject(args,sub_id, train_eeg, test_eeg, train_label, test_label):
-    train_data, valid_data, train_label, valid_label = train_test_split(train_eeg, train_label, test_size=0.1, random_state=42)
-
-    train_data = preprocessEA(train_data)
-    valid_data = preprocessEA(valid_data)
-    test_data = preprocessEA(test_eeg)
+    
+    train_data = np.concatenate(train_data, axis=0)
+    train_label = np.concatenate(train_label, axis=0)
+    
+    train_data =  preprocessEA(train_data)
+    test_data =  preprocessEA(test_data)
     
     train_data = np.expand_dims(train_data, axis=1)
-    valid_data = np.expand_dims(valid_data, axis=1)
     test_data = np.expand_dims(test_data, axis=1)
+    
 
     train_loader = DataLoader(dataset=CustomDatasets(train_data, train_label),
                                   batch_size=args.batch_size, drop_last=True, shuffle=True)
-    valid_loader = DataLoader(dataset=CustomDatasets(valid_data, valid_label),
-                                  batch_size=args.batch_size, drop_last=True, shuffle=False)
     test_loader = DataLoader(dataset=CustomDatasets(test_data, test_label),
-                                 batch_size=args.batch_size, drop_last=True, shuffle=False)
-    print(f"train_data_shape{train_data.shape},valid_data_shape{valid_data.shape}, test_data_shape{test_data.shape}")
+                                 batch_size=args.batch_size, drop_last=True)
+    valid_loader  = None
+    print(f"train_seqdata_shape{train_data.shape},test_seqdata_shape{test_data.shape}")
     
     #####################################################################################
     #2.define model
@@ -296,9 +282,9 @@ def single_subject(args,sub_id, train_eeg, test_eeg, train_label, test_label):
     model_constraint = MaxNormDefaultConstraint()
     MyNet =Trynetwork(
         model = ListenNet(num_classes=args.class_num, chans=args.eeg_channel, samples=args.win_len,
-                   kernel = 8, 
                    depth = 16,
-                   avepool = 8,
+                   kernel = 8,
+                   avepool = args.fs// 10,
                    ).cuda(),
         train_loader=train_loader, 
         valid_loader=valid_loader, 
@@ -307,40 +293,21 @@ def single_subject(args,sub_id, train_eeg, test_eeg, train_label, test_label):
         lr = args.lr,
         weight_decay = args.weight_decay,
         model_constraint = model_constraint)
-    
-    onesub_test_epoch, onesub_test_acc = MyNet.train(args, sub_id)
-    return onesub_test_epoch, onesub_test_acc
-
-
+    onesub_test_epoch, onesub_test_acc  = MyNet.train(args, test_id)
+    return onesub_test_epoch, onesub_test_acc 
 
     
 if __name__ == '__main__':
     # Training settings
-    parser = argparse.ArgumentParser()
-    
-    # command-line configurable args
-    parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--dataset', type=str, default='KUL', choices=['KUL', 'DTU', 'AVED'])
+    args = argparse.ArgumentParser()
+    args.seed = 42
 
-    parser.add_argument('--win_time', type=float, default=0.1)
-    parser.add_argument('--overlap', type=float, default=0.5)
-
-    parser.add_argument('--batch_size', type=int, default=32)
-    parser.add_argument('--lr', type=float, default=5e-4)
-    parser.add_argument('--lam', type=float, default=0.2)
-    parser.add_argument('--lr_decayrate', type=float, default=0.5)
-    parser.add_argument('--weight_decay', type=float, default=1e-4)
-    parser.add_argument('--max_epoch', type=int, default=100)
-    parser.add_argument('--patience', type=int, default=20)
-    parser.add_argument('--log_interval', type=int, default=10)
-
-    args = parser.parse_args()
-    
-    # dataset specific settings
-    # options = {'KUL':[16, 64, 8, 128, "/Dataset/KUL/pre_data/", "/Dataset/KUL/label/"], 
-    #         'DTU':[18, 64, 60, 128, "/Dataset/DTU/128/data/", "/Dataset/DTU/128/label/"], 
-    #         #'AVED':[10 ,32, 16, 128, "/Dataset/AVED/audio-only/","/Dataset/AVED/audio-only/"]}
-    #         'AVED':[10 ,32, 16, 128, "/Dataset/AVED/audio-video/","/Dataset/AVED/audio-video/"]}
+    # data
+    args.dataset = 'KUL'
+    # options = {'KUL':[16, 64, 8, 128, "/media/jiangwencong/yangxiaoke/Dataset/KUL/pre_data/", "/media/jiangwencong/yangxiaoke/Dataset/KUL/label/"], 
+    #            'DTU':[18, 64, 60, 128, "/media/jiangwencong/yangxiaoke/Dataset/DTU/128/data/", "/media/jiangwencong/yangxiaoke/Dataset/DTU/128/label/"], 
+    #            #'AVED':[10 ,32, 16, 128, "/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-only/","/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-only/"]}
+    #            'AVED':[10 ,32, 16, 128, "/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-video/","/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-video/"]}
     options = {'KUL':[16, 64, 8, 128, "../../../01_OriginalData/Dataset_csv/KUL/pre_data/", "../../../01_OriginalData/Dataset_csv/KUL/label/"], 
         'DTU':[18, 64, 60, 128, "../../../01_OriginalData/Dataset_csv/DTU/128/data/", "../../../01_OriginalData/Dataset_csv/DTU/128/label/"], 
         #'AVED':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"]}
@@ -352,39 +319,49 @@ if __name__ == '__main__':
     args.data_path = options[args.dataset][4]
     args.label_path = options[args.dataset][5]
 
-    # derived settings
+    args.win_time = 1
     args.win_len = math.ceil(args.fs * args.win_time)
+    args.overlap = 0.5
     args.window_lap = args.win_len * (1 - args.overlap)
     
-    # fixed settings
+    # basic info of the model
     args.class_num = 2
+    args.batch_size = 128
+    args.lr = 1e-3
+    args.lam = 0.2
+    args.lr_decayrate = 0.5
+    args.weight_decay = 3e-4
+    args.max_epoch = 100
+    args.patience = 20
+    args.log_interval = 10
+    
 
     # save to
-    filename = "./writer/Subject_dependent_AAD/%s/" % f"{args.dataset}"
+    filename = "./writer/Subject_independent_AAD/%s/" % f"{args.dataset}"
     args.model_save_path = f'{filename}/{args.win_time}s/savemodel/'
     makePath(args.model_save_path)
     args.log_path = f'{filename}{args.win_time}s/result/' 
     makePath(args.log_path)
-    # writer = SummaryWriter(filename + 'loss_log')
 
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed(args.seed)
-
+  
     print('=' * 108)
     print('Arguments =')
     for arg in np.sort(list(vars(args).keys())):
         print('\t' + arg + ':', getattr(args, arg))
     print('=' * 108)
-    sub_ids = list(range(1, args.subject_number+1)) # KUL 16
+   
 
+    sub_ids =  list(range(1, args.subject_number+1)) # KUL 16
     # load win data 和 label
-    for sub_id in sub_ids:
-        logger = get_logger(sub_id, args.log_path, args.win_time)
-        train_eeg, test_eeg, train_label, test_label = getData(args, sub_id, args.dataset)
-        logging.info('Sub_id: %s', sub_id)
-        best_epoch, test_acc = single_subject(args, sub_id, train_eeg, test_eeg, train_label, test_label)
+    alldata,  alllabel, alll_ckabel = getData(args, args.dataset)
+
+    for test_id in sub_ids:
+        print('Test sub_id: ', test_id) 
+        logger = get_logger(test_id, args.log_path, args.win_time)
+        best_epoch, test_acc = cross_subject(args, test_id, sub_ids, alldata,  alllabel)
         logger.info("Best epoch: %s | Test acc: %.4f", best_epoch, test_acc)
-
-
+        
 

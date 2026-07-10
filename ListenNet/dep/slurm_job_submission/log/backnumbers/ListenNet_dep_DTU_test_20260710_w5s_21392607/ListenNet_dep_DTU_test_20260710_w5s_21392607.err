@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 17, in <module>
+    import parser
+ModuleNotFoundError: No module named 'parser'
