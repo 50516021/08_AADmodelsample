@@ -1,0 +1,138 @@
+2026-07-10 06:26:46 | Logging started: ./writer/Subject_dependent_AAD/KUL/10.0s/result//Train10.0s_sub16.log
+2026-07-10 06:26:51 | Sub_id: 16
+2026-07-10 06:26:55 | TestSub: S16 | Epoch  1/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.7019 | Valid Loss 0.6852 | Train Acc 54.2411 | Valid Acc 59.3750
+2026-07-10 06:26:55 | Validation loss decreased (inf --> 0.685197) in epoch (1). Saving model ...
+2026-07-10 06:26:56 | TestSub: S16 | Epoch  2/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5861 | Valid Loss 0.6825 | Train Acc 75.8929 | Valid Acc 59.3750
+2026-07-10 06:26:56 | Validation loss decreased (0.685197 --> 0.682474) in epoch (2). Saving model ...
+2026-07-10 06:26:57 | TestSub: S16 | Epoch  3/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4173 | Valid Loss 0.6658 | Train Acc 91.7411 | Valid Acc 59.3750
+2026-07-10 06:26:57 | Validation loss decreased (0.682474 --> 0.665818) in epoch (3). Saving model ...
+2026-07-10 06:26:58 | TestSub: S16 | Epoch  4/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.2813 | Valid Loss 0.6191 | Train Acc 96.4286 | Valid Acc 59.3750
+2026-07-10 06:26:58 | Validation loss decreased (0.665818 --> 0.619127) in epoch (4). Saving model ...
+2026-07-10 06:26:59 | TestSub: S16 | Epoch  5/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.1865 | Valid Loss 0.3978 | Train Acc 97.9911 | Valid Acc 75.0000
+2026-07-10 06:26:59 | Validation loss decreased (0.619127 --> 0.397783) in epoch (5). Saving model ...
+2026-07-10 06:27:00 | TestSub: S16 | Epoch  6/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.1350 | Valid Loss 0.1709 | Train Acc 97.5446 | Valid Acc 100.0000
+2026-07-10 06:27:00 | Validation loss decreased (0.397783 --> 0.170861) in epoch (6). Saving model ...
+2026-07-10 06:27:01 | TestSub: S16 | Epoch  7/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0835 | Valid Loss 0.0792 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:01 | Validation loss decreased (0.170861 --> 0.079232) in epoch (7). Saving model ...
+2026-07-10 06:27:03 | TestSub: S16 | Epoch  8/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0841 | Valid Loss 0.0520 | Train Acc 98.6607 | Valid Acc 100.0000
+2026-07-10 06:27:03 | Validation loss decreased (0.079232 --> 0.051963) in epoch (8). Saving model ...
+2026-07-10 06:27:04 | TestSub: S16 | Epoch  9/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0721 | Valid Loss 0.0501 | Train Acc 98.4375 | Valid Acc 100.0000
+2026-07-10 06:27:04 | Validation loss decreased (0.051963 --> 0.050097) in epoch (9). Saving model ...
+2026-07-10 06:27:04 | TestSub: S16 | Epoch 10/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0419 | Valid Loss 0.0320 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:04 | Validation loss decreased (0.050097 --> 0.031980) in epoch (10). Saving model ...
+2026-07-10 06:27:05 | TestSub: S16 | Epoch 11/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0459 | Valid Loss 0.0294 | Train Acc 99.3304 | Valid Acc 100.0000
+2026-07-10 06:27:05 | Validation loss decreased (0.031980 --> 0.029435) in epoch (11). Saving model ...
+2026-07-10 06:27:06 | TestSub: S16 | Epoch 12/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0457 | Valid Loss 0.0206 | Train Acc 99.5536 | Valid Acc 100.0000
+2026-07-10 06:27:06 | Validation loss decreased (0.029435 --> 0.020609) in epoch (12). Saving model ...
+2026-07-10 06:27:07 | TestSub: S16 | Epoch 13/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0248 | Valid Loss 0.0199 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:07 | Validation loss decreased (0.020609 --> 0.019894) in epoch (13). Saving model ...
+2026-07-10 06:27:08 | TestSub: S16 | Epoch 14/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0276 | Valid Loss 0.0192 | Train Acc 99.5536 | Valid Acc 100.0000
+2026-07-10 06:27:08 | Validation loss decreased (0.019894 --> 0.019208) in epoch (14). Saving model ...
+2026-07-10 06:27:09 | TestSub: S16 | Epoch 15/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0282 | Valid Loss 0.0120 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:09 | Validation loss decreased (0.019208 --> 0.011990) in epoch (15). Saving model ...
+2026-07-10 06:27:10 | TestSub: S16 | Epoch 16/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0250 | Valid Loss 0.0112 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:10 | Validation loss decreased (0.011990 --> 0.011160) in epoch (16). Saving model ...
+2026-07-10 06:27:11 | TestSub: S16 | Epoch 17/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0223 | Valid Loss 0.0106 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:11 | Validation loss decreased (0.011160 --> 0.010551) in epoch (17). Saving model ...
+2026-07-10 06:27:12 | TestSub: S16 | Epoch 18/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0190 | Valid Loss 0.0068 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:12 | Validation loss decreased (0.010551 --> 0.006833) in epoch (18). Saving model ...
+2026-07-10 06:27:13 | TestSub: S16 | Epoch 19/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0260 | Valid Loss 0.0105 | Train Acc 99.3304 | Valid Acc 100.0000
+2026-07-10 06:27:14 | TestSub: S16 | Epoch 20/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0170 | Valid Loss 0.0056 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:14 | Validation loss decreased (0.006833 --> 0.005588) in epoch (20). Saving model ...
+2026-07-10 06:27:15 | TestSub: S16 | Epoch 21/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0180 | Valid Loss 0.0058 | Train Acc 99.5536 | Valid Acc 100.0000
+2026-07-10 06:27:16 | TestSub: S16 | Epoch 22/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0240 | Valid Loss 0.0054 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:16 | Validation loss decreased (0.005588 --> 0.005379) in epoch (22). Saving model ...
+2026-07-10 06:27:17 | TestSub: S16 | Epoch 23/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0103 | Valid Loss 0.0054 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:17 | Validation loss decreased (0.005379 --> 0.005352) in epoch (23). Saving model ...
+2026-07-10 06:27:18 | TestSub: S16 | Epoch 24/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0115 | Valid Loss 0.0064 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:18 | TestSub: S16 | Epoch 25/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0125 | Valid Loss 0.0049 | Train Acc 99.5536 | Valid Acc 100.0000
+2026-07-10 06:27:18 | Validation loss decreased (0.005352 --> 0.004923) in epoch (25). Saving model ...
+2026-07-10 06:27:19 | TestSub: S16 | Epoch 26/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0159 | Valid Loss 0.0034 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:19 | Validation loss decreased (0.004923 --> 0.003369) in epoch (26). Saving model ...
+2026-07-10 06:27:20 | TestSub: S16 | Epoch 27/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0219 | Valid Loss 0.0038 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:21 | TestSub: S16 | Epoch 28/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0146 | Valid Loss 0.0030 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:21 | Validation loss decreased (0.003369 --> 0.002998) in epoch (28). Saving model ...
+2026-07-10 06:27:22 | TestSub: S16 | Epoch 29/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0070 | Valid Loss 0.0036 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:23 | TestSub: S16 | Epoch 30/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0090 | Valid Loss 0.0030 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:24 | TestSub: S16 | Epoch 31/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0073 | Valid Loss 0.0031 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:25 | TestSub: S16 | Epoch 32/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0086 | Valid Loss 0.0049 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:26 | TestSub: S16 | Epoch 33/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0165 | Valid Loss 0.0016 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:26 | Validation loss decreased (0.002998 --> 0.001604) in epoch (33). Saving model ...
+2026-07-10 06:27:27 | TestSub: S16 | Epoch 34/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0315 | Valid Loss 0.0024 | Train Acc 98.8839 | Valid Acc 100.0000
+2026-07-10 06:27:27 | TestSub: S16 | Epoch 35/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0107 | Valid Loss 0.0023 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:28 | TestSub: S16 | Epoch 36/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0034 | Valid Loss 0.0029 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:29 | TestSub: S16 | Epoch 37/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0092 | Valid Loss 0.0021 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:30 | TestSub: S16 | Epoch 38/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0079 | Valid Loss 0.0036 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:31 | TestSub: S16 | Epoch 39/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0050 | Valid Loss 0.0027 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:32 | TestSub: S16 | Epoch 40/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0064 | Valid Loss 0.0017 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:33 | TestSub: S16 | Epoch 41/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0086 | Valid Loss 0.0022 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:34 | TestSub: S16 | Epoch 42/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0061 | Valid Loss 0.0025 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:34 | TestSub: S16 | Epoch 43/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0083 | Valid Loss 0.0028 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:35 | TestSub: S16 | Epoch 44/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0059 | Valid Loss 0.0016 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:36 | TestSub: S16 | Epoch 45/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0029 | Valid Loss 0.0020 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:37 | TestSub: S16 | Epoch 46/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0038 | Valid Loss 0.0020 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:38 | TestSub: S16 | Epoch 47/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0055 | Valid Loss 0.0017 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:39 | TestSub: S16 | Epoch 48/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0045 | Valid Loss 0.0017 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:40 | TestSub: S16 | Epoch 49/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0029 | Valid Loss 0.0013 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:40 | Validation loss decreased (0.001604 --> 0.001316) in epoch (49). Saving model ...
+2026-07-10 06:27:41 | TestSub: S16 | Epoch 50/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0042 | Valid Loss 0.0010 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:41 | Validation loss decreased (0.001316 --> 0.001003) in epoch (50). Saving model ...
+2026-07-10 06:27:42 | TestSub: S16 | Epoch 51/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0110 | Valid Loss 0.0008 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:42 | Validation loss decreased (0.001003 --> 0.000826) in epoch (51). Saving model ...
+2026-07-10 06:27:43 | TestSub: S16 | Epoch 52/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0035 | Valid Loss 0.0015 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:44 | TestSub: S16 | Epoch 53/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0079 | Valid Loss 0.0022 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:45 | TestSub: S16 | Epoch 54/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0032 | Valid Loss 0.0017 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:45 | TestSub: S16 | Epoch 55/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0043 | Valid Loss 0.0015 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:46 | TestSub: S16 | Epoch 56/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0017 | Valid Loss 0.0015 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:47 | TestSub: S16 | Epoch 57/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0020 | Valid Loss 0.0014 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:48 | TestSub: S16 | Epoch 58/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0024 | Valid Loss 0.0013 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:49 | TestSub: S16 | Epoch 59/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0051 | Valid Loss 0.0011 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:50 | TestSub: S16 | Epoch 60/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0051 | Valid Loss 0.0013 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:51 | TestSub: S16 | Epoch 61/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0017 | Valid Loss 0.0009 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:52 | TestSub: S16 | Epoch 62/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0030 | Valid Loss 0.0009 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:52 | TestSub: S16 | Epoch 63/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0011 | Valid Loss 0.0008 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:53 | TestSub: S16 | Epoch 64/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0133 | Valid Loss 0.0009 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:27:54 | TestSub: S16 | Epoch 65/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0027 | Valid Loss 0.0011 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:55 | TestSub: S16 | Epoch 66/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0238 | Valid Loss 0.0038 | Train Acc 98.8839 | Valid Acc 100.0000
+2026-07-10 06:27:56 | TestSub: S16 | Epoch 67/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0069 | Valid Loss 0.0019 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:57 | TestSub: S16 | Epoch 68/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0042 | Valid Loss 0.0007 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:57 | Validation loss decreased (0.000826 --> 0.000740) in epoch (68). Saving model ...
+2026-07-10 06:27:58 | TestSub: S16 | Epoch 69/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0043 | Valid Loss 0.0010 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:27:59 | TestSub: S16 | Epoch 70/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0027 | Valid Loss 0.0013 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:00 | TestSub: S16 | Epoch 71/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0015 | Valid Loss 0.0010 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:00 | TestSub: S16 | Epoch 72/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0019 | Valid Loss 0.0009 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:01 | TestSub: S16 | Epoch 73/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0092 | Valid Loss 0.0019 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:28:02 | TestSub: S16 | Epoch 74/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0045 | Valid Loss 0.0007 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:02 | Validation loss decreased (0.000740 --> 0.000663) in epoch (74). Saving model ...
+2026-07-10 06:28:03 | TestSub: S16 | Epoch 75/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0042 | Valid Loss 0.0004 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:03 | Validation loss decreased (0.000663 --> 0.000387) in epoch (75). Saving model ...
+2026-07-10 06:28:04 | TestSub: S16 | Epoch 76/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0067 | Valid Loss 0.0007 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:05 | TestSub: S16 | Epoch 77/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0037 | Valid Loss 0.0011 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:06 | TestSub: S16 | Epoch 78/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0011 | Valid Loss 0.0009 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:07 | TestSub: S16 | Epoch 79/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0032 | Valid Loss 0.0006 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:08 | TestSub: S16 | Epoch 80/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0012 | Valid Loss 0.0006 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:08 | TestSub: S16 | Epoch 81/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0039 | Valid Loss 0.0011 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:28:09 | TestSub: S16 | Epoch 82/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0053 | Valid Loss 0.0006 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:10 | TestSub: S16 | Epoch 83/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0018 | Valid Loss 0.0005 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:11 | TestSub: S16 | Epoch 84/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0023 | Valid Loss 0.0007 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:12 | TestSub: S16 | Epoch 85/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0022 | Valid Loss 0.0009 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:13 | TestSub: S16 | Epoch 86/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0049 | Valid Loss 0.0006 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:15 | TestSub: S16 | Epoch 87/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0039 | Valid Loss 0.0006 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:16 | TestSub: S16 | Epoch 88/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0015 | Valid Loss 0.0005 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:17 | TestSub: S16 | Epoch 89/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0008 | Valid Loss 0.0007 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:18 | TestSub: S16 | Epoch 90/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0020 | Valid Loss 0.0006 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:19 | TestSub: S16 | Epoch 91/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0030 | Valid Loss 0.0007 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:19 | TestSub: S16 | Epoch 92/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0014 | Valid Loss 0.0005 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:20 | TestSub: S16 | Epoch 93/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0070 | Valid Loss 0.0003 | Train Acc 99.7768 | Valid Acc 100.0000
+2026-07-10 06:28:20 | Validation loss decreased (0.000387 --> 0.000326) in epoch (93). Saving model ...
+2026-07-10 06:28:21 | TestSub: S16 | Epoch 94/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0013 | Valid Loss 0.0004 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:22 | TestSub: S16 | Epoch 95/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0011 | Valid Loss 0.0004 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:23 | TestSub: S16 | Epoch 96/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0010 | Valid Loss 0.0004 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:24 | TestSub: S16 | Epoch 97/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0004 | Valid Loss 0.0004 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:25 | TestSub: S16 | Epoch 98/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0045 | Valid Loss 0.0004 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:26 | TestSub: S16 | Epoch 99/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0021 | Valid Loss 0.0005 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:26 | TestSub: S16 | Epoch 100/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.0022 | Valid Loss 0.0003 | Train Acc 100.0000 | Valid Acc 100.0000
+2026-07-10 06:28:27 | --------------------------------------------------
+2026-07-10 06:28:27 | Test_Subject :S16 | Best epoch:93 | Test Loss:0.0012 | Savemodel Acc 100.0000
+2026-07-10 06:28:27 | --------------------------------------------------
+2026-07-10 06:28:27 | Best epoch: 93 | Test acc: 100.0000
