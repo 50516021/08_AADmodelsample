@@ -1,0 +1,8 @@
+warning: `VIRTUAL_ENV=/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/.venv` does not match the project environment path `/home/at2163/Desktop/SpatialAttention_analysis/.venv` and will be ignored; use `--active` to target the active environment instead
+Using CPython 3.9.25 interpreter at: /usr/bin/python3.9
+Creating virtual environment at: /home/at2163/Desktop/SpatialAttention_analysis/.venv
+Installed 1 package in 990ms
+Traceback (most recent call last):
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 13, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'

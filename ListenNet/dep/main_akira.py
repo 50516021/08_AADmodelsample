@@ -2,6 +2,7 @@
 
 20260709 Path modification
 20200710 epoch by epoch logging
+20260713 AVED option (AVEDav/AVEDao) added to main_akira.py and utils_dep_akira.py
 '''
 
 
@@ -320,7 +321,7 @@ if __name__ == '__main__':
     
     # command-line configurable args
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--dataset', type=str, default='KUL', choices=['KUL', 'DTU', 'AVED'])
+    parser.add_argument('--dataset', type=str, default='KUL', choices=['KUL', 'DTU', 'AVEDav', 'AVEDao'])
 
     parser.add_argument('--win_time', type=float, default=0.1)
     parser.add_argument('--overlap', type=float, default=0.5)
@@ -343,15 +344,15 @@ if __name__ == '__main__':
     #         'AVED':[10 ,32, 16, 128, "/Dataset/AVED/audio-video/","/Dataset/AVED/audio-video/"]}
     options = {'KUL':[16, 64, 8, 128, "../../../01_OriginalData/Dataset_csv/KUL/pre_data/", "../../../01_OriginalData/Dataset_csv/KUL/label/"], 
         'DTU':[18, 64, 60, 128, "../../../01_OriginalData/Dataset_csv/DTU/128/data/", "../../../01_OriginalData/Dataset_csv/DTU/128/label/"], 
-        #'AVED':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"]}
-        'AVED':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-video/","../../../01_OriginalData/Dataset_csv/AVED/audio-video/"]}
+        'AVEDao':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"],
+        'AVEDav':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-video/","../../../01_OriginalData/Dataset_csv/AVED/audio-video/"]}
     args.subject_number = options[args.dataset][0]
     args.eeg_channel = options[args.dataset][1]
     args.trail_number = options[args.dataset][2]
     args.fs  = options[args.dataset][3]
     args.data_path = options[args.dataset][4]
     args.label_path = options[args.dataset][5]
-
+    
     # derived settings
     args.win_len = math.ceil(args.fs * args.win_time)
     args.window_lap = args.win_len * (1 - args.overlap)
@@ -378,7 +379,7 @@ if __name__ == '__main__':
     print('=' * 108)
     sub_ids = list(range(1, args.subject_number+1)) # KUL 16
 
-    # load win data 和 label
+    # load win data label
     for sub_id in sub_ids:
         logger = get_logger(sub_id, args.log_path, args.win_time)
         train_eeg, test_eeg, train_label, test_label = getData(args, sub_id, args.dataset)

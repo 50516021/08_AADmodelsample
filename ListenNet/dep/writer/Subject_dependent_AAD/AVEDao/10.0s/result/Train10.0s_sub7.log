@@ -1,0 +1,30 @@
+2026-07-13 09:24:26 | Logging started: ./writer/Subject_dependent_AAD/AVEDao/10.0s/result//Train10.0s_sub7.log
+2026-07-13 09:24:29 | Sub_id: 7
+2026-07-13 09:24:30 | TestSub: S7 | Epoch  1/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.7038 | Valid Loss 0.6795 | Train Acc 50.5682 | Valid Acc 59.3750
+2026-07-13 09:24:30 | Validation loss decreased (inf --> 0.679545) in epoch (1). Saving model ...
+2026-07-13 09:24:31 | TestSub: S7 | Epoch  2/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6846 | Valid Loss 0.6920 | Train Acc 56.5341 | Valid Acc 53.1250
+2026-07-13 09:24:31 | TestSub: S7 | Epoch  3/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6665 | Valid Loss 0.6944 | Train Acc 58.8068 | Valid Acc 50.0000
+2026-07-13 09:24:31 | TestSub: S7 | Epoch  4/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6388 | Valid Loss 0.7113 | Train Acc 68.7500 | Valid Acc 40.6250
+2026-07-13 09:24:32 | TestSub: S7 | Epoch  5/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6188 | Valid Loss 0.7228 | Train Acc 72.7273 | Valid Acc 40.6250
+2026-07-13 09:24:32 | TestSub: S7 | Epoch  6/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6064 | Valid Loss 0.7319 | Train Acc 75.8523 | Valid Acc 40.6250
+2026-07-13 09:24:32 | TestSub: S7 | Epoch  7/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5832 | Valid Loss 0.7370 | Train Acc 80.1136 | Valid Acc 40.6250
+2026-07-13 09:24:33 | TestSub: S7 | Epoch  8/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5806 | Valid Loss 0.7332 | Train Acc 76.4205 | Valid Acc 43.7500
+2026-07-13 09:24:33 | TestSub: S7 | Epoch  9/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5656 | Valid Loss 0.7185 | Train Acc 80.6818 | Valid Acc 56.2500
+2026-07-13 09:24:33 | TestSub: S7 | Epoch 10/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5496 | Valid Loss 0.7193 | Train Acc 79.5455 | Valid Acc 50.0000
+2026-07-13 09:24:34 | TestSub: S7 | Epoch 11/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5299 | Valid Loss 0.7185 | Train Acc 83.8068 | Valid Acc 50.0000
+2026-07-13 09:24:34 | TestSub: S7 | Epoch 12/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5204 | Valid Loss 0.7280 | Train Acc 82.9545 | Valid Acc 53.1250
+2026-07-13 09:24:34 | TestSub: S7 | Epoch 13/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5176 | Valid Loss 0.7154 | Train Acc 85.2273 | Valid Acc 50.0000
+2026-07-13 09:24:35 | TestSub: S7 | Epoch 14/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4980 | Valid Loss 0.7173 | Train Acc 84.9432 | Valid Acc 53.1250
+2026-07-13 09:24:35 | TestSub: S7 | Epoch 15/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4787 | Valid Loss 0.7185 | Train Acc 87.5000 | Valid Acc 53.1250
+2026-07-13 09:24:35 | TestSub: S7 | Epoch 16/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4730 | Valid Loss 0.7202 | Train Acc 88.9205 | Valid Acc 53.1250
+2026-07-13 09:24:36 | TestSub: S7 | Epoch 17/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4493 | Valid Loss 0.7310 | Train Acc 89.7727 | Valid Acc 56.2500
+2026-07-13 09:24:36 | TestSub: S7 | Epoch 18/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4448 | Valid Loss 0.7237 | Train Acc 88.6364 | Valid Acc 56.2500
+2026-07-13 09:24:37 | TestSub: S7 | Epoch 19/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4494 | Valid Loss 0.7117 | Train Acc 86.9318 | Valid Acc 50.0000
+2026-07-13 09:24:37 | TestSub: S7 | Epoch 20/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4352 | Valid Loss 0.7206 | Train Acc 88.9205 | Valid Acc 53.1250
+2026-07-13 09:24:37 | TestSub: S7 | Epoch 21/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4112 | Valid Loss 0.7372 | Train Acc 91.4773 | Valid Acc 50.0000
+2026-07-13 09:24:38 | TestSub: S7 | Epoch 22/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3967 | Valid Loss 0.6900 | Train Acc 92.3295 | Valid Acc 62.5000
+2026-07-13 09:24:38 | Early stopping at epoch 22!
+2026-07-13 09:24:38 | --------------------------------------------------
+2026-07-13 09:24:38 | Test_Subject :S7 | Best epoch:1 | Test Loss:0.7037 | Savemodel Acc 46.8750
+2026-07-13 09:24:38 | --------------------------------------------------
+2026-07-13 09:24:38 | Best epoch: 1 | Test acc: 46.8750

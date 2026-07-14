@@ -1,3 +1,13 @@
+
+'''
+
+20260709 Path modification
+20200710 epoch by epoch logging
+20260713 AVED option (AVEDav/AVEDao) added to main_akira.py and utils_dep_akira.py
+'''
+
+
+
 import os
 import pandas as pd
 import numpy as np
@@ -19,7 +29,7 @@ def getData(args, sub_id, dataset="DTU"):
         train_eeg = train_eeg.transpose(0,2,1) 
         test_eeg = test_eeg.transpose(0,2,1) 
     
-    elif dataset == 'AVED':
+    elif dataset == 'AVEDav' or dataset == 'AVEDao':
         onedata, onelabel = get_AVED_data(args, sub_id)
         eeg_data = np.vstack(onedata)
         eeg_data = np.array(eeg_data)
