@@ -1,3 +1,9 @@
+'''
+
+20260714 label treat (int) update 
+        AVED option (AVEDav/AVEDao) added to main_akira.py and utils_indep_akira.py
+'''
+
 import os
 import pandas as pd
 import numpy as np
@@ -51,7 +57,7 @@ def getData(args,  dataset="DTU"):
             alllabel.append(onelabel)
             alll_ckabel.append(check_label)
 
-    elif dataset == 'AVED':
+    elif dataset == 'AVEDav' or dataset == 'AVEDao':
         for id in range(1, args.subject_number + 1):
             onedata, onelabel = get_AHU20_data(args, id)
             onedata = onedata.reshape([args.trail_number, -1, args.eeg_channel])
@@ -137,15 +143,15 @@ def sliding_window(args ,eeg_datas, labels, sub_id):
         for i in range(0, eeg.shape[0] - args.win_len + 1, stride):
             window = eeg[i:i+args.win_len, :]
             windows.append(window)
-            new_label.append(label-1)
+            new_label.append(int(label)-1)
             cheak_label.append(sub_id)
         train_eeg.append(np.array(windows))
         train_label.append(np.array(new_label))
         train_cheak_label.append(np.array(cheak_label))
 
-    eeg = np.stack(train_eeg, axis=0).reshape(-1, args.win_len, args.eeg_channel)
-    label = np.stack(train_label, axis=0).reshape(-1, 1)
-    train_cheak_label = np.stack(train_cheak_label, axis=0).reshape(-1, 1)
+    eeg = np.concatenate(train_eeg, axis=0).reshape(-1, args.win_len, args.eeg_channel)
+    label = np.concatenate(train_label, axis=0).reshape(-1, 1)
+    train_cheak_label = np.concatenate(train_cheak_label, axis=0).reshape(-1, 1)
     # train_cheak_label = np.stack(train_cheak_label, axis=0).reshape(-1, 3)
     return eeg, label, train_cheak_label
 

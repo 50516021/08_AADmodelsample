@@ -2,7 +2,7 @@
 
 # This is were we go for slurm documentation https://slurm.schedmd.com/sbatch.html
 
-#SBATCH --job-name=ListenNet_indep_test_20260710              # Name of the job
+#SBATCH --job-name=ListenNet_indep_test_20260714_w1s              # Name of the job
 #SBATCH --comment="ListenNet test"           # Comment for your job
 #SBATCH --account=spatt
 
@@ -47,6 +47,6 @@ mkdir -p logs
 
 echo "========== Running =========="
 
-uv run python main_akira.py 
+uv run python main_akira.py --dataset KUL --win_time 1.0
 
 echo "========== Finished =========="
