@@ -1,6 +1,8 @@
 """
 
 20260710 logging epoch by epoch
+20260714 commandline indices update
+        AVED option (AVEDav/AVEDao) added to main_akira.py and utils_indep_akira.py
 
 """
 
@@ -221,13 +223,18 @@ class Trynetwork():
             train_loss,train_acc = self.train_step(args, epoch)
             val_loss, val_acc = self.evaluate_step({})
             # self.scheduler_down.step()
-            print('TestSub:', testsub_name,
-                  'Epoch {:2d} Finsh | Now_lr {:2.4f}/{:2.4f}|Train Loss {:2.4f} | Valid Loss {:2.4f} | Train Acc {:5.4f}| Valid Acc {:5.4f}'.format(epoch,
-                                                                                                                                                self.optimizer.param_groups[0]["lr"], args.lr,
-                                                                                                                                                train_loss,
-                                                                                                                                                val_loss,
-                                                                                                                                                train_acc,
-                                                                                                                                                val_acc))
+            logging.info(
+                'TestSub: %s | Epoch %2d/%2d Finsh | Now_lr %.4f/%.4f | Train Loss %.4f | Valid Loss %.4f | Train Acc %.4f | Valid Acc %.4f',
+                testsub_name,
+                epoch,
+                args.max_epoch,
+                self.optimizer.param_groups[0]["lr"],
+                args.lr,
+                train_loss,
+                val_loss,
+                train_acc,
+                val_acc,
+            )
             if val_acc > best_acc:
                 save_model(args, testsub_name, best_acc, val_acc, self.model, epoch)
                 best_acc = val_acc
@@ -242,12 +249,14 @@ class Trynetwork():
         model = load_model(args.model_save_path, testsub_name)
         self.model = model
         test_loss, model_test_acc = self.evaluate_step({})
-        print("-" * 50)
-        print('Test_Subject :{:s} |Best epoch:{:d} | Test Loss:{:2.4f} | Savemodel Acc {:2.4f}'.format(testsub_name,
-                                                                                                    best_epoch,
-                                                                                                    test_loss,
-                                                                                                    model_test_acc))
-        print("-" * 50)
+        
+        logging.info("-" * 50)
+        logging.info('Test_Subject :%s | Best epoch:%d | Test Loss:%2.4f | Savemodel Acc %2.4f',
+                 testsub_name,
+                 best_epoch,
+                 test_loss,
+                 model_test_acc)
+        logging.info("-" * 50)
         return best_epoch, model_test_acc
 
 def cross_subject(args, test_id, sub_ids, alldata, alllabel):
@@ -299,19 +308,35 @@ def cross_subject(args, test_id, sub_ids, alldata, alllabel):
     
 if __name__ == '__main__':
     # Training settings
-    args = argparse.ArgumentParser()
-    args.seed = 42
+    parser = argparse.ArgumentParser()
+    
+    # command-line configurable args
+    parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--dataset', type=str, default='KUL', choices=['KUL', 'DTU', 'AVEDav', 'AVEDao'])
+
+    parser.add_argument('--win_time', type=float, default=0.1)
+    parser.add_argument('--overlap', type=float, default=0.5)
+
+    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--lr', type=float, default=5e-4)
+    parser.add_argument('--lam', type=float, default=0.2)
+    parser.add_argument('--lr_decayrate', type=float, default=0.5)
+    parser.add_argument('--weight_decay', type=float, default=1e-4)
+    parser.add_argument('--max_epoch', type=int, default=100)
+    parser.add_argument('--patience', type=int, default=20)
+    parser.add_argument('--log_interval', type=int, default=10)
+
+    args = parser.parse_args()
 
     # data
-    args.dataset = 'KUL'
     # options = {'KUL':[16, 64, 8, 128, "/media/jiangwencong/yangxiaoke/Dataset/KUL/pre_data/", "/media/jiangwencong/yangxiaoke/Dataset/KUL/label/"], 
     #            'DTU':[18, 64, 60, 128, "/media/jiangwencong/yangxiaoke/Dataset/DTU/128/data/", "/media/jiangwencong/yangxiaoke/Dataset/DTU/128/label/"], 
     #            #'AVED':[10 ,32, 16, 128, "/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-only/","/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-only/"]}
     #            'AVED':[10 ,32, 16, 128, "/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-video/","/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-video/"]}
     options = {'KUL':[16, 64, 8, 128, "../../../01_OriginalData/Dataset_csv/KUL/pre_data/", "../../../01_OriginalData/Dataset_csv/KUL/label/"], 
         'DTU':[18, 64, 60, 128, "../../../01_OriginalData/Dataset_csv/DTU/128/data/", "../../../01_OriginalData/Dataset_csv/DTU/128/label/"], 
-        #'AVED':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"]}
-        'AVED':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-video/","../../../01_OriginalData/Dataset_csv/AVED/audio-video/"]}
+        'AVEDao':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"],
+        'AVEDav':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-video/","../../../01_OriginalData/Dataset_csv/AVED/audio-video/"]}
     args.subject_number = options[args.dataset][0]
     args.eeg_channel = options[args.dataset][1]
     args.trail_number = options[args.dataset][2]
@@ -319,21 +344,12 @@ if __name__ == '__main__':
     args.data_path = options[args.dataset][4]
     args.label_path = options[args.dataset][5]
 
-    args.win_time = 1
+    # derived settings
     args.win_len = math.ceil(args.fs * args.win_time)
-    args.overlap = 0.5
     args.window_lap = args.win_len * (1 - args.overlap)
     
-    # basic info of the model
+    # basic info of the model (fixed settings)
     args.class_num = 2
-    args.batch_size = 128
-    args.lr = 1e-3
-    args.lam = 0.2
-    args.lr_decayrate = 0.5
-    args.weight_decay = 3e-4
-    args.max_epoch = 100
-    args.patience = 20
-    args.log_interval = 10
     
 
     # save to

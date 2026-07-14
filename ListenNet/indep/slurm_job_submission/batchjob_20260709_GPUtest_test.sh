@@ -2,7 +2,7 @@
 
 # This is were we go for slurm documentation https://slurm.schedmd.com/sbatch.html
 
-#SBATCH --job-name=ListenNet_test_20260709              # Name of the job
+#SBATCH --job-name=ListenNet_indep_test_20260714              # Name of the job
 #SBATCH --comment="ListenNet test"           # Comment for your job
 #SBATCH --account=spatt
 
@@ -14,7 +14,7 @@
 #SBATCH --mail-user=slack:@at2163                # Slack username to notify
 #SBATCH --mail-type=END                         # Type of slack notifications to send
 
-#SBATCH --time=0-16:00:00                        # Time limit day-hour:minutes:seconds
+#SBATCH --time=0-01:00:00                        # Time limit day-hour:minutes:seconds
 #SBATCH --nodes=1                               # How many nodes to run on
 #SBATCH --partition=debug                       # Partitions {debug, tier3} 
 #SBATCH --mem=32G                                # Job memory
