@@ -130,11 +130,11 @@ class Trynetwork():
             train_label = train_label.squeeze(-1)
             seq_data,  train_label = seq_data.cuda().float(), train_label.cuda().long()
             _, source_softmax = self.model(seq_data)
-            nll_loss = self.criterion(source_softmax, train_label)  
+            nll_loss = self.criterion(source_softmax, train_label.long())  
 
             Batch_size.append(len(train_label))
             _, predicted = torch.max(source_softmax.data, 1)
-            batch_acc = np.equal(predicted.cpu().detach().numpy(), train_label.cpu().detach().numpy()).sum() / len(
+            batch_acc = np.equal(predicted.cpu().detach().numpy(), train_label.long().cpu().detach().numpy()).sum() / len(
                 train_label)
             # Forward pass
             Train_acc.append(batch_acc)
@@ -355,7 +355,7 @@ if __name__ == '__main__':
    
 
     sub_ids =  list(range(1, args.subject_number+1)) # KUL 16
-    # load win data 和 label
+    # load win data label
     alldata,  alllabel, alll_ckabel = getData(args, args.dataset)
 
     for test_id in sub_ids:

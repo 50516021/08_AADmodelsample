@@ -219,13 +219,13 @@ def main() -> None:
     parser.add_argument(
         "--source-root",
         type=Path,
-        default=Path("../01_OriginalData/Dataset"),
+        default=Path("../../01_OriginalData/Dataset"),
         help="Path to the original dataset root.",
     )
     parser.add_argument(
         "--output-root",
         type=Path,
-        default=Path("../01_OriginalData/Dataset_csv"),
+        default=Path("../../01_OriginalData/Dataset_csv"),
         help="Destination root for the converted files.",
     )
     parser.add_argument(

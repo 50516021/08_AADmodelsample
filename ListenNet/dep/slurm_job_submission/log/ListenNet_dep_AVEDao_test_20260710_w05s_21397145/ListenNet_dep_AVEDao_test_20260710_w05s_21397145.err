@@ -1,0 +1,16 @@
+/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+  return F.conv2d(input, weight, bias, self.stride,
+Traceback (most recent call last):
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 387, in <module>
+    best_epoch, test_acc = single_subject(args, sub_id, train_eeg, test_eeg, train_label, test_label)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 312, in single_subject
+    onesub_test_epoch, onesub_test_acc = MyNet.train(args, sub_id)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 252, in train
+    model = load_model(args.model_save_path, testsub_name)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/function_akira.py", line 73, in load_model
+    model = torch.load(model_save_path)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/.venv/lib/python3.10/site-packages/torch/serialization.py", line 1028, in load
+    return _legacy_load(opened_file, map_location, pickle_module, **pickle_load_args)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/.venv/lib/python3.10/site-packages/torch/serialization.py", line 1246, in _legacy_load
+    magic_number = pickle_module.load(f, **pickle_load_args)
+EOFError: Ran out of input

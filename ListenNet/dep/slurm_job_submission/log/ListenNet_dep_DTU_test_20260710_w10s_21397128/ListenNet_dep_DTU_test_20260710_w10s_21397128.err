@@ -1,0 +1,12 @@
+/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+  return F.conv2d(input, weight, bias, self.stride,
+Traceback (most recent call last):
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 387, in <module>
+    best_epoch, test_acc = single_subject(args, sub_id, train_eeg, test_eeg, train_label, test_label)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 312, in single_subject
+    onesub_test_epoch, onesub_test_acc = MyNet.train(args, sub_id)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 227, in train
+    val_loss, val_acc = self.evaluate_step(False, {})
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/main_akira.py", line 198, in evaluate_step
+    epoch_acc = sum(Epochs_acc) / sum(Batch_size) * 100
+ZeroDivisionError: division by zero
