@@ -1,0 +1,7 @@
+usage: main_akira.py [-h] [--seed SEED] [--dataset {KUL,DTU,AVEDav,AVEDao}]
+                     [--win_time WIN_TIME] [--overlap OVERLAP]
+                     [--batch_size BATCH_SIZE] [--lr LR] [--lam LAM]
+                     [--lr_decayrate LR_DECAYRATE]
+                     [--weight_decay WEIGHT_DECAY] [--max_epoch MAX_EPOCH]
+                     [--patience PATIENCE] [--log_interval LOG_INTERVAL]
+main_akira.py: error: argument --dataset: invalid choice: 'AVED' (choose from 'KUL', 'DTU', 'AVEDav', 'AVEDao')

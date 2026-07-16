@@ -1,0 +1,32 @@
+2026-07-15 06:34:51 | Logging started: ./writer/Subject_independent_AAD/KUL/1.0s/result//Train1.0s_sub6.log
+2026-07-15 06:36:49 | TestSub: S6 | Epoch  1/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5724 | Valid Loss 0.8406 | Train Acc 69.9292 | Valid Acc 59.9392
+2026-07-15 06:37:27 | TestSub: S6 | Epoch  2/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5220 | Valid Loss 0.9082 | Train Acc 73.6178 | Valid Acc 63.0642
+2026-07-15 06:38:06 | TestSub: S6 | Epoch  3/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5028 | Valid Loss 0.9867 | Train Acc 74.9429 | Valid Acc 65.0391
+2026-07-15 06:38:44 | TestSub: S6 | Epoch  4/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4883 | Valid Loss 0.9752 | Train Acc 75.9494 | Valid Acc 64.8438
+2026-07-15 06:39:22 | TestSub: S6 | Epoch  5/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4788 | Valid Loss 1.0462 | Train Acc 76.4574 | Valid Acc 64.6376
+2026-07-15 06:40:01 | TestSub: S6 | Epoch  6/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4667 | Valid Loss 1.1148 | Train Acc 77.1185 | Valid Acc 65.0716
+2026-07-15 06:40:39 | TestSub: S6 | Epoch  7/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4638 | Valid Loss 1.0178 | Train Acc 77.4422 | Valid Acc 63.4549
+2026-07-15 06:41:18 | TestSub: S6 | Epoch  8/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4586 | Valid Loss 1.0054 | Train Acc 77.9718 | Valid Acc 63.5851
+2026-07-15 06:41:56 | TestSub: S6 | Epoch  9/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4541 | Valid Loss 1.1106 | Train Acc 78.0816 | Valid Acc 62.1745
+2026-07-15 06:42:35 | TestSub: S6 | Epoch 10/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4517 | Valid Loss 1.1588 | Train Acc 78.2406 | Valid Acc 62.5217
+2026-07-15 06:43:13 | TestSub: S6 | Epoch 11/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4472 | Valid Loss 1.2193 | Train Acc 78.4978 | Valid Acc 62.4891
+2026-07-15 06:43:51 | TestSub: S6 | Epoch 12/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4450 | Valid Loss 1.2810 | Train Acc 78.5686 | Valid Acc 62.1962
+2026-07-15 06:44:30 | TestSub: S6 | Epoch 13/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4421 | Valid Loss 1.2235 | Train Acc 78.8569 | Valid Acc 62.1636
+2026-07-15 06:45:08 | TestSub: S6 | Epoch 14/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4430 | Valid Loss 1.1929 | Train Acc 78.8071 | Valid Acc 59.6463
+2026-07-15 06:45:47 | TestSub: S6 | Epoch 15/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4387 | Valid Loss 1.2424 | Train Acc 78.9942 | Valid Acc 60.5469
+2026-07-15 06:46:25 | TestSub: S6 | Epoch 16/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4363 | Valid Loss 1.3046 | Train Acc 79.2218 | Valid Acc 61.6428
+2026-07-15 06:47:04 | TestSub: S6 | Epoch 17/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4356 | Valid Loss 1.3885 | Train Acc 79.2334 | Valid Acc 61.7839
+2026-07-15 06:47:42 | TestSub: S6 | Epoch 18/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4344 | Valid Loss 1.4206 | Train Acc 79.3382 | Valid Acc 63.3464
+2026-07-15 06:48:20 | TestSub: S6 | Epoch 19/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4317 | Valid Loss 1.3796 | Train Acc 79.5802 | Valid Acc 60.6011
+2026-07-15 06:48:59 | TestSub: S6 | Epoch 20/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4305 | Valid Loss 1.5748 | Train Acc 79.6134 | Valid Acc 62.5217
+2026-07-15 06:49:37 | TestSub: S6 | Epoch 21/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4284 | Valid Loss 1.5206 | Train Acc 79.7868 | Valid Acc 60.5469
+2026-07-15 06:50:16 | TestSub: S6 | Epoch 22/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4260 | Valid Loss 1.4513 | Train Acc 79.8851 | Valid Acc 62.0226
+2026-07-15 06:50:54 | TestSub: S6 | Epoch 23/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4250 | Valid Loss 1.5361 | Train Acc 79.9704 | Valid Acc 62.8906
+2026-07-15 06:51:32 | TestSub: S6 | Epoch 24/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4248 | Valid Loss 1.5023 | Train Acc 80.0462 | Valid Acc 62.1419
+2026-07-15 06:52:11 | TestSub: S6 | Epoch 25/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4243 | Valid Loss 1.4267 | Train Acc 80.1611 | Valid Acc 61.4258
+2026-07-15 06:52:49 | TestSub: S6 | Epoch 26/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4250 | Valid Loss 1.4347 | Train Acc 80.0376 | Valid Acc 61.9466
+2026-07-15 06:53:28 | TestSub: S6 | Epoch 27/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4230 | Valid Loss 1.5131 | Train Acc 80.0990 | Valid Acc 62.9015
+2026-07-15 06:53:29 | --------------------------------------------------
+2026-07-15 06:53:29 | Test_Subject :S6 | Best epoch:6 | Test Loss:1.1148 | Savemodel Acc 65.0716
+2026-07-15 06:53:29 | --------------------------------------------------
+2026-07-15 06:53:29 | Best epoch: 6 | Test acc: 65.0716

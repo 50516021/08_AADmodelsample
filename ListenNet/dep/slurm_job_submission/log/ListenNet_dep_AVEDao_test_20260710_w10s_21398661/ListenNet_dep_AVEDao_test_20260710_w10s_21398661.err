@@ -1,0 +1,2 @@
+/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+  return F.conv2d(input, weight, bias, self.stride,

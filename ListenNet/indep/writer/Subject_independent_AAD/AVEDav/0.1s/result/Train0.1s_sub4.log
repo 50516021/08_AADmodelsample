@@ -1,0 +1,29 @@
+2026-07-15 13:35:16 | Logging started: ./writer/Subject_independent_AAD/AVEDav/0.1s/result//Train0.1s_sub4.log
+2026-07-15 13:37:12 | TestSub: S4 | Epoch  1/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6939 | Valid Loss 0.6945 | Train Acc 50.4356 | Valid Acc 46.1420
+2026-07-15 13:38:55 | TestSub: S4 | Epoch  2/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6928 | Valid Loss 0.6958 | Train Acc 51.0590 | Valid Acc 48.0536
+2026-07-15 13:40:33 | TestSub: S4 | Epoch  3/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6926 | Valid Loss 0.6946 | Train Acc 51.4376 | Valid Acc 48.1539
+2026-07-15 13:42:19 | TestSub: S4 | Epoch  4/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6924 | Valid Loss 0.6970 | Train Acc 51.7881 | Valid Acc 46.0089
+2026-07-15 13:43:59 | TestSub: S4 | Epoch  5/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6921 | Valid Loss 0.6964 | Train Acc 51.9546 | Valid Acc 46.8461
+2026-07-15 13:45:37 | TestSub: S4 | Epoch  6/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6920 | Valid Loss 0.6965 | Train Acc 52.1185 | Valid Acc 46.9097
+2026-07-15 13:47:15 | TestSub: S4 | Epoch  7/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6919 | Valid Loss 0.6967 | Train Acc 52.1057 | Valid Acc 46.8596
+2026-07-15 13:48:53 | TestSub: S4 | Epoch  8/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6918 | Valid Loss 0.6966 | Train Acc 52.2559 | Valid Acc 47.3765
+2026-07-15 13:50:30 | TestSub: S4 | Epoch  9/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6917 | Valid Loss 0.6967 | Train Acc 52.2430 | Valid Acc 47.1451
+2026-07-15 13:52:09 | TestSub: S4 | Epoch 10/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6916 | Valid Loss 0.6975 | Train Acc 52.3069 | Valid Acc 46.3812
+2026-07-15 13:53:47 | TestSub: S4 | Epoch 11/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6916 | Valid Loss 0.6976 | Train Acc 52.3176 | Valid Acc 47.0100
+2026-07-15 13:55:26 | TestSub: S4 | Epoch 12/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6915 | Valid Loss 0.6976 | Train Acc 52.4460 | Valid Acc 46.8094
+2026-07-15 13:57:05 | TestSub: S4 | Epoch 13/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6914 | Valid Loss 0.6956 | Train Acc 52.4136 | Valid Acc 48.0073
+2026-07-15 13:58:45 | TestSub: S4 | Epoch 14/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6914 | Valid Loss 0.6968 | Train Acc 52.5042 | Valid Acc 47.6755
+2026-07-15 14:00:24 | TestSub: S4 | Epoch 15/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6914 | Valid Loss 0.6975 | Train Acc 52.5152 | Valid Acc 46.4352
+2026-07-15 14:02:02 | TestSub: S4 | Epoch 16/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6913 | Valid Loss 0.6972 | Train Acc 52.5111 | Valid Acc 46.7998
+2026-07-15 14:03:41 | TestSub: S4 | Epoch 17/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6912 | Valid Loss 0.6976 | Train Acc 52.4933 | Valid Acc 47.1856
+2026-07-15 14:05:20 | TestSub: S4 | Epoch 18/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6910 | Valid Loss 0.6969 | Train Acc 52.6324 | Valid Acc 47.1470
+2026-07-15 14:07:00 | TestSub: S4 | Epoch 19/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6910 | Valid Loss 0.6960 | Train Acc 52.7256 | Valid Acc 47.8414
+2026-07-15 14:08:40 | TestSub: S4 | Epoch 20/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6911 | Valid Loss 0.6982 | Train Acc 52.5964 | Valid Acc 47.3573
+2026-07-15 14:10:28 | TestSub: S4 | Epoch 21/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6911 | Valid Loss 0.6972 | Train Acc 52.6125 | Valid Acc 47.0158
+2026-07-15 14:12:13 | TestSub: S4 | Epoch 22/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6911 | Valid Loss 0.6956 | Train Acc 52.6437 | Valid Acc 48.0054
+2026-07-15 14:13:52 | TestSub: S4 | Epoch 23/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6910 | Valid Loss 0.6984 | Train Acc 52.6152 | Valid Acc 46.2577
+2026-07-15 14:15:30 | TestSub: S4 | Epoch 24/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6910 | Valid Loss 0.6970 | Train Acc 52.5694 | Valid Acc 47.3843
+2026-07-15 14:15:34 | --------------------------------------------------
+2026-07-15 14:15:34 | Test_Subject :S4 | Best epoch:3 | Test Loss:0.6946 | Savemodel Acc 48.1539
+2026-07-15 14:15:34 | --------------------------------------------------
+2026-07-15 14:15:34 | Best epoch: 3 | Test acc: 48.1539

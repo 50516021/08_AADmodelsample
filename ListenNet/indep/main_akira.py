@@ -37,7 +37,6 @@ from model import *
 
 
 # writer = SummaryWriter()
-os.environ["CUDA_VISIBLE_DEVICES"] = "6"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Current device is", device)
 
