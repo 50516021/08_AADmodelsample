@@ -2,7 +2,7 @@
 
 # This is were we go for slurm documentation https://slurm.schedmd.com/sbatch.html
 
-#SBATCH --job-name=ListenNet_indep_AVRDao_test_20260714_w01s              # Name of the job
+#SBATCH --job-name=ListenNet_indep_KDTU_test_20260714_w01s              # Name of the job
 #SBATCH --comment="ListenNet test"           # Comment for your job
 #SBATCH --account=spatt
 
@@ -14,7 +14,7 @@
 #SBATCH --mail-user=slack:@at2163                # Slack username to notify
 #SBATCH --mail-type=END                         # Type of slack notifications to send
 
-#SBATCH --time=1-00:00:00                        # Time limit day-hour:minutes:seconds
+#SBATCH --time=2-00:00:00                        # Time limit day-hour:minutes:seconds
 #SBATCH --nodes=1                               # How many nodes to run on
 #SBATCH --partition=tier3                       # Partitions {debug, tier3} 
 #SBATCH --mem=64G                                # Job memory
@@ -47,6 +47,6 @@ mkdir -p logs
 
 echo "========== Running =========="
 
-uv run python main_akira.py --dataset AVEDao --win_time 0.1
+uv run python main_akira.py --dataset DTU --win_time 0.1
 
 echo "========== Finished =========="

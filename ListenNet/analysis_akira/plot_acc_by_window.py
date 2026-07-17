@@ -46,6 +46,7 @@ def collect(folder):
                     accs.append(acc)
         if accs:
             results[entry.name] = accs
+            
     # sort by numeric part of folder name (e.g. "0.1s" -> 0.1)
     return dict(sorted(results.items(), key=lambda x: float(re.sub(r"[^\d.]", "", x[0]) or 0)))
 
@@ -56,17 +57,21 @@ def plot(folder, results, out_dir):
 
     fig, ax = plt.subplots(figsize=(max(6, len(labels) * 1.2), 5))
     x = np.arange(len(labels))
-    bars = ax.bar(x, means, yerr=sds, capsize=5, color="steelblue", alpha=0.8, error_kw={"elinewidth": 1.5})
+    # bars = ax.bar(x, means, yerr=sds, capsize=5, color="steelblue", alpha=0.8, error_kw={"elinewidth": 1.5})
+    lines = ax.plot(x, means, color="steelblue", alpha=0.8, marker="o", markersize=6, linewidth=2, label="Mean Accuracy")
+    plt.errorbar(x, means, yerr=sds, capsize=5, fmt='o', markersize=10, ecolor='black', markeredgecolor="black", color='w')
+
 
     # annotate mean ± SD on each bar
+    counts = [len(v) for v in results.values()]
     for i, (m, s) in enumerate(zip(means, sds)):
         ax.text(x[i], m + s + 0.5, f"{m:.1f}±{s:.1f}", ha="center", va="bottom", fontsize=8)
 
     ax.set_xticks(x)
-    ax.set_xticklabels(labels, rotation=30, ha="right")
+    ax.set_xticklabels([f"{l}" for l in zip(labels, counts)], rotation=30, ha="right")
     ax.set_ylabel("Test Accuracy (%)")
     ax.set_title(os.path.basename(folder.rstrip("/\\")))
-    ax.set_ylim(0, 110)
+    ax.set_ylim(40, 105)
     ax.axhline(50, color="gray", linestyle="--", linewidth=0.8, label="chance (50%)")
     ax.legend(fontsize=8)
     fig.tight_layout()
@@ -82,17 +87,20 @@ if __name__ == "__main__":
     folder = sys.argv[1] if len(sys.argv) > 1 else "."
     folder = os.path.abspath(folder)
 
-    out_dir = os.path.join(os.path.dirname(__file__)) + '/figure/' + folder.split("/")[-1]  # analysis_akira/figure/<folder_name>
+    out_dir = os.path.join(os.path.dirname(__file__)) + '/figure/' + folder.split("/")[-2]  # analysis_akira/figure/<folder_name>
 
     results = collect(folder)
     if not results:
         print("No log files found.")
         sys.exit(1)
-
-    print(f"\nResults for: {folder}")
-    print(f"{'Window':<12} {'N':>4} {'Mean':>8} {'SD':>8}")
-    print("-" * 36)
-    for k, v in results.items():
-        print(f"{k:<12} {len(v):>4} {np.mean(v):>8.2f} {np.std(v, ddof=1) if len(v)>1 else 0:>8.2f}")
+        
+    # output a summary file
+    sub_filename = out_dir + '_' + folder.split("/")[-1] + '_acc_summary.txt'
+    with open(sub_filename,"w") as o:
+        print(f"\nResults for: {folder}", file=o)
+        print(f"{'Window':<12} {'N':>4} {'Mean':>8} {'SD':>8}", file=o)
+        print("-" * 36, file=o)
+        for k, v in results.items():
+            print(f"{k:<12} {len(v):>4} {np.mean(v):>8.2f} {np.std(v, ddof=1) if len(v)>1 else 0:>8.2f}", file=o)
 
     plot(folder, results, out_dir)

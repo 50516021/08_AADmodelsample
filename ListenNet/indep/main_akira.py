@@ -334,7 +334,7 @@ if __name__ == '__main__':
     #            'AVED':[10 ,32, 16, 128, "/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-video/","/media/jiangwencong/yangxiaoke/Dataset/AHU_20/audio-video/"]}
     options = {'KUL':[16, 64, 8, 128, "../../../01_OriginalData/Dataset_csv/KUL/pre_data/", "../../../01_OriginalData/Dataset_csv/KUL/label/"], 
         'DTU':[18, 64, 60, 128, "../../../01_OriginalData/Dataset_csv/DTU/128/data/", "../../../01_OriginalData/Dataset_csv/DTU/128/label/"], 
-        'AVEDao':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/"],
+        'AVEDao':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-only/","../../../01_OriginalData/Dataset_csv/AVED/audio-only/"],
         'AVEDav':[10 ,32, 16, 128, "../../../01_OriginalData/Dataset_csv/AVED/audio-video/","../../../01_OriginalData/Dataset_csv/AVED/audio-video/"]}
     args.subject_number = options[args.dataset][0]
     args.eeg_channel = options[args.dataset][1]
