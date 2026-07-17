@@ -1,0 +1,28 @@
+2026-07-15 07:48:01 | Logging started: ./writer/Subject_independent_AAD/KUL/3.0s/result//Train3.0s_sub14.log
+2026-07-15 07:49:48 | TestSub: S14 | Epoch  1/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6010 | Valid Loss 0.6797 | Train Acc 67.4410 | Valid Acc 67.0724
+2026-07-15 07:50:17 | TestSub: S14 | Epoch  2/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5359 | Valid Loss 0.6924 | Train Acc 72.4672 | Valid Acc 67.2368
+2026-07-15 07:50:46 | TestSub: S14 | Epoch  3/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5071 | Valid Loss 0.7358 | Train Acc 74.4755 | Valid Acc 65.0000
+2026-07-15 07:51:15 | TestSub: S14 | Epoch  4/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4789 | Valid Loss 0.7350 | Train Acc 76.5538 | Valid Acc 65.0987
+2026-07-15 07:51:43 | TestSub: S14 | Epoch  5/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4648 | Valid Loss 0.7542 | Train Acc 77.3186 | Valid Acc 65.7566
+2026-07-15 07:52:12 | TestSub: S14 | Epoch  6/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4481 | Valid Loss 0.7325 | Train Acc 78.6364 | Valid Acc 62.3355
+2026-07-15 07:52:41 | TestSub: S14 | Epoch  7/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4400 | Valid Loss 0.7898 | Train Acc 79.0101 | Valid Acc 60.0329
+2026-07-15 07:53:09 | TestSub: S14 | Epoch  8/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4309 | Valid Loss 0.7216 | Train Acc 79.3269 | Valid Acc 62.4013
+2026-07-15 07:53:38 | TestSub: S14 | Epoch  9/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4246 | Valid Loss 0.7254 | Train Acc 79.9038 | Valid Acc 63.9474
+2026-07-15 07:54:07 | TestSub: S14 | Epoch 10/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4169 | Valid Loss 0.6990 | Train Acc 80.2753 | Valid Acc 62.7303
+2026-07-15 07:54:35 | TestSub: S14 | Epoch 11/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4128 | Valid Loss 0.7120 | Train Acc 80.2972 | Valid Acc 60.7895
+2026-07-15 07:55:04 | TestSub: S14 | Epoch 12/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4082 | Valid Loss 0.6955 | Train Acc 80.8872 | Valid Acc 62.3355
+2026-07-15 07:55:33 | TestSub: S14 | Epoch 13/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4012 | Valid Loss 0.6940 | Train Acc 81.1823 | Valid Acc 63.0921
+2026-07-15 07:56:02 | TestSub: S14 | Epoch 14/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3944 | Valid Loss 0.7768 | Train Acc 81.6106 | Valid Acc 58.1908
+2026-07-15 07:56:30 | TestSub: S14 | Epoch 15/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3963 | Valid Loss 0.7149 | Train Acc 81.5101 | Valid Acc 62.1711
+2026-07-15 07:56:59 | TestSub: S14 | Epoch 16/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3928 | Valid Loss 0.7675 | Train Acc 81.8116 | Valid Acc 56.3158
+2026-07-15 07:57:28 | TestSub: S14 | Epoch 17/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3889 | Valid Loss 0.7677 | Train Acc 82.1023 | Valid Acc 60.5263
+2026-07-15 07:57:56 | TestSub: S14 | Epoch 18/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3856 | Valid Loss 0.7660 | Train Acc 82.0979 | Valid Acc 61.1513
+2026-07-15 07:58:25 | TestSub: S14 | Epoch 19/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3851 | Valid Loss 0.7264 | Train Acc 82.0673 | Valid Acc 61.1842
+2026-07-15 07:58:53 | TestSub: S14 | Epoch 20/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3811 | Valid Loss 0.7934 | Train Acc 82.6005 | Valid Acc 60.5592
+2026-07-15 07:59:22 | TestSub: S14 | Epoch 21/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3744 | Valid Loss 0.7342 | Train Acc 82.9305 | Valid Acc 61.1513
+2026-07-15 07:59:51 | TestSub: S14 | Epoch 22/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3758 | Valid Loss 0.7842 | Train Acc 82.9021 | Valid Acc 57.3026
+2026-07-15 08:00:19 | TestSub: S14 | Epoch 23/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3707 | Valid Loss 0.8241 | Train Acc 82.9808 | Valid Acc 56.9737
+2026-07-15 08:00:20 | --------------------------------------------------
+2026-07-15 08:00:20 | Test_Subject :S14 | Best epoch:2 | Test Loss:0.6924 | Savemodel Acc 67.2368
+2026-07-15 08:00:20 | --------------------------------------------------
+2026-07-15 08:00:20 | Best epoch: 2 | Test acc: 67.2368

@@ -1,0 +1,55 @@
+========== Job Information ==========
+Hostname : skl-a-49.rc.rit.edu
+Date     : Wed Jul 15 11:09:31 PM EDT 2026
+GPU(s):
+Wed Jul 15 23:09:31 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.45.04              Driver Version: 595.45.04      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:5E:00.0 Off |                    0 |
+| N/A   31C    P0             32W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.10.19
+uv 0.9.2
+========== Running ==========
+Current device is cuda
+============================================================================================================
+Arguments =
+	batch_size: 32
+	class_num: 2
+	data_path: ../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/
+	dataset: AVEDao
+	eeg_channel: 32
+	fs: 128
+	label_path: ../../../01_OriginalData/Dataset_csv/Dataset/AVED/audio-only/
+	lam: 0.2
+	log_interval: 10
+	log_path: ./writer/Subject_independent_AAD/AVEDao/1.0s/result/
+	lr: 0.0005
+	lr_decayrate: 0.5
+	max_epoch: 100
+	model_save_path: ./writer/Subject_independent_AAD/AVEDao//1.0s/savemodel/
+	overlap: 0.5
+	patience: 20
+	seed: 42
+	subject_number: 10
+	trail_number: 16
+	weight_decay: 0.0001
+	win_len: 128
+	win_time: 1.0
+	window_lap: 64.0
+============================================================================================================

@@ -1,1 +1,29 @@
-2026-07-14 04:30:40 | Logging started: ./writer/Subject_independent_AAD/KUL/10.0s/result//Train10.0s_sub1.log
+2026-07-15 06:06:49 | Logging started: ./writer/Subject_independent_AAD/KUL/10.0s/result//Train10.0s_sub1.log
+2026-07-15 06:08:45 | TestSub: S1 | Epoch  1/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.6426 | Valid Loss 0.6852 | Train Acc 62.6124 | Valid Acc 64.3519
+2026-07-15 06:09:17 | TestSub: S1 | Epoch  2/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5667 | Valid Loss 0.8884 | Train Acc 70.4137 | Valid Acc 58.7963
+2026-07-15 06:09:47 | TestSub: S1 | Epoch  3/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5336 | Valid Loss 0.9479 | Train Acc 72.8342 | Valid Acc 61.6898
+2026-07-15 06:10:23 | TestSub: S1 | Epoch  4/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.5098 | Valid Loss 1.0246 | Train Acc 74.6178 | Valid Acc 57.2917
+2026-07-15 06:10:55 | TestSub: S1 | Epoch  5/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4954 | Valid Loss 1.0350 | Train Acc 75.9068 | Valid Acc 57.9861
+2026-07-15 06:11:38 | TestSub: S1 | Epoch  6/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4760 | Valid Loss 1.1001 | Train Acc 76.9335 | Valid Acc 58.7963
+2026-07-15 06:12:09 | TestSub: S1 | Epoch  7/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4686 | Valid Loss 1.2018 | Train Acc 77.2707 | Valid Acc 55.6713
+2026-07-15 06:12:46 | TestSub: S1 | Epoch  8/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4588 | Valid Loss 1.0956 | Train Acc 77.2932 | Valid Acc 56.4815
+2026-07-15 06:13:18 | TestSub: S1 | Epoch  9/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4423 | Valid Loss 1.0838 | Train Acc 78.7845 | Valid Acc 59.1435
+2026-07-15 06:13:47 | TestSub: S1 | Epoch 10/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4383 | Valid Loss 1.0864 | Train Acc 78.9194 | Valid Acc 58.3333
+2026-07-15 06:14:22 | TestSub: S1 | Epoch 11/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4295 | Valid Loss 1.2483 | Train Acc 79.6388 | Valid Acc 57.0602
+2026-07-15 06:14:53 | TestSub: S1 | Epoch 12/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4260 | Valid Loss 1.0336 | Train Acc 79.8711 | Valid Acc 59.2593
+2026-07-15 06:15:32 | TestSub: S1 | Epoch 13/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4200 | Valid Loss 1.1821 | Train Acc 80.1859 | Valid Acc 59.6065
+2026-07-15 06:16:13 | TestSub: S1 | Epoch 14/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4070 | Valid Loss 1.0940 | Train Acc 81.1151 | Valid Acc 60.9954
+2026-07-15 06:16:43 | TestSub: S1 | Epoch 15/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4022 | Valid Loss 1.0767 | Train Acc 81.2275 | Valid Acc 58.4491
+2026-07-15 06:17:16 | TestSub: S1 | Epoch 16/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.4026 | Valid Loss 0.9604 | Train Acc 80.9652 | Valid Acc 63.1944
+2026-07-15 06:17:45 | TestSub: S1 | Epoch 17/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3883 | Valid Loss 1.0170 | Train Acc 82.3067 | Valid Acc 61.2269
+2026-07-15 06:18:16 | TestSub: S1 | Epoch 18/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3914 | Valid Loss 1.0989 | Train Acc 81.5872 | Valid Acc 61.3426
+2026-07-15 06:18:51 | TestSub: S1 | Epoch 19/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3805 | Valid Loss 1.1427 | Train Acc 82.6364 | Valid Acc 60.1852
+2026-07-15 06:19:24 | TestSub: S1 | Epoch 20/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3814 | Valid Loss 1.1670 | Train Acc 82.1868 | Valid Acc 58.5648
+2026-07-15 06:19:54 | TestSub: S1 | Epoch 21/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3752 | Valid Loss 1.0249 | Train Acc 82.8612 | Valid Acc 64.1204
+2026-07-15 06:20:35 | TestSub: S1 | Epoch 22/100 Finsh | Now_lr 0.0005/0.0005 | Train Loss 0.3721 | Valid Loss 1.0463 | Train Acc 82.6888 | Valid Acc 64.0046
+2026-07-15 06:20:35 | --------------------------------------------------
+2026-07-15 06:20:36 | Test_Subject :S1 | Best epoch:1 | Test Loss:0.6852 | Savemodel Acc 64.3519
+2026-07-15 06:20:36 | --------------------------------------------------
+2026-07-15 06:20:36 | Best epoch: 1 | Test acc: 64.3519
+2026-07-15 10:16:14 | TorchDynamo compilation metrics:
+Function, Runtimes (s)

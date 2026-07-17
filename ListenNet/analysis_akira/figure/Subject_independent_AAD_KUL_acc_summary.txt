@@ -1,0 +1,10 @@
+
+Results for: /home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/indep/writer/Subject_independent_AAD/KUL
+Window          N     Mean       SD
+------------------------------------
+0.1s            9    65.74     2.54
+1.0s           16    65.80     4.10
+2.0s           16    66.25     4.93
+3.0s           16    65.63     4.24
+5.0s           16    65.76     4.60
+10.0s          16    65.62     4.91

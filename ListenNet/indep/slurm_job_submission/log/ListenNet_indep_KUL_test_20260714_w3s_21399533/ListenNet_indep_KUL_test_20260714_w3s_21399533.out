@@ -1,0 +1,926 @@
+========== Job Information ==========
+Hostname : skl-a-53.rc.rit.edu
+Date     : Wed Jul 15 04:20:57 AM EDT 2026
+GPU(s):
+Wed Jul 15 04:20:57 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.45.04              Driver Version: 595.45.04      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:5E:00.0 Off |                    0 |
+| N/A   33C    P0             34W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.10.19
+uv 0.9.2
+========== Running ==========
+Current device is cuda
+============================================================================================================
+Arguments =
+	batch_size: 32
+	class_num: 2
+	data_path: ../../../01_OriginalData/Dataset_csv/KUL/pre_data/
+	dataset: KUL
+	eeg_channel: 64
+	fs: 128
+	label_path: ../../../01_OriginalData/Dataset_csv/KUL/label/
+	lam: 0.2
+	log_interval: 10
+	log_path: ./writer/Subject_independent_AAD/KUL/3.0s/result/
+	lr: 0.0005
+	lr_decayrate: 0.5
+	max_epoch: 100
+	model_save_path: ./writer/Subject_independent_AAD/KUL//3.0s/savemodel/
+	overlap: 0.5
+	patience: 20
+	seed: 42
+	subject_number: 16
+	trail_number: 8
+	weight_decay: 0.0001
+	win_len: 384
+	win_time: 3.0
+	window_lap: 192.0
+============================================================================================================
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/1
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/2
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/3
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/4
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/5
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/6
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/7
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/8
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/9
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/10
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/11
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/12
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/13
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/14
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/15
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/16
+Test sub_id:  1
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 55.625000) in epoch (1).  Saving model ...
+Validation acc increase (55.625000 --> 55.888158) in epoch (2).  Saving model ...
+Validation acc increase (55.888158 --> 61.940789) in epoch (3).  Saving model ...
+Validation acc increase (61.940789 --> 66.414474) in epoch (4).  Saving model ...
+Validation acc increase (66.414474 --> 67.105263) in epoch (5).  Saving model ...
+Validation acc increase (67.105263 --> 67.730263) in epoch (6).  Saving model ...
+Validation acc increase (67.730263 --> 70.000000) in epoch (7).  Saving model ...
+Early stopping at epoch 28!
+Test sub_id:  2
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 65.855263) in epoch (1).  Saving model ...
+Validation acc increase (65.855263 --> 66.447368) in epoch (5).  Saving model ...
+Validation acc increase (66.447368 --> 67.138158) in epoch (8).  Saving model ...
+Validation acc increase (67.138158 --> 67.565789) in epoch (10).  Saving model ...
+Validation acc increase (67.565789 --> 67.664474) in epoch (11).  Saving model ...
+Validation acc increase (67.664474 --> 67.993421) in epoch (16).  Saving model ...
+Early stopping at epoch 37!
+Test sub_id:  3
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 58.355263) in epoch (1).  Saving model ...
+Validation acc increase (58.355263 --> 60.263158) in epoch (2).  Saving model ...
+Validation acc increase (60.263158 --> 60.460526) in epoch (4).  Saving model ...
+Validation acc increase (60.460526 --> 60.592105) in epoch (8).  Saving model ...
+Validation acc increase (60.592105 --> 61.644737) in epoch (10).  Saving model ...
+Validation acc increase (61.644737 --> 62.203947) in epoch (12).  Saving model ...
+Validation acc increase (62.203947 --> 62.598684) in epoch (14).  Saving model ...
+Validation acc increase (62.598684 --> 63.782895) in epoch (27).  Saving model ...
+Validation acc increase (63.782895 --> 64.309211) in epoch (33).  Saving model ...
+Early stopping at epoch 54!
+Test sub_id:  4
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 69.638158) in epoch (1).  Saving model ...
+Early stopping at epoch 22!
+Test sub_id:  5
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 65.723684) in epoch (1).  Saving model ...
+Validation acc increase (65.723684 --> 66.447368) in epoch (3).  Saving model ...
+Early stopping at epoch 24!
+Test sub_id:  6
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 58.881579) in epoch (1).  Saving model ...
+Validation acc increase (58.881579 --> 59.736842) in epoch (5).  Saving model ...
+Validation acc increase (59.736842 --> 60.493421) in epoch (7).  Saving model ...
+Validation acc increase (60.493421 --> 61.315789) in epoch (9).  Saving model ...
+Validation acc increase (61.315789 --> 61.842105) in epoch (12).  Saving model ...
+Validation acc increase (61.842105 --> 62.664474) in epoch (15).  Saving model ...
+Validation acc increase (62.664474 --> 63.519737) in epoch (25).  Saving model ...
+Early stopping at epoch 46!
+Test sub_id:  7
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 66.875000) in epoch (1).  Saving model ...
+Validation acc increase (66.875000 --> 67.368421) in epoch (2).  Saving model ...
+Validation acc increase (67.368421 --> 67.631579) in epoch (3).  Saving model ...
+Validation acc increase (67.631579 --> 69.243421) in epoch (4).  Saving model ...
+Early stopping at epoch 25!
+Test sub_id:  8
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 67.993421) in epoch (1).  Saving model ...
+Validation acc increase (67.993421 --> 68.421053) in epoch (2).  Saving model ...
+Validation acc increase (68.421053 --> 70.098684) in epoch (3).  Saving model ...
+Validation acc increase (70.098684 --> 70.164474) in epoch (4).  Saving model ...
+Validation acc increase (70.164474 --> 70.657895) in epoch (6).  Saving model ...
+Early stopping at epoch 27!
+Test sub_id:  9
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 67.006579) in epoch (1).  Saving model ...
+Validation acc increase (67.006579 --> 67.467105) in epoch (2).  Saving model ...
+Validation acc increase (67.467105 --> 68.421053) in epoch (3).  Saving model ...
+Validation acc increase (68.421053 --> 68.881579) in epoch (5).  Saving model ...
+Early stopping at epoch 26!
+Test sub_id:  10
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 65.756579) in epoch (1).  Saving model ...
+Validation acc increase (65.756579 --> 66.052632) in epoch (2).  Saving model ...
+Validation acc increase (66.052632 --> 66.973684) in epoch (3).  Saving model ...
+Early stopping at epoch 24!
+Test sub_id:  11
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 67.631579) in epoch (1).  Saving model ...
+Early stopping at epoch 22!
+Test sub_id:  12
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 60.986842) in epoch (1).  Saving model ...
+Early stopping at epoch 22!
+Test sub_id:  13
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 59.276316) in epoch (1).  Saving model ...
+Validation acc increase (59.276316 --> 59.868421) in epoch (4).  Saving model ...
+Validation acc increase (59.868421 --> 59.901316) in epoch (9).  Saving model ...
+Early stopping at epoch 30!
+Test sub_id:  14
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 67.072368) in epoch (1).  Saving model ...
+Validation acc increase (67.072368 --> 67.236842) in epoch (2).  Saving model ...
+Early stopping at epoch 23!
+Test sub_id:  15
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 45.230263) in epoch (1).  Saving model ...
+Validation acc increase (45.230263 --> 49.506579) in epoch (2).  Saving model ...
+Validation acc increase (49.506579 --> 49.572368) in epoch (3).  Saving model ...
+Validation acc increase (49.572368 --> 49.934211) in epoch (5).  Saving model ...
+Validation acc increase (49.934211 --> 50.460526) in epoch (6).  Saving model ...
+Validation acc increase (50.460526 --> 51.875000) in epoch (11).  Saving model ...
+Validation acc increase (51.875000 --> 51.973684) in epoch (28).  Saving model ...
+Validation acc increase (51.973684 --> 52.302632) in epoch (32).  Saving model ...
+Validation acc increase (52.302632 --> 53.980263) in epoch (35).  Saving model ...
+Validation acc increase (53.980263 --> 54.539474) in epoch (40).  Saving model ...
+Validation acc increase (54.539474 --> 56.217105) in epoch (42).  Saving model ...
+Validation acc increase (56.217105 --> 56.546053) in epoch (43).  Saving model ...
+Validation acc increase (56.546053 --> 56.644737) in epoch (47).  Saving model ...
+Validation acc increase (56.644737 --> 57.039474) in epoch (51).  Saving model ...
+Early stopping at epoch 72!
+Test sub_id:  16
+train_seqdata_shape(45780, 1, 64, 384),test_seqdata_shape(3052, 1, 64, 384)
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+ListenNet                                --
+├─Align: 1-1                             --
+│    └─Conv2d: 2-1                       1,040
+├─Sequential: 1-2                        --
+│    └─Conv2d: 2-2                       16
+│    └─BatchNorm2d: 2-3                  32
+│    └─Conv2d: 2-4                       128
+│    └─BatchNorm2d: 2-5                  32
+│    └─GELU: 2-6                         --
+├─Sequential: 1-3                        --
+│    └─Conv2d: 2-7                       256
+│    └─BatchNorm2d: 2-8                  32
+│    └─Conv2d: 2-9                       1,024
+│    └─BatchNorm2d: 2-10                 32
+│    └─GELU: 2-11                        --
+├─DilatedInception: 1-4                  --
+│    └─ModuleList: 2-12                  --
+│    │    └─Conv2d: 3-1                  68
+│    │    └─Conv2d: 3-2                  132
+│    │    └─Conv2d: 3-3                  196
+│    │    └─Conv2d: 3-4                  324
+│    └─BatchNorm2d: 2-13                 32
+├─BatchNorm2d: 1-5                       32
+├─Conv2d: 1-6                            1,040
+├─Conv2d: 1-7                            1,024
+├─Conv2d: 1-8                            1,040
+├─CNA: 1-9                               --
+│    └─Softmax: 2-14                     --
+│    └─AdaptiveAvgPool2d: 2-15           --
+│    └─AdaptiveAvgPool2d: 2-16           --
+│    └─AdaptiveAvgPool2d: 2-17           --
+│    └─GroupNorm: 2-18                   4
+│    └─Conv1d: 2-19                      2
+│    └─Conv2d: 2-20                      6
+├─Sequential: 1-10                       --
+│    └─AvgPool3d: 2-21                   --
+│    └─Dropout: 2-22                     --
+├─Linear: 1-11                           994
+=================================================================
+Total params: 7,486
+Trainable params: 7,486
+Non-trainable params: 0
+=================================================================
+Validation acc increase (0.000000 --> 59.572368) in epoch (1).  Saving model ...
+Early stopping at epoch 22!
+========== Finished ==========

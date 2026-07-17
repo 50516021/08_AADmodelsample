@@ -1,0 +1,73 @@
+========== Job Information ==========
+Hostname : skl-a-37.rc.rit.edu
+Date     : Tue Jul 14 02:39:33 PM EDT 2026
+GPU(s):
+Tue Jul 14 14:39:33 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.45.04              Driver Version: 595.45.04      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:86:00.0 Off |                    0 |
+| N/A   34C    P0             32W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.10.19
+uv 0.9.2
+========== Running ==========
+Current device is cpu
+============================================================================================================
+Arguments =
+	batch_size: 32
+	class_num: 2
+	data_path: ../../../01_OriginalData/Dataset_csv/KUL/pre_data/
+	dataset: KUL
+	eeg_channel: 64
+	fs: 128
+	label_path: ../../../01_OriginalData/Dataset_csv/KUL/label/
+	lam: 0.2
+	log_interval: 10
+	log_path: ./writer/Subject_independent_AAD/KUL/5.0s/result/
+	lr: 0.0005
+	lr_decayrate: 0.5
+	max_epoch: 100
+	model_save_path: ./writer/Subject_independent_AAD/KUL//5.0s/savemodel/
+	overlap: 0.5
+	patience: 20
+	seed: 42
+	subject_number: 16
+	trail_number: 8
+	weight_decay: 0.0001
+	win_len: 640
+	win_time: 5.0
+	window_lap: 320.0
+============================================================================================================
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/1
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/2
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/3
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/4
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/5
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/6
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/7
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/8
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/9
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/10
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/11
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/12
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/13
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/14
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/15
+Finish get the data from:  ../../../01_OriginalData/Dataset_csv/KUL/pre_data/16
+Test sub_id:  1
+train_seqdata_shape(27270, 1, 64, 640),test_seqdata_shape(1818, 1, 64, 640)

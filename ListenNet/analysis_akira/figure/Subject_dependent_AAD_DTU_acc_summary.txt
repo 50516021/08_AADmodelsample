@@ -1,0 +1,9 @@
+
+Results for: /home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/dep/writer/Subject_dependent_AAD/DTU
+Window          N     Mean       SD
+------------------------------------
+0.1s           18    78.50     6.41
+1.0s           18    86.13     6.07
+2.0s           18    86.67     6.54
+3.0s           18    86.63     6.09
+5.0s           18    86.81     7.99

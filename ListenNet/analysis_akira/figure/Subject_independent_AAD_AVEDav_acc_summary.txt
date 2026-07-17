@@ -1,0 +1,10 @@
+
+Results for: /home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/ListenNet/indep/writer/Subject_independent_AAD/AVEDav
+Window          N     Mean       SD
+------------------------------------
+0.1s           10    50.79     1.21
+1.0s           10    53.07     1.90
+2.0s           10    54.42     2.48
+3.0s           10    54.62     2.86
+5.0s           10    54.17     3.64
+10.0s          10    56.03     4.54
