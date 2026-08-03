@@ -379,6 +379,7 @@ if __name__ == "__main__":
                         help="Run a single subject by number, e.g. 1 for S1 (overrides --people_number)")
     cli = parser.parse_args()
 
+    os.makedirs('log', exist_ok=True)
     file_handler = logging.FileHandler('log/result.log')
     file_handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')

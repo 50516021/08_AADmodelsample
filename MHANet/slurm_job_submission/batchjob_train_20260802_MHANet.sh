@@ -2,7 +2,7 @@
 
 # This is were we go for slurm documentation https://slurm.schedmd.com/sbatch.html
 
-#SBATCH --job-name=MHANet_KUL_test_20260802_ws1              # Name of the job
+#SBATCH --job-name=MHANet_KUL_test_20260802_ws01              # Name of the job
 #SBATCH --comment="MHANet test"           # Comment for your job
 #SBATCH --account=spatt
 
@@ -14,9 +14,9 @@
 #SBATCH --mail-user=slack:@at2163                # Slack username to notify
 #SBATCH --mail-type=END                         # Type of slack notifications to send
 
-#SBATCH --time=0-05:00:00                        # Time limit day-hour:minutes:seconds
+#SBATCH --time=1-00:00:00                        # Time limit day-hour:minutes:seconds
 #SBATCH --nodes=1                               # How many nodes to run on
-#SBATCH --partition=debug                       # Partitions {debug, tier3} 
+#SBATCH --partition=tier3                       # Partitions {debug, tier3} 
 #SBATCH --mem=64G                                # Job memory
 #SBATCH --ntasks=1                              # How many tasks per node
 #SBATCH --cpus-per-task=18                      # Number of CPUs per task
@@ -47,6 +47,6 @@ mkdir -p logs
 
 echo "========== Running =========="
 
-uv run python main_akira.py --dataset KUL --time_len 1 
+uv run python main_akira.py --dataset KUL --time_len 0.1 --batch_size 
 
 echo "========== Finished =========="

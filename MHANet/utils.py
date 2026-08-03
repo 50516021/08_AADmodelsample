@@ -30,6 +30,7 @@ def save_load_name(args, name=''):
 
 def save_model(args, model, name=''):
     name = save_load_name(args, name)
+    makePath('./pre_trained_models')
     torch.save(model, f'./pre_trained_models/{name}.pt')
 
 
