@@ -1,0 +1,2053 @@
+========== Job Information ==========
+Hostname : skl-a-33.rc.rit.edu
+Date     : Mon Aug  3 08:16:19 AM EDT 2026
+GPU(s):
+Mon Aug  3 08:16:19 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.45.04              Driver Version: 595.45.04      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:5E:00.0 Off |                    0 |
+| N/A   43C    P0             31W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.10.19
+uv 0.9.2
+========== Running ==========
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S1 | Train Loss 0.2498 | Train Acc 0.8885 | Valid Loss 0.1257 | Valid Acc 0.9509
+Saved model at pre_trained_models/S1.pt!
+
+Epoch  2 Finsh | Subject S1 | Train Loss 0.1144 | Train Acc 0.9572 | Valid Loss 0.1003 | Valid Acc 0.9657
+Saved model at pre_trained_models/S1.pt!
+
+Epoch  3 Finsh | Subject S1 | Train Loss 0.0767 | Train Acc 0.9708 | Valid Loss 0.0774 | Valid Acc 0.9726
+Saved model at pre_trained_models/S1.pt!
+
+Epoch  4 Finsh | Subject S1 | Train Loss 0.0524 | Train Acc 0.9806 | Valid Loss 0.0758 | Valid Acc 0.9740
+Saved model at pre_trained_models/S1.pt!
+
+Epoch  5 Finsh | Subject S1 | Train Loss 0.0360 | Train Acc 0.9866 | Valid Loss 0.0671 | Valid Acc 0.9784
+Saved model at pre_trained_models/S1.pt!
+
+Epoch  6 Finsh | Subject S1 | Train Loss 0.0230 | Train Acc 0.9917 | Valid Loss 0.0846 | Valid Acc 0.9757
+
+Epoch  7 Finsh | Subject S1 | Train Loss 0.0134 | Train Acc 0.9955 | Valid Loss 0.0546 | Valid Acc 0.9855
+Saved model at pre_trained_models/S1.pt!
+
+Epoch  8 Finsh | Subject S1 | Train Loss 0.0056 | Train Acc 0.9977 | Valid Loss 0.0609 | Valid Acc 0.9846
+
+Epoch  9 Finsh | Subject S1 | Train Loss 0.0021 | Train Acc 0.9990 | Valid Loss 0.0585 | Valid Acc 0.9860
+
+Epoch 10 Finsh | Subject S1 | Train Loss 0.0006 | Train Acc 0.9995 | Valid Loss 0.0609 | Valid Acc 0.9862
+
+Epoch 11 Finsh | Subject S1 | Train Loss 0.0706 | Train Acc 0.9745 | Valid Loss 0.0644 | Valid Acc 0.9780
+
+Epoch 12 Finsh | Subject S1 | Train Loss 0.0362 | Train Acc 0.9869 | Valid Loss 0.0591 | Valid Acc 0.9806
+
+Epoch 13 Finsh | Subject S1 | Train Loss 0.0281 | Train Acc 0.9896 | Valid Loss 0.0672 | Valid Acc 0.9807
+
+Epoch 14 Finsh | Subject S1 | Train Loss 0.0245 | Train Acc 0.9909 | Valid Loss 0.0648 | Valid Acc 0.9795
+
+Epoch 15 Finsh | Subject S1 | Train Loss 0.0187 | Train Acc 0.9926 | Valid Loss 0.0765 | Valid Acc 0.9811
+
+Epoch 16 Finsh | Subject S1 | Train Loss 0.0170 | Train Acc 0.9939 | Valid Loss 0.0807 | Valid Acc 0.9795
+
+Epoch 17 Finsh | Subject S1 | Train Loss 0.0135 | Train Acc 0.9946 | Valid Loss 0.0573 | Valid Acc 0.9826
+
+Epoch 18 Finsh | Subject S1 | Train Loss 0.0123 | Train Acc 0.9953 | Valid Loss 0.0684 | Valid Acc 0.9820
+Best epoch: 7
+Subject: S1, Acc: 0.85
+0.8350872756594534 tensor(0.8541)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S2 | Train Loss 0.2489 | Train Acc 0.8924 | Valid Loss 0.1797 | Valid Acc 0.9275
+Saved model at pre_trained_models/S2.pt!
+
+Epoch  2 Finsh | Subject S2 | Train Loss 0.1352 | Train Acc 0.9463 | Valid Loss 0.1234 | Valid Acc 0.9528
+Saved model at pre_trained_models/S2.pt!
+
+Epoch  3 Finsh | Subject S2 | Train Loss 0.0940 | Train Acc 0.9630 | Valid Loss 0.1128 | Valid Acc 0.9553
+Saved model at pre_trained_models/S2.pt!
+
+Epoch  4 Finsh | Subject S2 | Train Loss 0.0664 | Train Acc 0.9743 | Valid Loss 0.1154 | Valid Acc 0.9582
+
+Epoch  5 Finsh | Subject S2 | Train Loss 0.0483 | Train Acc 0.9812 | Valid Loss 0.1679 | Valid Acc 0.9431
+
+Epoch  6 Finsh | Subject S2 | Train Loss 0.0329 | Train Acc 0.9878 | Valid Loss 0.1312 | Valid Acc 0.9618
+
+Epoch  7 Finsh | Subject S2 | Train Loss 0.0218 | Train Acc 0.9916 | Valid Loss 0.1243 | Valid Acc 0.9655
+
+Epoch  8 Finsh | Subject S2 | Train Loss 0.0096 | Train Acc 0.9962 | Valid Loss 0.1619 | Valid Acc 0.9658
+
+Epoch  9 Finsh | Subject S2 | Train Loss 0.0041 | Train Acc 0.9982 | Valid Loss 0.1456 | Valid Acc 0.9724
+
+Epoch 10 Finsh | Subject S2 | Train Loss 0.0010 | Train Acc 0.9994 | Valid Loss 0.1610 | Valid Acc 0.9729
+
+Epoch 11 Finsh | Subject S2 | Train Loss 0.0768 | Train Acc 0.9713 | Valid Loss 0.1254 | Valid Acc 0.9517
+
+Epoch 12 Finsh | Subject S2 | Train Loss 0.0453 | Train Acc 0.9827 | Valid Loss 0.1125 | Valid Acc 0.9613
+Saved model at pre_trained_models/S2.pt!
+
+Epoch 13 Finsh | Subject S2 | Train Loss 0.0353 | Train Acc 0.9860 | Valid Loss 0.1158 | Valid Acc 0.9631
+
+Epoch 14 Finsh | Subject S2 | Train Loss 0.0317 | Train Acc 0.9880 | Valid Loss 0.1260 | Valid Acc 0.9578
+
+Epoch 15 Finsh | Subject S2 | Train Loss 0.0271 | Train Acc 0.9894 | Valid Loss 0.1471 | Valid Acc 0.9566
+
+Epoch 16 Finsh | Subject S2 | Train Loss 0.0219 | Train Acc 0.9915 | Valid Loss 0.1583 | Valid Acc 0.9555
+
+Epoch 17 Finsh | Subject S2 | Train Loss 0.0197 | Train Acc 0.9923 | Valid Loss 0.1149 | Valid Acc 0.9689
+
+Epoch 18 Finsh | Subject S2 | Train Loss 0.0160 | Train Acc 0.9939 | Valid Loss 0.1322 | Valid Acc 0.9671
+
+Epoch 19 Finsh | Subject S2 | Train Loss 0.0131 | Train Acc 0.9947 | Valid Loss 0.1222 | Valid Acc 0.9691
+
+Epoch 20 Finsh | Subject S2 | Train Loss 0.0095 | Train Acc 0.9960 | Valid Loss 0.1363 | Valid Acc 0.9640
+
+Epoch 21 Finsh | Subject S2 | Train Loss 0.0075 | Train Acc 0.9970 | Valid Loss 0.1448 | Valid Acc 0.9675
+
+Epoch 22 Finsh | Subject S2 | Train Loss 0.0054 | Train Acc 0.9978 | Valid Loss 0.1511 | Valid Acc 0.9689
+
+Epoch 23 Finsh | Subject S2 | Train Loss 0.0040 | Train Acc 0.9981 | Valid Loss 0.1701 | Valid Acc 0.9664
+Best epoch: 12
+Subject: S2, Acc: 0.78
+0.874535047376031 tensor(0.7826)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S3 | Train Loss 0.2164 | Train Acc 0.9105 | Valid Loss 0.1356 | Valid Acc 0.9480
+Saved model at pre_trained_models/S3.pt!
+
+Epoch  2 Finsh | Subject S3 | Train Loss 0.1128 | Train Acc 0.9569 | Valid Loss 0.1191 | Valid Acc 0.9533
+Saved model at pre_trained_models/S3.pt!
+
+Epoch  3 Finsh | Subject S3 | Train Loss 0.0741 | Train Acc 0.9717 | Valid Loss 0.1083 | Valid Acc 0.9588
+Saved model at pre_trained_models/S3.pt!
+
+Epoch  4 Finsh | Subject S3 | Train Loss 0.0530 | Train Acc 0.9794 | Valid Loss 0.0907 | Valid Acc 0.9686
+Saved model at pre_trained_models/S3.pt!
+
+Epoch  5 Finsh | Subject S3 | Train Loss 0.0350 | Train Acc 0.9863 | Valid Loss 0.0872 | Valid Acc 0.9717
+Saved model at pre_trained_models/S3.pt!
+
+Epoch  6 Finsh | Subject S3 | Train Loss 0.0227 | Train Acc 0.9913 | Valid Loss 0.0928 | Valid Acc 0.9737
+
+Epoch  7 Finsh | Subject S3 | Train Loss 0.0129 | Train Acc 0.9946 | Valid Loss 0.1031 | Valid Acc 0.9733
+
+Epoch  8 Finsh | Subject S3 | Train Loss 0.0065 | Train Acc 0.9974 | Valid Loss 0.0995 | Valid Acc 0.9787
+
+Epoch  9 Finsh | Subject S3 | Train Loss 0.0018 | Train Acc 0.9991 | Valid Loss 0.1089 | Valid Acc 0.9802
+
+Epoch 10 Finsh | Subject S3 | Train Loss 0.0004 | Train Acc 0.9995 | Valid Loss 0.1089 | Valid Acc 0.9813
+
+Epoch 11 Finsh | Subject S3 | Train Loss 0.0635 | Train Acc 0.9753 | Valid Loss 0.0753 | Valid Acc 0.9717
+Saved model at pre_trained_models/S3.pt!
+
+Epoch 12 Finsh | Subject S3 | Train Loss 0.0330 | Train Acc 0.9874 | Valid Loss 0.0844 | Valid Acc 0.9707
+
+Epoch 13 Finsh | Subject S3 | Train Loss 0.0290 | Train Acc 0.9883 | Valid Loss 0.0782 | Valid Acc 0.9760
+
+Epoch 14 Finsh | Subject S3 | Train Loss 0.0219 | Train Acc 0.9917 | Valid Loss 0.0748 | Valid Acc 0.9786
+Saved model at pre_trained_models/S3.pt!
+
+Epoch 15 Finsh | Subject S3 | Train Loss 0.0189 | Train Acc 0.9924 | Valid Loss 0.0726 | Valid Acc 0.9797
+Saved model at pre_trained_models/S3.pt!
+
+Epoch 16 Finsh | Subject S3 | Train Loss 0.0173 | Train Acc 0.9938 | Valid Loss 0.0733 | Valid Acc 0.9780
+
+Epoch 17 Finsh | Subject S3 | Train Loss 0.0134 | Train Acc 0.9948 | Valid Loss 0.0642 | Valid Acc 0.9813
+Saved model at pre_trained_models/S3.pt!
+
+Epoch 18 Finsh | Subject S3 | Train Loss 0.0117 | Train Acc 0.9953 | Valid Loss 0.0847 | Valid Acc 0.9777
+
+Epoch 19 Finsh | Subject S3 | Train Loss 0.0084 | Train Acc 0.9963 | Valid Loss 0.0779 | Valid Acc 0.9806
+
+Epoch 20 Finsh | Subject S3 | Train Loss 0.0073 | Train Acc 0.9967 | Valid Loss 0.0697 | Valid Acc 0.9844
+
+Epoch 21 Finsh | Subject S3 | Train Loss 0.0056 | Train Acc 0.9976 | Valid Loss 0.0710 | Valid Acc 0.9840
+
+Epoch 22 Finsh | Subject S3 | Train Loss 0.0041 | Train Acc 0.9980 | Valid Loss 0.0744 | Valid Acc 0.9869
+
+Epoch 23 Finsh | Subject S3 | Train Loss 0.0029 | Train Acc 0.9986 | Valid Loss 0.0679 | Valid Acc 0.9858
+
+Epoch 24 Finsh | Subject S3 | Train Loss 0.0013 | Train Acc 0.9992 | Valid Loss 0.0756 | Valid Acc 0.9851
+
+Epoch 25 Finsh | Subject S3 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0826 | Valid Acc 0.9864
+
+Epoch 26 Finsh | Subject S3 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0868 | Valid Acc 0.9866
+
+Epoch 27 Finsh | Subject S3 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0901 | Valid Acc 0.9862
+
+Epoch 28 Finsh | Subject S3 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0937 | Valid Acc 0.9862
+Best epoch: 17
+Subject: S3, Acc: 0.88
+0.5912318394460876 tensor(0.8840)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S4 | Train Loss 0.2322 | Train Acc 0.9037 | Valid Loss 0.1677 | Valid Acc 0.9359
+Saved model at pre_trained_models/S4.pt!
+
+Epoch  2 Finsh | Subject S4 | Train Loss 0.1300 | Train Acc 0.9493 | Valid Loss 0.1299 | Valid Acc 0.9479
+Saved model at pre_trained_models/S4.pt!
+
+Epoch  3 Finsh | Subject S4 | Train Loss 0.0910 | Train Acc 0.9655 | Valid Loss 0.0999 | Valid Acc 0.9613
+Saved model at pre_trained_models/S4.pt!
+
+Epoch  4 Finsh | Subject S4 | Train Loss 0.0652 | Train Acc 0.9751 | Valid Loss 0.1007 | Valid Acc 0.9642
+
+Epoch  5 Finsh | Subject S4 | Train Loss 0.0441 | Train Acc 0.9837 | Valid Loss 0.0877 | Valid Acc 0.9691
+Saved model at pre_trained_models/S4.pt!
+
+Epoch  6 Finsh | Subject S4 | Train Loss 0.0289 | Train Acc 0.9893 | Valid Loss 0.1125 | Valid Acc 0.9697
+
+Epoch  7 Finsh | Subject S4 | Train Loss 0.0176 | Train Acc 0.9932 | Valid Loss 0.1143 | Valid Acc 0.9709
+
+Epoch  8 Finsh | Subject S4 | Train Loss 0.0084 | Train Acc 0.9965 | Valid Loss 0.1094 | Valid Acc 0.9742
+
+Epoch  9 Finsh | Subject S4 | Train Loss 0.0024 | Train Acc 0.9990 | Valid Loss 0.1161 | Valid Acc 0.9740
+
+Epoch 10 Finsh | Subject S4 | Train Loss 0.0008 | Train Acc 0.9994 | Valid Loss 0.1228 | Valid Acc 0.9758
+
+Epoch 11 Finsh | Subject S4 | Train Loss 0.0748 | Train Acc 0.9715 | Valid Loss 0.0827 | Valid Acc 0.9707
+Saved model at pre_trained_models/S4.pt!
+
+Epoch 12 Finsh | Subject S4 | Train Loss 0.0434 | Train Acc 0.9837 | Valid Loss 0.1106 | Valid Acc 0.9669
+
+Epoch 13 Finsh | Subject S4 | Train Loss 0.0323 | Train Acc 0.9876 | Valid Loss 0.0918 | Valid Acc 0.9700
+
+Epoch 14 Finsh | Subject S4 | Train Loss 0.0271 | Train Acc 0.9901 | Valid Loss 0.0869 | Valid Acc 0.9715
+
+Epoch 15 Finsh | Subject S4 | Train Loss 0.0236 | Train Acc 0.9909 | Valid Loss 0.0840 | Valid Acc 0.9724
+
+Epoch 16 Finsh | Subject S4 | Train Loss 0.0206 | Train Acc 0.9916 | Valid Loss 0.0754 | Valid Acc 0.9778
+Saved model at pre_trained_models/S4.pt!
+
+Epoch 17 Finsh | Subject S4 | Train Loss 0.0160 | Train Acc 0.9937 | Valid Loss 0.0864 | Valid Acc 0.9766
+
+Epoch 18 Finsh | Subject S4 | Train Loss 0.0123 | Train Acc 0.9951 | Valid Loss 0.0854 | Valid Acc 0.9798
+
+Epoch 19 Finsh | Subject S4 | Train Loss 0.0125 | Train Acc 0.9949 | Valid Loss 0.0752 | Valid Acc 0.9804
+Saved model at pre_trained_models/S4.pt!
+
+Epoch 20 Finsh | Subject S4 | Train Loss 0.0079 | Train Acc 0.9966 | Valid Loss 0.0939 | Valid Acc 0.9760
+
+Epoch 21 Finsh | Subject S4 | Train Loss 0.0065 | Train Acc 0.9971 | Valid Loss 0.0904 | Valid Acc 0.9778
+
+Epoch 22 Finsh | Subject S4 | Train Loss 0.0044 | Train Acc 0.9981 | Valid Loss 0.0957 | Valid Acc 0.9786
+
+Epoch 23 Finsh | Subject S4 | Train Loss 0.0028 | Train Acc 0.9986 | Valid Loss 0.0790 | Valid Acc 0.9807
+
+Epoch 24 Finsh | Subject S4 | Train Loss 0.0016 | Train Acc 0.9990 | Valid Loss 0.0816 | Valid Acc 0.9816
+
+Epoch 25 Finsh | Subject S4 | Train Loss 0.0005 | Train Acc 0.9994 | Valid Loss 0.0893 | Valid Acc 0.9816
+
+Epoch 26 Finsh | Subject S4 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0940 | Valid Acc 0.9820
+
+Epoch 27 Finsh | Subject S4 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0974 | Valid Acc 0.9815
+
+Epoch 28 Finsh | Subject S4 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1011 | Valid Acc 0.9818
+
+Epoch 29 Finsh | Subject S4 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1051 | Valid Acc 0.9818
+
+Epoch 30 Finsh | Subject S4 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1096 | Valid Acc 0.9816
+Best epoch: 19
+Subject: S4, Acc: 0.85
+1.1031182948597438 tensor(0.8505)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S5 | Train Loss 0.3213 | Train Acc 0.8547 | Valid Loss 0.2598 | Valid Acc 0.9190
+Saved model at pre_trained_models/S5.pt!
+
+Epoch  2 Finsh | Subject S5 | Train Loss 0.1717 | Train Acc 0.9328 | Valid Loss 0.1761 | Valid Acc 0.9331
+Saved model at pre_trained_models/S5.pt!
+
+Epoch  3 Finsh | Subject S5 | Train Loss 0.1199 | Train Acc 0.9531 | Valid Loss 0.1549 | Valid Acc 0.9404
+Saved model at pre_trained_models/S5.pt!
+
+Epoch  4 Finsh | Subject S5 | Train Loss 0.0848 | Train Acc 0.9685 | Valid Loss 0.1767 | Valid Acc 0.9500
+
+Epoch  5 Finsh | Subject S5 | Train Loss 0.0622 | Train Acc 0.9775 | Valid Loss 0.1418 | Valid Acc 0.9560
+Saved model at pre_trained_models/S5.pt!
+
+Epoch  6 Finsh | Subject S5 | Train Loss 0.0421 | Train Acc 0.9842 | Valid Loss 0.2032 | Valid Acc 0.9613
+
+Epoch  7 Finsh | Subject S5 | Train Loss 0.0264 | Train Acc 0.9898 | Valid Loss 0.1352 | Valid Acc 0.9617
+Saved model at pre_trained_models/S5.pt!
+
+Epoch  8 Finsh | Subject S5 | Train Loss 0.0132 | Train Acc 0.9952 | Valid Loss 0.2596 | Valid Acc 0.9620
+
+Epoch  9 Finsh | Subject S5 | Train Loss 0.0056 | Train Acc 0.9981 | Valid Loss 0.3878 | Valid Acc 0.9635
+
+Epoch 10 Finsh | Subject S5 | Train Loss 0.0021 | Train Acc 0.9993 | Valid Loss 0.3795 | Valid Acc 0.9648
+
+Epoch 11 Finsh | Subject S5 | Train Loss 0.0989 | Train Acc 0.9644 | Valid Loss 0.1273 | Valid Acc 0.9555
+Saved model at pre_trained_models/S5.pt!
+
+Epoch 12 Finsh | Subject S5 | Train Loss 0.0552 | Train Acc 0.9792 | Valid Loss 0.1358 | Valid Acc 0.9564
+
+Epoch 13 Finsh | Subject S5 | Train Loss 0.0450 | Train Acc 0.9829 | Valid Loss 0.1215 | Valid Acc 0.9635
+Saved model at pre_trained_models/S5.pt!
+
+Epoch 14 Finsh | Subject S5 | Train Loss 0.0378 | Train Acc 0.9855 | Valid Loss 0.1152 | Valid Acc 0.9646
+Saved model at pre_trained_models/S5.pt!
+
+Epoch 15 Finsh | Subject S5 | Train Loss 0.0323 | Train Acc 0.9873 | Valid Loss 0.1217 | Valid Acc 0.9651
+
+Epoch 16 Finsh | Subject S5 | Train Loss 0.0261 | Train Acc 0.9901 | Valid Loss 0.2314 | Valid Acc 0.9604
+
+Epoch 17 Finsh | Subject S5 | Train Loss 0.0213 | Train Acc 0.9920 | Valid Loss 0.1284 | Valid Acc 0.9653
+
+Epoch 18 Finsh | Subject S5 | Train Loss 0.0200 | Train Acc 0.9924 | Valid Loss 0.1418 | Valid Acc 0.9662
+
+Epoch 19 Finsh | Subject S5 | Train Loss 0.0130 | Train Acc 0.9949 | Valid Loss 0.1311 | Valid Acc 0.9675
+
+Epoch 20 Finsh | Subject S5 | Train Loss 0.0131 | Train Acc 0.9952 | Valid Loss 0.1290 | Valid Acc 0.9702
+
+Epoch 21 Finsh | Subject S5 | Train Loss 0.0091 | Train Acc 0.9962 | Valid Loss 0.1546 | Valid Acc 0.9706
+
+Epoch 22 Finsh | Subject S5 | Train Loss 0.0058 | Train Acc 0.9975 | Valid Loss 0.1409 | Valid Acc 0.9693
+
+Epoch 23 Finsh | Subject S5 | Train Loss 0.0039 | Train Acc 0.9984 | Valid Loss 0.1643 | Valid Acc 0.9711
+
+Epoch 24 Finsh | Subject S5 | Train Loss 0.0024 | Train Acc 0.9988 | Valid Loss 0.1864 | Valid Acc 0.9711
+
+Epoch 25 Finsh | Subject S5 | Train Loss 0.0008 | Train Acc 0.9994 | Valid Loss 0.1868 | Valid Acc 0.9726
+Best epoch: 14
+Subject: S5, Acc: 0.89
+0.5400048996564439 tensor(0.8871)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S6 | Train Loss 0.2254 | Train Acc 0.9047 | Valid Loss 0.1585 | Valid Acc 0.9379
+Saved model at pre_trained_models/S6.pt!
+
+Epoch  2 Finsh | Subject S6 | Train Loss 0.1200 | Train Acc 0.9535 | Valid Loss 0.1298 | Valid Acc 0.9506
+Saved model at pre_trained_models/S6.pt!
+
+Epoch  3 Finsh | Subject S6 | Train Loss 0.0834 | Train Acc 0.9687 | Valid Loss 0.0977 | Valid Acc 0.9635
+Saved model at pre_trained_models/S6.pt!
+
+Epoch  4 Finsh | Subject S6 | Train Loss 0.0587 | Train Acc 0.9787 | Valid Loss 0.0917 | Valid Acc 0.9666
+Saved model at pre_trained_models/S6.pt!
+
+Epoch  5 Finsh | Subject S6 | Train Loss 0.0417 | Train Acc 0.9843 | Valid Loss 0.0902 | Valid Acc 0.9702
+Saved model at pre_trained_models/S6.pt!
+
+Epoch  6 Finsh | Subject S6 | Train Loss 0.0270 | Train Acc 0.9902 | Valid Loss 0.0887 | Valid Acc 0.9751
+Saved model at pre_trained_models/S6.pt!
+
+Epoch  7 Finsh | Subject S6 | Train Loss 0.0151 | Train Acc 0.9943 | Valid Loss 0.1152 | Valid Acc 0.9747
+
+Epoch  8 Finsh | Subject S6 | Train Loss 0.0070 | Train Acc 0.9973 | Valid Loss 0.0888 | Valid Acc 0.9795
+
+Epoch  9 Finsh | Subject S6 | Train Loss 0.0027 | Train Acc 0.9986 | Valid Loss 0.0972 | Valid Acc 0.9802
+
+Epoch 10 Finsh | Subject S6 | Train Loss 0.0007 | Train Acc 0.9994 | Valid Loss 0.1003 | Valid Acc 0.9811
+
+Epoch 11 Finsh | Subject S6 | Train Loss 0.0588 | Train Acc 0.9775 | Valid Loss 0.0730 | Valid Acc 0.9767
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 12 Finsh | Subject S6 | Train Loss 0.0351 | Train Acc 0.9868 | Valid Loss 0.0786 | Valid Acc 0.9731
+
+Epoch 13 Finsh | Subject S6 | Train Loss 0.0263 | Train Acc 0.9901 | Valid Loss 0.0763 | Valid Acc 0.9771
+
+Epoch 14 Finsh | Subject S6 | Train Loss 0.0226 | Train Acc 0.9914 | Valid Loss 0.0802 | Valid Acc 0.9767
+
+Epoch 15 Finsh | Subject S6 | Train Loss 0.0181 | Train Acc 0.9932 | Valid Loss 0.0714 | Valid Acc 0.9784
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 16 Finsh | Subject S6 | Train Loss 0.0154 | Train Acc 0.9938 | Valid Loss 0.0735 | Valid Acc 0.9824
+
+Epoch 17 Finsh | Subject S6 | Train Loss 0.0124 | Train Acc 0.9952 | Valid Loss 0.0711 | Valid Acc 0.9795
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 18 Finsh | Subject S6 | Train Loss 0.0100 | Train Acc 0.9963 | Valid Loss 0.0806 | Valid Acc 0.9807
+
+Epoch 19 Finsh | Subject S6 | Train Loss 0.0074 | Train Acc 0.9969 | Valid Loss 0.0810 | Valid Acc 0.9813
+
+Epoch 20 Finsh | Subject S6 | Train Loss 0.0062 | Train Acc 0.9974 | Valid Loss 0.0712 | Valid Acc 0.9840
+
+Epoch 21 Finsh | Subject S6 | Train Loss 0.0052 | Train Acc 0.9978 | Valid Loss 0.0815 | Valid Acc 0.9811
+
+Epoch 22 Finsh | Subject S6 | Train Loss 0.0038 | Train Acc 0.9983 | Valid Loss 0.0823 | Valid Acc 0.9811
+
+Epoch 23 Finsh | Subject S6 | Train Loss 0.0031 | Train Acc 0.9985 | Valid Loss 0.0675 | Valid Acc 0.9855
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 24 Finsh | Subject S6 | Train Loss 0.0005 | Train Acc 0.9994 | Valid Loss 0.0782 | Valid Acc 0.9858
+
+Epoch 25 Finsh | Subject S6 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0922 | Valid Acc 0.9851
+
+Epoch 26 Finsh | Subject S6 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0991 | Valid Acc 0.9856
+
+Epoch 27 Finsh | Subject S6 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0992 | Valid Acc 0.9856
+
+Epoch 28 Finsh | Subject S6 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1020 | Valid Acc 0.9862
+
+Epoch 29 Finsh | Subject S6 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1052 | Valid Acc 0.9862
+
+Epoch 30 Finsh | Subject S6 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1088 | Valid Acc 0.9860
+
+Epoch 31 Finsh | Subject S6 | Train Loss 0.0345 | Train Acc 0.9882 | Valid Loss 0.0611 | Valid Acc 0.9813
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 32 Finsh | Subject S6 | Train Loss 0.0130 | Train Acc 0.9949 | Valid Loss 0.0757 | Valid Acc 0.9793
+
+Epoch 33 Finsh | Subject S6 | Train Loss 0.0120 | Train Acc 0.9952 | Valid Loss 0.0752 | Valid Acc 0.9804
+
+Epoch 34 Finsh | Subject S6 | Train Loss 0.0098 | Train Acc 0.9962 | Valid Loss 0.0910 | Valid Acc 0.9802
+
+Epoch 35 Finsh | Subject S6 | Train Loss 0.0119 | Train Acc 0.9953 | Valid Loss 0.0728 | Valid Acc 0.9786
+
+Epoch 36 Finsh | Subject S6 | Train Loss 0.0078 | Train Acc 0.9968 | Valid Loss 0.0697 | Valid Acc 0.9809
+
+Epoch 37 Finsh | Subject S6 | Train Loss 0.0083 | Train Acc 0.9966 | Valid Loss 0.0588 | Valid Acc 0.9846
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 38 Finsh | Subject S6 | Train Loss 0.0069 | Train Acc 0.9970 | Valid Loss 0.0652 | Valid Acc 0.9842
+
+Epoch 39 Finsh | Subject S6 | Train Loss 0.0084 | Train Acc 0.9967 | Valid Loss 0.0621 | Valid Acc 0.9844
+
+Epoch 40 Finsh | Subject S6 | Train Loss 0.0074 | Train Acc 0.9969 | Valid Loss 0.0723 | Valid Acc 0.9829
+
+Epoch 41 Finsh | Subject S6 | Train Loss 0.0059 | Train Acc 0.9975 | Valid Loss 0.0598 | Valid Acc 0.9849
+
+Epoch 42 Finsh | Subject S6 | Train Loss 0.0056 | Train Acc 0.9975 | Valid Loss 0.0602 | Valid Acc 0.9833
+
+Epoch 43 Finsh | Subject S6 | Train Loss 0.0055 | Train Acc 0.9975 | Valid Loss 0.0577 | Valid Acc 0.9853
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 44 Finsh | Subject S6 | Train Loss 0.0042 | Train Acc 0.9980 | Valid Loss 0.0602 | Valid Acc 0.9860
+
+Epoch 45 Finsh | Subject S6 | Train Loss 0.0043 | Train Acc 0.9981 | Valid Loss 0.0562 | Valid Acc 0.9853
+Saved model at pre_trained_models/S6.pt!
+
+Epoch 46 Finsh | Subject S6 | Train Loss 0.0038 | Train Acc 0.9981 | Valid Loss 0.0602 | Valid Acc 0.9853
+
+Epoch 47 Finsh | Subject S6 | Train Loss 0.0028 | Train Acc 0.9985 | Valid Loss 0.0639 | Valid Acc 0.9869
+
+Epoch 48 Finsh | Subject S6 | Train Loss 0.0029 | Train Acc 0.9986 | Valid Loss 0.0846 | Valid Acc 0.9820
+
+Epoch 49 Finsh | Subject S6 | Train Loss 0.0022 | Train Acc 0.9988 | Valid Loss 0.0747 | Valid Acc 0.9827
+
+Epoch 50 Finsh | Subject S6 | Train Loss 0.0019 | Train Acc 0.9989 | Valid Loss 0.0954 | Valid Acc 0.9838
+
+Epoch 51 Finsh | Subject S6 | Train Loss 0.0021 | Train Acc 0.9989 | Valid Loss 0.0662 | Valid Acc 0.9858
+
+Epoch 52 Finsh | Subject S6 | Train Loss 0.0017 | Train Acc 0.9991 | Valid Loss 0.0580 | Valid Acc 0.9860
+
+Epoch 53 Finsh | Subject S6 | Train Loss 0.0008 | Train Acc 0.9993 | Valid Loss 0.0607 | Valid Acc 0.9851
+
+Epoch 54 Finsh | Subject S6 | Train Loss 0.0010 | Train Acc 0.9992 | Valid Loss 0.0826 | Valid Acc 0.9842
+
+Epoch 55 Finsh | Subject S6 | Train Loss 0.0011 | Train Acc 0.9991 | Valid Loss 0.0824 | Valid Acc 0.9844
+
+Epoch 56 Finsh | Subject S6 | Train Loss 0.0008 | Train Acc 0.9993 | Valid Loss 0.0990 | Valid Acc 0.9844
+Best epoch: 45
+Subject: S6, Acc: 0.92
+0.48508873947261266 tensor(0.9236)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S7 | Train Loss 0.0915 | Train Acc 0.9627 | Valid Loss 0.0349 | Valid Acc 0.9871
+Saved model at pre_trained_models/S7.pt!
+
+Epoch  2 Finsh | Subject S7 | Train Loss 0.0306 | Train Acc 0.9888 | Valid Loss 0.0182 | Valid Acc 0.9929
+Saved model at pre_trained_models/S7.pt!
+
+Epoch  3 Finsh | Subject S7 | Train Loss 0.0195 | Train Acc 0.9924 | Valid Loss 0.0178 | Valid Acc 0.9945
+Saved model at pre_trained_models/S7.pt!
+
+Epoch  4 Finsh | Subject S7 | Train Loss 0.0115 | Train Acc 0.9955 | Valid Loss 0.0170 | Valid Acc 0.9942
+Saved model at pre_trained_models/S7.pt!
+
+Epoch  5 Finsh | Subject S7 | Train Loss 0.0080 | Train Acc 0.9969 | Valid Loss 0.0167 | Valid Acc 0.9958
+Saved model at pre_trained_models/S7.pt!
+
+Epoch  6 Finsh | Subject S7 | Train Loss 0.0058 | Train Acc 0.9976 | Valid Loss 0.0125 | Valid Acc 0.9949
+Saved model at pre_trained_models/S7.pt!
+
+Epoch  7 Finsh | Subject S7 | Train Loss 0.0030 | Train Acc 0.9986 | Valid Loss 0.0158 | Valid Acc 0.9958
+
+Epoch  8 Finsh | Subject S7 | Train Loss 0.0018 | Train Acc 0.9989 | Valid Loss 0.0136 | Valid Acc 0.9964
+
+Epoch  9 Finsh | Subject S7 | Train Loss 0.0008 | Train Acc 0.9993 | Valid Loss 0.0131 | Valid Acc 0.9975
+
+Epoch 10 Finsh | Subject S7 | Train Loss 0.0002 | Train Acc 0.9995 | Valid Loss 0.0114 | Valid Acc 0.9976
+Saved model at pre_trained_models/S7.pt!
+
+Epoch 11 Finsh | Subject S7 | Train Loss 0.0207 | Train Acc 0.9924 | Valid Loss 0.0253 | Valid Acc 0.9918
+
+Epoch 12 Finsh | Subject S7 | Train Loss 0.0100 | Train Acc 0.9963 | Valid Loss 0.0164 | Valid Acc 0.9964
+
+Epoch 13 Finsh | Subject S7 | Train Loss 0.0077 | Train Acc 0.9970 | Valid Loss 0.0118 | Valid Acc 0.9956
+
+Epoch 14 Finsh | Subject S7 | Train Loss 0.0058 | Train Acc 0.9974 | Valid Loss 0.0155 | Valid Acc 0.9956
+
+Epoch 15 Finsh | Subject S7 | Train Loss 0.0057 | Train Acc 0.9976 | Valid Loss 0.0139 | Valid Acc 0.9960
+
+Epoch 16 Finsh | Subject S7 | Train Loss 0.0043 | Train Acc 0.9981 | Valid Loss 0.0174 | Valid Acc 0.9960
+
+Epoch 17 Finsh | Subject S7 | Train Loss 0.0035 | Train Acc 0.9984 | Valid Loss 0.0144 | Valid Acc 0.9955
+
+Epoch 18 Finsh | Subject S7 | Train Loss 0.0022 | Train Acc 0.9987 | Valid Loss 0.0146 | Valid Acc 0.9969
+
+Epoch 19 Finsh | Subject S7 | Train Loss 0.0026 | Train Acc 0.9985 | Valid Loss 0.0131 | Valid Acc 0.9971
+
+Epoch 20 Finsh | Subject S7 | Train Loss 0.0024 | Train Acc 0.9988 | Valid Loss 0.0228 | Valid Acc 0.9929
+
+Epoch 21 Finsh | Subject S7 | Train Loss 0.0011 | Train Acc 0.9991 | Valid Loss 0.0131 | Valid Acc 0.9960
+Best epoch: 10
+Subject: S7, Acc: 0.93
+0.5345313671769457 tensor(0.9336)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S8 | Train Loss 0.1339 | Train Acc 0.9428 | Valid Loss 0.0545 | Valid Acc 0.9811
+Saved model at pre_trained_models/S8.pt!
+
+Epoch  2 Finsh | Subject S8 | Train Loss 0.0438 | Train Acc 0.9841 | Valid Loss 0.0322 | Valid Acc 0.9887
+Saved model at pre_trained_models/S8.pt!
+
+Epoch  3 Finsh | Subject S8 | Train Loss 0.0250 | Train Acc 0.9905 | Valid Loss 0.0330 | Valid Acc 0.9887
+
+Epoch  4 Finsh | Subject S8 | Train Loss 0.0173 | Train Acc 0.9933 | Valid Loss 0.0196 | Valid Acc 0.9940
+Saved model at pre_trained_models/S8.pt!
+
+Epoch  5 Finsh | Subject S8 | Train Loss 0.0116 | Train Acc 0.9957 | Valid Loss 0.0164 | Valid Acc 0.9956
+Saved model at pre_trained_models/S8.pt!
+
+Epoch  6 Finsh | Subject S8 | Train Loss 0.0056 | Train Acc 0.9975 | Valid Loss 0.0108 | Valid Acc 0.9962
+Saved model at pre_trained_models/S8.pt!
+
+Epoch  7 Finsh | Subject S8 | Train Loss 0.0027 | Train Acc 0.9986 | Valid Loss 0.0141 | Valid Acc 0.9956
+
+Epoch  8 Finsh | Subject S8 | Train Loss 0.0015 | Train Acc 0.9992 | Valid Loss 0.0106 | Valid Acc 0.9962
+Saved model at pre_trained_models/S8.pt!
+
+Epoch  9 Finsh | Subject S8 | Train Loss 0.0007 | Train Acc 0.9994 | Valid Loss 0.0108 | Valid Acc 0.9962
+
+Epoch 10 Finsh | Subject S8 | Train Loss 0.0005 | Train Acc 0.9995 | Valid Loss 0.0109 | Valid Acc 0.9965
+
+Epoch 11 Finsh | Subject S8 | Train Loss 0.0359 | Train Acc 0.9876 | Valid Loss 0.0183 | Valid Acc 0.9955
+
+Epoch 12 Finsh | Subject S8 | Train Loss 0.0113 | Train Acc 0.9955 | Valid Loss 0.0103 | Valid Acc 0.9967
+Saved model at pre_trained_models/S8.pt!
+
+Epoch 13 Finsh | Subject S8 | Train Loss 0.0104 | Train Acc 0.9960 | Valid Loss 0.0115 | Valid Acc 0.9964
+
+Epoch 14 Finsh | Subject S8 | Train Loss 0.0072 | Train Acc 0.9971 | Valid Loss 0.0169 | Valid Acc 0.9947
+
+Epoch 15 Finsh | Subject S8 | Train Loss 0.0079 | Train Acc 0.9971 | Valid Loss 0.0105 | Valid Acc 0.9967
+
+Epoch 16 Finsh | Subject S8 | Train Loss 0.0063 | Train Acc 0.9974 | Valid Loss 0.0147 | Valid Acc 0.9947
+
+Epoch 17 Finsh | Subject S8 | Train Loss 0.0041 | Train Acc 0.9982 | Valid Loss 0.0295 | Valid Acc 0.9929
+
+Epoch 18 Finsh | Subject S8 | Train Loss 0.0037 | Train Acc 0.9982 | Valid Loss 0.0103 | Valid Acc 0.9964
+
+Epoch 19 Finsh | Subject S8 | Train Loss 0.0035 | Train Acc 0.9984 | Valid Loss 0.0112 | Valid Acc 0.9971
+
+Epoch 20 Finsh | Subject S8 | Train Loss 0.0008 | Train Acc 0.9993 | Valid Loss 0.0124 | Valid Acc 0.9969
+
+Epoch 21 Finsh | Subject S8 | Train Loss 0.0021 | Train Acc 0.9990 | Valid Loss 0.0101 | Valid Acc 0.9967
+Saved model at pre_trained_models/S8.pt!
+
+Epoch 22 Finsh | Subject S8 | Train Loss 0.0012 | Train Acc 0.9991 | Valid Loss 0.0072 | Valid Acc 0.9976
+Saved model at pre_trained_models/S8.pt!
+
+Epoch 23 Finsh | Subject S8 | Train Loss 0.0007 | Train Acc 0.9994 | Valid Loss 0.0044 | Valid Acc 0.9984
+Saved model at pre_trained_models/S8.pt!
+
+Epoch 24 Finsh | Subject S8 | Train Loss 0.0002 | Train Acc 0.9995 | Valid Loss 0.0039 | Valid Acc 0.9985
+Saved model at pre_trained_models/S8.pt!
+
+Epoch 25 Finsh | Subject S8 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0038 | Valid Acc 0.9984
+Saved model at pre_trained_models/S8.pt!
+
+Epoch 26 Finsh | Subject S8 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0039 | Valid Acc 0.9982
+
+Epoch 27 Finsh | Subject S8 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0040 | Valid Acc 0.9982
+
+Epoch 28 Finsh | Subject S8 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0040 | Valid Acc 0.9982
+
+Epoch 29 Finsh | Subject S8 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0041 | Valid Acc 0.9984
+
+Epoch 30 Finsh | Subject S8 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0041 | Valid Acc 0.9984
+
+Epoch 31 Finsh | Subject S8 | Train Loss 0.0189 | Train Acc 0.9943 | Valid Loss 0.0078 | Valid Acc 0.9967
+
+Epoch 32 Finsh | Subject S8 | Train Loss 0.0038 | Train Acc 0.9982 | Valid Loss 0.0122 | Valid Acc 0.9962
+
+Epoch 33 Finsh | Subject S8 | Train Loss 0.0053 | Train Acc 0.9981 | Valid Loss 0.0088 | Valid Acc 0.9969
+
+Epoch 34 Finsh | Subject S8 | Train Loss 0.0042 | Train Acc 0.9982 | Valid Loss 0.0141 | Valid Acc 0.9955
+
+Epoch 35 Finsh | Subject S8 | Train Loss 0.0033 | Train Acc 0.9985 | Valid Loss 0.0081 | Valid Acc 0.9978
+
+Epoch 36 Finsh | Subject S8 | Train Loss 0.0037 | Train Acc 0.9984 | Valid Loss 0.0127 | Valid Acc 0.9953
+Best epoch: 25
+Subject: S8, Acc: 0.93
+0.6219504466354149 tensor(0.9264)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S9 | Train Loss 0.1615 | Train Acc 0.9345 | Valid Loss 0.0884 | Valid Acc 0.9657
+Saved model at pre_trained_models/S9.pt!
+
+Epoch  2 Finsh | Subject S9 | Train Loss 0.0830 | Train Acc 0.9696 | Valid Loss 0.1013 | Valid Acc 0.9628
+
+Epoch  3 Finsh | Subject S9 | Train Loss 0.0588 | Train Acc 0.9785 | Valid Loss 0.0993 | Valid Acc 0.9675
+
+Epoch  4 Finsh | Subject S9 | Train Loss 0.0449 | Train Acc 0.9837 | Valid Loss 0.1023 | Valid Acc 0.9686
+
+Epoch  5 Finsh | Subject S9 | Train Loss 0.0307 | Train Acc 0.9889 | Valid Loss 0.0884 | Valid Acc 0.9729
+
+Epoch  6 Finsh | Subject S9 | Train Loss 0.0205 | Train Acc 0.9919 | Valid Loss 0.0910 | Valid Acc 0.9749
+
+Epoch  7 Finsh | Subject S9 | Train Loss 0.0118 | Train Acc 0.9957 | Valid Loss 0.0879 | Valid Acc 0.9793
+Saved model at pre_trained_models/S9.pt!
+
+Epoch  8 Finsh | Subject S9 | Train Loss 0.0057 | Train Acc 0.9976 | Valid Loss 0.1064 | Valid Acc 0.9797
+
+Epoch  9 Finsh | Subject S9 | Train Loss 0.0026 | Train Acc 0.9988 | Valid Loss 0.1082 | Valid Acc 0.9797
+
+Epoch 10 Finsh | Subject S9 | Train Loss 0.0007 | Train Acc 0.9994 | Valid Loss 0.1194 | Valid Acc 0.9806
+
+Epoch 11 Finsh | Subject S9 | Train Loss 0.0487 | Train Acc 0.9812 | Valid Loss 0.0861 | Valid Acc 0.9738
+Saved model at pre_trained_models/S9.pt!
+
+Epoch 12 Finsh | Subject S9 | Train Loss 0.0285 | Train Acc 0.9887 | Valid Loss 0.0795 | Valid Acc 0.9762
+Saved model at pre_trained_models/S9.pt!
+
+Epoch 13 Finsh | Subject S9 | Train Loss 0.0241 | Train Acc 0.9910 | Valid Loss 0.0842 | Valid Acc 0.9738
+
+Epoch 14 Finsh | Subject S9 | Train Loss 0.0195 | Train Acc 0.9926 | Valid Loss 0.1090 | Valid Acc 0.9771
+
+Epoch 15 Finsh | Subject S9 | Train Loss 0.0180 | Train Acc 0.9925 | Valid Loss 0.0796 | Valid Acc 0.9780
+
+Epoch 16 Finsh | Subject S9 | Train Loss 0.0149 | Train Acc 0.9944 | Valid Loss 0.0781 | Valid Acc 0.9784
+Saved model at pre_trained_models/S9.pt!
+
+Epoch 17 Finsh | Subject S9 | Train Loss 0.0110 | Train Acc 0.9959 | Valid Loss 0.1072 | Valid Acc 0.9769
+
+Epoch 18 Finsh | Subject S9 | Train Loss 0.0096 | Train Acc 0.9963 | Valid Loss 0.1005 | Valid Acc 0.9767
+
+Epoch 19 Finsh | Subject S9 | Train Loss 0.0074 | Train Acc 0.9969 | Valid Loss 0.0788 | Valid Acc 0.9800
+
+Epoch 20 Finsh | Subject S9 | Train Loss 0.0060 | Train Acc 0.9974 | Valid Loss 0.1087 | Valid Acc 0.9777
+
+Epoch 21 Finsh | Subject S9 | Train Loss 0.0044 | Train Acc 0.9980 | Valid Loss 0.0956 | Valid Acc 0.9795
+
+Epoch 22 Finsh | Subject S9 | Train Loss 0.0033 | Train Acc 0.9983 | Valid Loss 0.1542 | Valid Acc 0.9789
+
+Epoch 23 Finsh | Subject S9 | Train Loss 0.0021 | Train Acc 0.9989 | Valid Loss 0.1196 | Valid Acc 0.9804
+
+Epoch 24 Finsh | Subject S9 | Train Loss 0.0014 | Train Acc 0.9991 | Valid Loss 0.1158 | Valid Acc 0.9824
+
+Epoch 25 Finsh | Subject S9 | Train Loss 0.0012 | Train Acc 0.9992 | Valid Loss 0.1354 | Valid Acc 0.9809
+
+Epoch 26 Finsh | Subject S9 | Train Loss 0.0004 | Train Acc 0.9993 | Valid Loss 0.1516 | Valid Acc 0.9811
+
+Epoch 27 Finsh | Subject S9 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1613 | Valid Acc 0.9811
+Best epoch: 16
+Subject: S9, Acc: 0.96
+0.1758411764360767 tensor(0.9588)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S10 | Train Loss 0.2226 | Train Acc 0.9038 | Valid Loss 0.1301 | Valid Acc 0.9508
+Saved model at pre_trained_models/S10.pt!
+
+Epoch  2 Finsh | Subject S10 | Train Loss 0.1034 | Train Acc 0.9602 | Valid Loss 0.1115 | Valid Acc 0.9613
+Saved model at pre_trained_models/S10.pt!
+
+Epoch  3 Finsh | Subject S10 | Train Loss 0.0687 | Train Acc 0.9730 | Valid Loss 0.3023 | Valid Acc 0.9707
+
+Epoch  4 Finsh | Subject S10 | Train Loss 0.0469 | Train Acc 0.9818 | Valid Loss 0.0757 | Valid Acc 0.9757
+Saved model at pre_trained_models/S10.pt!
+
+Epoch  5 Finsh | Subject S10 | Train Loss 0.0325 | Train Acc 0.9870 | Valid Loss 0.0749 | Valid Acc 0.9740
+Saved model at pre_trained_models/S10.pt!
+
+Epoch  6 Finsh | Subject S10 | Train Loss 0.0209 | Train Acc 0.9913 | Valid Loss 0.0688 | Valid Acc 0.9786
+Saved model at pre_trained_models/S10.pt!
+
+Epoch  7 Finsh | Subject S10 | Train Loss 0.0119 | Train Acc 0.9953 | Valid Loss 0.0686 | Valid Acc 0.9822
+Saved model at pre_trained_models/S10.pt!
+
+Epoch  8 Finsh | Subject S10 | Train Loss 0.0043 | Train Acc 0.9978 | Valid Loss 0.0793 | Valid Acc 0.9829
+
+Epoch  9 Finsh | Subject S10 | Train Loss 0.0020 | Train Acc 0.9990 | Valid Loss 0.0774 | Valid Acc 0.9836
+
+Epoch 10 Finsh | Subject S10 | Train Loss 0.0004 | Train Acc 0.9995 | Valid Loss 0.0885 | Valid Acc 0.9831
+
+Epoch 11 Finsh | Subject S10 | Train Loss 0.0580 | Train Acc 0.9780 | Valid Loss 0.0696 | Valid Acc 0.9753
+
+Epoch 12 Finsh | Subject S10 | Train Loss 0.0341 | Train Acc 0.9871 | Valid Loss 0.0648 | Valid Acc 0.9777
+Saved model at pre_trained_models/S10.pt!
+
+Epoch 13 Finsh | Subject S10 | Train Loss 0.0290 | Train Acc 0.9888 | Valid Loss 0.0688 | Valid Acc 0.9807
+
+Epoch 14 Finsh | Subject S10 | Train Loss 0.0222 | Train Acc 0.9913 | Valid Loss 0.0755 | Valid Acc 0.9773
+
+Epoch 15 Finsh | Subject S10 | Train Loss 0.0207 | Train Acc 0.9920 | Valid Loss 0.0631 | Valid Acc 0.9793
+Saved model at pre_trained_models/S10.pt!
+
+Epoch 16 Finsh | Subject S10 | Train Loss 0.0154 | Train Acc 0.9942 | Valid Loss 0.0785 | Valid Acc 0.9782
+
+Epoch 17 Finsh | Subject S10 | Train Loss 0.0166 | Train Acc 0.9931 | Valid Loss 0.0709 | Valid Acc 0.9815
+
+Epoch 18 Finsh | Subject S10 | Train Loss 0.0100 | Train Acc 0.9960 | Valid Loss 0.0609 | Valid Acc 0.9836
+Saved model at pre_trained_models/S10.pt!
+
+Epoch 19 Finsh | Subject S10 | Train Loss 0.0111 | Train Acc 0.9962 | Valid Loss 0.0692 | Valid Acc 0.9791
+
+Epoch 20 Finsh | Subject S10 | Train Loss 0.0068 | Train Acc 0.9971 | Valid Loss 0.0613 | Valid Acc 0.9846
+
+Epoch 21 Finsh | Subject S10 | Train Loss 0.0050 | Train Acc 0.9977 | Valid Loss 0.0788 | Valid Acc 0.9856
+
+Epoch 22 Finsh | Subject S10 | Train Loss 0.0040 | Train Acc 0.9982 | Valid Loss 0.0874 | Valid Acc 0.9829
+
+Epoch 23 Finsh | Subject S10 | Train Loss 0.0027 | Train Acc 0.9985 | Valid Loss 0.0788 | Valid Acc 0.9858
+
+Epoch 24 Finsh | Subject S10 | Train Loss 0.0014 | Train Acc 0.9991 | Valid Loss 0.0967 | Valid Acc 0.9846
+
+Epoch 25 Finsh | Subject S10 | Train Loss 0.0009 | Train Acc 0.9992 | Valid Loss 0.0839 | Valid Acc 0.9853
+
+Epoch 26 Finsh | Subject S10 | Train Loss 0.0005 | Train Acc 0.9993 | Valid Loss 0.1024 | Valid Acc 0.9829
+
+Epoch 27 Finsh | Subject S10 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.1018 | Valid Acc 0.9853
+
+Epoch 28 Finsh | Subject S10 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1032 | Valid Acc 0.9853
+
+Epoch 29 Finsh | Subject S10 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.1064 | Valid Acc 0.9851
+Best epoch: 18
+Subject: S10, Acc: 0.85
+0.7342917454082772 tensor(0.8531)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S11 | Train Loss 0.3086 | Train Acc 0.8620 | Valid Loss 0.2172 | Valid Acc 0.9126
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  2 Finsh | Subject S11 | Train Loss 0.1614 | Train Acc 0.9368 | Valid Loss 0.1784 | Valid Acc 0.9279
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  3 Finsh | Subject S11 | Train Loss 0.1068 | Train Acc 0.9594 | Valid Loss 0.1599 | Valid Acc 0.9393
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  4 Finsh | Subject S11 | Train Loss 0.0750 | Train Acc 0.9717 | Valid Loss 0.1328 | Valid Acc 0.9520
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  5 Finsh | Subject S11 | Train Loss 0.0520 | Train Acc 0.9805 | Valid Loss 0.1304 | Valid Acc 0.9557
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  6 Finsh | Subject S11 | Train Loss 0.0347 | Train Acc 0.9873 | Valid Loss 0.1248 | Valid Acc 0.9606
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  7 Finsh | Subject S11 | Train Loss 0.0208 | Train Acc 0.9922 | Valid Loss 0.1045 | Valid Acc 0.9691
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  8 Finsh | Subject S11 | Train Loss 0.0098 | Train Acc 0.9965 | Valid Loss 0.1019 | Valid Acc 0.9722
+Saved model at pre_trained_models/S11.pt!
+
+Epoch  9 Finsh | Subject S11 | Train Loss 0.0032 | Train Acc 0.9990 | Valid Loss 0.0966 | Valid Acc 0.9762
+Saved model at pre_trained_models/S11.pt!
+
+Epoch 10 Finsh | Subject S11 | Train Loss 0.0009 | Train Acc 0.9995 | Valid Loss 0.1020 | Valid Acc 0.9766
+
+Epoch 11 Finsh | Subject S11 | Train Loss 0.0981 | Train Acc 0.9637 | Valid Loss 0.1153 | Valid Acc 0.9540
+
+Epoch 12 Finsh | Subject S11 | Train Loss 0.0506 | Train Acc 0.9809 | Valid Loss 0.1012 | Valid Acc 0.9655
+
+Epoch 13 Finsh | Subject S11 | Train Loss 0.0412 | Train Acc 0.9841 | Valid Loss 0.1035 | Valid Acc 0.9638
+
+Epoch 14 Finsh | Subject S11 | Train Loss 0.0329 | Train Acc 0.9878 | Valid Loss 0.1054 | Valid Acc 0.9662
+
+Epoch 15 Finsh | Subject S11 | Train Loss 0.0303 | Train Acc 0.9881 | Valid Loss 0.1126 | Valid Acc 0.9629
+
+Epoch 16 Finsh | Subject S11 | Train Loss 0.0226 | Train Acc 0.9915 | Valid Loss 0.1361 | Valid Acc 0.9608
+
+Epoch 17 Finsh | Subject S11 | Train Loss 0.0225 | Train Acc 0.9916 | Valid Loss 0.0931 | Valid Acc 0.9722
+Saved model at pre_trained_models/S11.pt!
+
+Epoch 18 Finsh | Subject S11 | Train Loss 0.0151 | Train Acc 0.9944 | Valid Loss 0.1040 | Valid Acc 0.9720
+
+Epoch 19 Finsh | Subject S11 | Train Loss 0.0140 | Train Acc 0.9943 | Valid Loss 0.0877 | Valid Acc 0.9749
+Saved model at pre_trained_models/S11.pt!
+
+Epoch 20 Finsh | Subject S11 | Train Loss 0.0103 | Train Acc 0.9961 | Valid Loss 0.0907 | Valid Acc 0.9760
+
+Epoch 21 Finsh | Subject S11 | Train Loss 0.0080 | Train Acc 0.9968 | Valid Loss 0.0822 | Valid Acc 0.9784
+Saved model at pre_trained_models/S11.pt!
+
+Epoch 22 Finsh | Subject S11 | Train Loss 0.0055 | Train Acc 0.9978 | Valid Loss 0.0904 | Valid Acc 0.9771
+
+Epoch 23 Finsh | Subject S11 | Train Loss 0.0041 | Train Acc 0.9980 | Valid Loss 0.0761 | Valid Acc 0.9807
+Saved model at pre_trained_models/S11.pt!
+
+Epoch 24 Finsh | Subject S11 | Train Loss 0.0017 | Train Acc 0.9991 | Valid Loss 0.0789 | Valid Acc 0.9840
+
+Epoch 25 Finsh | Subject S11 | Train Loss 0.0003 | Train Acc 0.9995 | Valid Loss 0.0776 | Valid Acc 0.9847
+
+Epoch 26 Finsh | Subject S11 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0773 | Valid Acc 0.9844
+
+Epoch 27 Finsh | Subject S11 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0809 | Valid Acc 0.9847
+
+Epoch 28 Finsh | Subject S11 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0832 | Valid Acc 0.9847
+
+Epoch 29 Finsh | Subject S11 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0858 | Valid Acc 0.9846
+
+Epoch 30 Finsh | Subject S11 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0888 | Valid Acc 0.9846
+
+Epoch 31 Finsh | Subject S11 | Train Loss 0.0623 | Train Acc 0.9795 | Valid Loss 0.0914 | Valid Acc 0.9704
+
+Epoch 32 Finsh | Subject S11 | Train Loss 0.0198 | Train Acc 0.9919 | Valid Loss 0.0869 | Valid Acc 0.9760
+
+Epoch 33 Finsh | Subject S11 | Train Loss 0.0207 | Train Acc 0.9921 | Valid Loss 0.0837 | Valid Acc 0.9740
+
+Epoch 34 Finsh | Subject S11 | Train Loss 0.0184 | Train Acc 0.9929 | Valid Loss 0.0883 | Valid Acc 0.9747
+Best epoch: 23
+Subject: S11, Acc: 0.76
+2.1133024787715593 tensor(0.7569)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S12 | Train Loss 0.1016 | Train Acc 0.9616 | Valid Loss 0.0554 | Valid Acc 0.9795
+Saved model at pre_trained_models/S12.pt!
+
+Epoch  2 Finsh | Subject S12 | Train Loss 0.0385 | Train Acc 0.9866 | Valid Loss 0.0461 | Valid Acc 0.9840
+Saved model at pre_trained_models/S12.pt!
+
+Epoch  3 Finsh | Subject S12 | Train Loss 0.0227 | Train Acc 0.9918 | Valid Loss 0.0417 | Valid Acc 0.9867
+Saved model at pre_trained_models/S12.pt!
+
+Epoch  4 Finsh | Subject S12 | Train Loss 0.0157 | Train Acc 0.9942 | Valid Loss 0.0254 | Valid Acc 0.9918
+Saved model at pre_trained_models/S12.pt!
+
+Epoch  5 Finsh | Subject S12 | Train Loss 0.0103 | Train Acc 0.9964 | Valid Loss 0.0183 | Valid Acc 0.9938
+Saved model at pre_trained_models/S12.pt!
+
+Epoch  6 Finsh | Subject S12 | Train Loss 0.0063 | Train Acc 0.9973 | Valid Loss 0.0147 | Valid Acc 0.9942
+Saved model at pre_trained_models/S12.pt!
+
+Epoch  7 Finsh | Subject S12 | Train Loss 0.0034 | Train Acc 0.9982 | Valid Loss 0.0095 | Valid Acc 0.9971
+Saved model at pre_trained_models/S12.pt!
+
+Epoch  8 Finsh | Subject S12 | Train Loss 0.0011 | Train Acc 0.9993 | Valid Loss 0.0108 | Valid Acc 0.9967
+
+Epoch  9 Finsh | Subject S12 | Train Loss 0.0003 | Train Acc 0.9995 | Valid Loss 0.0080 | Valid Acc 0.9976
+Saved model at pre_trained_models/S12.pt!
+
+Epoch 10 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0082 | Valid Acc 0.9978
+
+Epoch 11 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0098 | Valid Acc 0.9982
+
+Epoch 12 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0104 | Valid Acc 0.9980
+
+Epoch 13 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0110 | Valid Acc 0.9980
+
+Epoch 14 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0115 | Valid Acc 0.9980
+
+Epoch 15 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0120 | Valid Acc 0.9980
+
+Epoch 16 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0125 | Valid Acc 0.9980
+
+Epoch 17 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0130 | Valid Acc 0.9980
+
+Epoch 18 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0134 | Valid Acc 0.9980
+
+Epoch 19 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0138 | Valid Acc 0.9980
+
+Epoch 20 Finsh | Subject S12 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0143 | Valid Acc 0.9982
+Best epoch: 9
+Subject: S12, Acc: 0.93
+0.6938745314482302 tensor(0.9267)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S13 | Train Loss 0.3181 | Train Acc 0.8599 | Valid Loss 0.2440 | Valid Acc 0.8993
+Saved model at pre_trained_models/S13.pt!
+
+Epoch  2 Finsh | Subject S13 | Train Loss 0.1816 | Train Acc 0.9280 | Valid Loss 0.2008 | Valid Acc 0.9179
+Saved model at pre_trained_models/S13.pt!
+
+Epoch  3 Finsh | Subject S13 | Train Loss 0.1344 | Train Acc 0.9472 | Valid Loss 0.2025 | Valid Acc 0.9228
+
+Epoch  4 Finsh | Subject S13 | Train Loss 0.1023 | Train Acc 0.9606 | Valid Loss 0.1868 | Valid Acc 0.9324
+Saved model at pre_trained_models/S13.pt!
+
+Epoch  5 Finsh | Subject S13 | Train Loss 0.0734 | Train Acc 0.9727 | Valid Loss 0.1745 | Valid Acc 0.9440
+Saved model at pre_trained_models/S13.pt!
+
+Epoch  6 Finsh | Subject S13 | Train Loss 0.0516 | Train Acc 0.9810 | Valid Loss 0.1657 | Valid Acc 0.9509
+Saved model at pre_trained_models/S13.pt!
+
+Epoch  7 Finsh | Subject S13 | Train Loss 0.0344 | Train Acc 0.9873 | Valid Loss 0.1772 | Valid Acc 0.9522
+
+Epoch  8 Finsh | Subject S13 | Train Loss 0.0183 | Train Acc 0.9936 | Valid Loss 0.1957 | Valid Acc 0.9531
+
+Epoch  9 Finsh | Subject S13 | Train Loss 0.0083 | Train Acc 0.9973 | Valid Loss 0.2224 | Valid Acc 0.9557
+
+Epoch 10 Finsh | Subject S13 | Train Loss 0.0034 | Train Acc 0.9992 | Valid Loss 0.2265 | Valid Acc 0.9559
+
+Epoch 11 Finsh | Subject S13 | Train Loss 0.1061 | Train Acc 0.9589 | Valid Loss 0.1345 | Valid Acc 0.9489
+Saved model at pre_trained_models/S13.pt!
+
+Epoch 12 Finsh | Subject S13 | Train Loss 0.0678 | Train Acc 0.9741 | Valid Loss 0.1526 | Valid Acc 0.9468
+
+Epoch 13 Finsh | Subject S13 | Train Loss 0.0543 | Train Acc 0.9796 | Valid Loss 0.1596 | Valid Acc 0.9479
+
+Epoch 14 Finsh | Subject S13 | Train Loss 0.0472 | Train Acc 0.9818 | Valid Loss 0.1515 | Valid Acc 0.9517
+
+Epoch 15 Finsh | Subject S13 | Train Loss 0.0401 | Train Acc 0.9844 | Valid Loss 0.1454 | Valid Acc 0.9566
+
+Epoch 16 Finsh | Subject S13 | Train Loss 0.0353 | Train Acc 0.9863 | Valid Loss 0.1600 | Valid Acc 0.9551
+
+Epoch 17 Finsh | Subject S13 | Train Loss 0.0298 | Train Acc 0.9888 | Valid Loss 0.1657 | Valid Acc 0.9526
+
+Epoch 18 Finsh | Subject S13 | Train Loss 0.0233 | Train Acc 0.9911 | Valid Loss 0.1627 | Valid Acc 0.9613
+
+Epoch 19 Finsh | Subject S13 | Train Loss 0.0187 | Train Acc 0.9930 | Valid Loss 0.1663 | Valid Acc 0.9575
+
+Epoch 20 Finsh | Subject S13 | Train Loss 0.0158 | Train Acc 0.9942 | Valid Loss 0.1833 | Valid Acc 0.9580
+
+Epoch 21 Finsh | Subject S13 | Train Loss 0.0124 | Train Acc 0.9953 | Valid Loss 0.1800 | Valid Acc 0.9602
+
+Epoch 22 Finsh | Subject S13 | Train Loss 0.0087 | Train Acc 0.9963 | Valid Loss 0.1822 | Valid Acc 0.9617
+Best epoch: 11
+Subject: S13, Acc: 0.89
+0.34703022751138 tensor(0.8899)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S14 | Train Loss 0.2621 | Train Acc 0.8895 | Valid Loss 0.1429 | Valid Acc 0.9448
+Saved model at pre_trained_models/S14.pt!
+
+Epoch  2 Finsh | Subject S14 | Train Loss 0.1224 | Train Acc 0.9534 | Valid Loss 0.1217 | Valid Acc 0.9548
+Saved model at pre_trained_models/S14.pt!
+
+Epoch  3 Finsh | Subject S14 | Train Loss 0.0762 | Train Acc 0.9714 | Valid Loss 0.1132 | Valid Acc 0.9615
+Saved model at pre_trained_models/S14.pt!
+
+Epoch  4 Finsh | Subject S14 | Train Loss 0.0557 | Train Acc 0.9787 | Valid Loss 0.1181 | Valid Acc 0.9662
+
+Epoch  5 Finsh | Subject S14 | Train Loss 0.0359 | Train Acc 0.9866 | Valid Loss 0.0924 | Valid Acc 0.9700
+Saved model at pre_trained_models/S14.pt!
+
+Epoch  6 Finsh | Subject S14 | Train Loss 0.0229 | Train Acc 0.9912 | Valid Loss 0.0744 | Valid Acc 0.9760
+Saved model at pre_trained_models/S14.pt!
+
+Epoch  7 Finsh | Subject S14 | Train Loss 0.0139 | Train Acc 0.9947 | Valid Loss 0.0793 | Valid Acc 0.9777
+
+Epoch  8 Finsh | Subject S14 | Train Loss 0.0060 | Train Acc 0.9977 | Valid Loss 0.0648 | Valid Acc 0.9838
+Saved model at pre_trained_models/S14.pt!
+
+Epoch  9 Finsh | Subject S14 | Train Loss 0.0016 | Train Acc 0.9992 | Valid Loss 0.0802 | Valid Acc 0.9844
+
+Epoch 10 Finsh | Subject S14 | Train Loss 0.0005 | Train Acc 0.9995 | Valid Loss 0.0862 | Valid Acc 0.9847
+
+Epoch 11 Finsh | Subject S14 | Train Loss 0.0853 | Train Acc 0.9695 | Valid Loss 0.0698 | Valid Acc 0.9729
+
+Epoch 12 Finsh | Subject S14 | Train Loss 0.0370 | Train Acc 0.9859 | Valid Loss 0.0766 | Valid Acc 0.9755
+
+Epoch 13 Finsh | Subject S14 | Train Loss 0.0306 | Train Acc 0.9886 | Valid Loss 0.0657 | Valid Acc 0.9804
+
+Epoch 14 Finsh | Subject S14 | Train Loss 0.0263 | Train Acc 0.9899 | Valid Loss 0.0663 | Valid Acc 0.9798
+
+Epoch 15 Finsh | Subject S14 | Train Loss 0.0210 | Train Acc 0.9920 | Valid Loss 0.0823 | Valid Acc 0.9769
+
+Epoch 16 Finsh | Subject S14 | Train Loss 0.0185 | Train Acc 0.9930 | Valid Loss 0.0634 | Valid Acc 0.9804
+Saved model at pre_trained_models/S14.pt!
+
+Epoch 17 Finsh | Subject S14 | Train Loss 0.0162 | Train Acc 0.9936 | Valid Loss 0.0627 | Valid Acc 0.9824
+Saved model at pre_trained_models/S14.pt!
+
+Epoch 18 Finsh | Subject S14 | Train Loss 0.0117 | Train Acc 0.9954 | Valid Loss 0.0715 | Valid Acc 0.9802
+
+Epoch 19 Finsh | Subject S14 | Train Loss 0.0120 | Train Acc 0.9958 | Valid Loss 0.0596 | Valid Acc 0.9836
+Saved model at pre_trained_models/S14.pt!
+
+Epoch 20 Finsh | Subject S14 | Train Loss 0.0063 | Train Acc 0.9976 | Valid Loss 0.0860 | Valid Acc 0.9789
+
+Epoch 21 Finsh | Subject S14 | Train Loss 0.0070 | Train Acc 0.9971 | Valid Loss 0.0756 | Valid Acc 0.9824
+
+Epoch 22 Finsh | Subject S14 | Train Loss 0.0030 | Train Acc 0.9986 | Valid Loss 0.0681 | Valid Acc 0.9836
+
+Epoch 23 Finsh | Subject S14 | Train Loss 0.0021 | Train Acc 0.9990 | Valid Loss 0.0804 | Valid Acc 0.9813
+
+Epoch 24 Finsh | Subject S14 | Train Loss 0.0024 | Train Acc 0.9989 | Valid Loss 0.1189 | Valid Acc 0.9722
+
+Epoch 25 Finsh | Subject S14 | Train Loss 0.0010 | Train Acc 0.9992 | Valid Loss 0.0732 | Valid Acc 0.9846
+
+Epoch 26 Finsh | Subject S14 | Train Loss 0.0003 | Train Acc 0.9995 | Valid Loss 0.0745 | Valid Acc 0.9853
+
+Epoch 27 Finsh | Subject S14 | Train Loss 0.0003 | Train Acc 0.9995 | Valid Loss 0.0764 | Valid Acc 0.9858
+
+Epoch 28 Finsh | Subject S14 | Train Loss 0.0003 | Train Acc 0.9995 | Valid Loss 0.0750 | Valid Acc 0.9858
+
+Epoch 29 Finsh | Subject S14 | Train Loss 0.0002 | Train Acc 0.9995 | Valid Loss 0.0769 | Valid Acc 0.9856
+
+Epoch 30 Finsh | Subject S14 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0802 | Valid Acc 0.9855
+Best epoch: 19
+Subject: S14, Acc: 0.86
+1.1356011675573223 tensor(0.8608)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S15 | Train Loss 0.1821 | Train Acc 0.9242 | Valid Loss 0.0790 | Valid Acc 0.9733
+Saved model at pre_trained_models/S15.pt!
+
+Epoch  2 Finsh | Subject S15 | Train Loss 0.0603 | Train Acc 0.9784 | Valid Loss 0.0431 | Valid Acc 0.9858
+Saved model at pre_trained_models/S15.pt!
+
+Epoch  3 Finsh | Subject S15 | Train Loss 0.0365 | Train Acc 0.9869 | Valid Loss 0.0394 | Valid Acc 0.9875
+Saved model at pre_trained_models/S15.pt!
+
+Epoch  4 Finsh | Subject S15 | Train Loss 0.0246 | Train Acc 0.9914 | Valid Loss 0.0347 | Valid Acc 0.9886
+Saved model at pre_trained_models/S15.pt!
+
+Epoch  5 Finsh | Subject S15 | Train Loss 0.0157 | Train Acc 0.9942 | Valid Loss 0.0389 | Valid Acc 0.9882
+
+Epoch  6 Finsh | Subject S15 | Train Loss 0.0102 | Train Acc 0.9961 | Valid Loss 0.0318 | Valid Acc 0.9913
+Saved model at pre_trained_models/S15.pt!
+
+Epoch  7 Finsh | Subject S15 | Train Loss 0.0041 | Train Acc 0.9983 | Valid Loss 0.0246 | Valid Acc 0.9938
+Saved model at pre_trained_models/S15.pt!
+
+Epoch  8 Finsh | Subject S15 | Train Loss 0.0025 | Train Acc 0.9988 | Valid Loss 0.0197 | Valid Acc 0.9938
+Saved model at pre_trained_models/S15.pt!
+
+Epoch  9 Finsh | Subject S15 | Train Loss 0.0008 | Train Acc 0.9993 | Valid Loss 0.0192 | Valid Acc 0.9955
+Saved model at pre_trained_models/S15.pt!
+
+Epoch 10 Finsh | Subject S15 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0193 | Valid Acc 0.9953
+
+Epoch 11 Finsh | Subject S15 | Train Loss 0.0414 | Train Acc 0.9859 | Valid Loss 0.0477 | Valid Acc 0.9849
+
+Epoch 12 Finsh | Subject S15 | Train Loss 0.0187 | Train Acc 0.9931 | Valid Loss 0.0419 | Valid Acc 0.9867
+
+Epoch 13 Finsh | Subject S15 | Train Loss 0.0142 | Train Acc 0.9950 | Valid Loss 0.0330 | Valid Acc 0.9915
+
+Epoch 14 Finsh | Subject S15 | Train Loss 0.0133 | Train Acc 0.9950 | Valid Loss 0.0263 | Valid Acc 0.9931
+
+Epoch 15 Finsh | Subject S15 | Train Loss 0.0088 | Train Acc 0.9967 | Valid Loss 0.0259 | Valid Acc 0.9929
+
+Epoch 16 Finsh | Subject S15 | Train Loss 0.0089 | Train Acc 0.9966 | Valid Loss 0.0221 | Valid Acc 0.9935
+
+Epoch 17 Finsh | Subject S15 | Train Loss 0.0069 | Train Acc 0.9973 | Valid Loss 0.0164 | Valid Acc 0.9956
+Saved model at pre_trained_models/S15.pt!
+
+Epoch 18 Finsh | Subject S15 | Train Loss 0.0066 | Train Acc 0.9973 | Valid Loss 0.0293 | Valid Acc 0.9935
+
+Epoch 19 Finsh | Subject S15 | Train Loss 0.0042 | Train Acc 0.9982 | Valid Loss 0.0212 | Valid Acc 0.9929
+
+Epoch 20 Finsh | Subject S15 | Train Loss 0.0042 | Train Acc 0.9982 | Valid Loss 0.0221 | Valid Acc 0.9940
+
+Epoch 21 Finsh | Subject S15 | Train Loss 0.0027 | Train Acc 0.9987 | Valid Loss 0.0249 | Valid Acc 0.9940
+
+Epoch 22 Finsh | Subject S15 | Train Loss 0.0017 | Train Acc 0.9989 | Valid Loss 0.0260 | Valid Acc 0.9947
+
+Epoch 23 Finsh | Subject S15 | Train Loss 0.0014 | Train Acc 0.9992 | Valid Loss 0.0239 | Valid Acc 0.9949
+
+Epoch 24 Finsh | Subject S15 | Train Loss 0.0006 | Train Acc 0.9994 | Valid Loss 0.0193 | Valid Acc 0.9962
+
+Epoch 25 Finsh | Subject S15 | Train Loss 0.0001 | Train Acc 0.9995 | Valid Loss 0.0194 | Valid Acc 0.9964
+
+Epoch 26 Finsh | Subject S15 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0199 | Valid Acc 0.9969
+
+Epoch 27 Finsh | Subject S15 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0203 | Valid Acc 0.9965
+
+Epoch 28 Finsh | Subject S15 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0208 | Valid Acc 0.9965
+Best epoch: 17
+Subject: S15, Acc: 0.86
+0.9700614694866756 tensor(0.8585)
+MHANet(
+  (out): Linear(in_features=5, out_features=2, bias=True)
+  (channelAttention): ChannelAttention(
+    (qkv): Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (qkv_dwconv): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+    (project_out): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (Multiscale_Temporal_Attention): Multiscale_Temporal_Attention(
+      (spatioConv): Conv2d(1, 1, kernel_size=(64, 1), stride=(1, 1))
+      (upChannelConv): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (project_out): Conv2d(1, 64, kernel_size=(1, 1), stride=(1, 1))
+      (multiTemporal_K_2): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(2,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_4): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(4,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+      (multiTemporal_K_6): Multiscale_Temporal_Layer(
+        (multiscaleConv): Conv1d(1, 1, kernel_size=(6,), stride=(1,), padding=same)
+        (act): ELU(alpha=1.0)
+        (norm): LayerNorm((13,), eps=1e-05, elementwise_affine=True)
+        (pool): AdaptiveAvgPool1d(output_size=1)
+      )
+    )
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (Spatiotemporal_Convolution): Spatiotemporal_Convolution(
+    (Temporal_Convolution): Sequential(
+      (0): Conv2d(1, 5, kernel_size=(1, 2), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (Spatio_Convolution): Sequential(
+      (0): Conv2d(5, 5, kernel_size=(64, 1), stride=(1, 1))
+      (1): BatchNorm2d(5, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ELU(alpha=1.0)
+    )
+    (pool): AdaptiveAvgPool2d(output_size=1)
+  )
+  (Multiscale_Global_Attention): Multiscale_Global_Attention(
+    (downchannel): Conv2d(3, 1, kernel_size=(1, 1), stride=(1, 1))
+    (norm): BatchNorm2d(1, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_0): Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (conv_1): Conv2d(1, 1, kernel_size=(5, 5), stride=(1, 1), padding=same, dilation=(2, 2))
+    (conv_2): Conv2d(1, 1, kernel_size=(7, 7), stride=(1, 1), padding=same, dilation=(3, 3))
+    (upChannel): Sequential(
+      (0): Conv2d(1, 3, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (gap): Sequential(
+    (0): AdaptiveAvgPool2d(output_size=1)
+    (1): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 20,170 trainable parameters.
+
+Epoch  1 Finsh | Subject S16 | Train Loss 0.0901 | Train Acc 0.9616 | Valid Loss 0.0271 | Valid Acc 0.9913
+Saved model at pre_trained_models/S16.pt!
+
+Epoch  2 Finsh | Subject S16 | Train Loss 0.0300 | Train Acc 0.9898 | Valid Loss 0.0320 | Valid Acc 0.9893
+
+Epoch  3 Finsh | Subject S16 | Train Loss 0.0202 | Train Acc 0.9925 | Valid Loss 0.0311 | Valid Acc 0.9900
+
+Epoch  4 Finsh | Subject S16 | Train Loss 0.0124 | Train Acc 0.9955 | Valid Loss 0.0269 | Valid Acc 0.9918
+Saved model at pre_trained_models/S16.pt!
+
+Epoch  5 Finsh | Subject S16 | Train Loss 0.0089 | Train Acc 0.9966 | Valid Loss 0.0218 | Valid Acc 0.9944
+Saved model at pre_trained_models/S16.pt!
+
+Epoch  6 Finsh | Subject S16 | Train Loss 0.0054 | Train Acc 0.9977 | Valid Loss 0.0287 | Valid Acc 0.9936
+
+Epoch  7 Finsh | Subject S16 | Train Loss 0.0030 | Train Acc 0.9986 | Valid Loss 0.0254 | Valid Acc 0.9945
+
+Epoch  8 Finsh | Subject S16 | Train Loss 0.0013 | Train Acc 0.9991 | Valid Loss 0.0248 | Valid Acc 0.9949
+
+Epoch  9 Finsh | Subject S16 | Train Loss 0.0002 | Train Acc 0.9995 | Valid Loss 0.0284 | Valid Acc 0.9949
+
+Epoch 10 Finsh | Subject S16 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0294 | Valid Acc 0.9955
+
+Epoch 11 Finsh | Subject S16 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0350 | Valid Acc 0.9953
+
+Epoch 12 Finsh | Subject S16 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0381 | Valid Acc 0.9955
+
+Epoch 13 Finsh | Subject S16 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0404 | Valid Acc 0.9955
+
+Epoch 14 Finsh | Subject S16 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0426 | Valid Acc 0.9955
+
+Epoch 15 Finsh | Subject S16 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0448 | Valid Acc 0.9955
+
+Epoch 16 Finsh | Subject S16 | Train Loss 0.0000 | Train Acc 0.9995 | Valid Loss 0.0469 | Valid Acc 0.9956
+Best epoch: 5
+Subject: S16, Acc: 0.96
+0.13252146652430669 tensor(0.9645)
+avg_acc: 0.8819
+========== Finished ==========

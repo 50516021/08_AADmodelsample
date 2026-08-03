@@ -1,0 +1,4 @@
+2026-08-03 05:00:35,442 - INFO: 0.2471693785628304
+2026-08-03 05:00:35,443 - INFO: tensor(0.9414)
+2026-08-03 05:01:16,298 - INFO: TorchDynamo compilation metrics:
+Function, Runtimes (s)

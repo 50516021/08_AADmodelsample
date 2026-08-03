@@ -1,0 +1,31 @@
+ls: cannot access 'ffmpeg-*-static': No such file or directory
+Training Epoch:   0%|          | 0/100 [00:00<?, ?it/s]/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/.venv/lib/python3.12/site-packages/torch/nn/modules/conv.py:306: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at ../aten/src/ATen/native/Convolution.cpp:1031.)
+  return F.conv1d(input, weight, bias, self.stride,
+/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/.venv/lib/python3.12/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/.venv/lib/python3.12/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+                                                       Traceback (most recent call last):
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/main_akira.py", line 394, in <module>
+    acc = main_fn(name=f'S{i}', dataset=cli.dataset,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/main_akira.py", line 261, in main_KUL
+    loss, acc = initiate(args, train_loader, valid_loader, test_loader, args.name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/main_akira.py", line 103, in initiate
+    return train_model(settings, args, train_loader, valid_loader, test_loader, subject)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/main_akira.py", line 166, in train_model
+    save_model(args, model, name=args.name)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/utils.py", line 33, in save_model
+    torch.save(model, f'./pre_trained_models/{name}.pt')
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/.venv/lib/python3.12/site-packages/torch/serialization.py", line 627, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/.venv/lib/python3.12/site-packages/torch/serialization.py", line 501, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/.venv/lib/python3.12/site-packages/torch/serialization.py", line 472, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Parent directory ./pre_trained_models does not exist.
