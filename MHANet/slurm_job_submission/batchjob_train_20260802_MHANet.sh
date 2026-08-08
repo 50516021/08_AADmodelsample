@@ -2,7 +2,7 @@
 
 # This is were we go for slurm documentation https://slurm.schedmd.com/sbatch.html
 
-#SBATCH --job-name=MHANet_DTU_test_20260803_ws10              # Name of the job
+#SBATCH --job-name=MHANet_KUL_test_20260806_ws2              # Name of the job
 #SBATCH --comment="MHANet test"           # Comment for your job
 #SBATCH --account=spatt
 
@@ -47,6 +47,6 @@ mkdir -p logs
 
 echo "========== Running =========="
 
-uv run python main_akira.py --dataset DTU --time_len 10 #--batch_size 
+uv run python main_akira.py --dataset KUL --time_len 2 #--batch_size 
 
 echo "========== Finished =========="
