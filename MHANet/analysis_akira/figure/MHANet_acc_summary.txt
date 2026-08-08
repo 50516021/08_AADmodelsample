@@ -1,0 +1,8 @@
+Results from: /home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/MHANet/log/result.log
+Window          N     Mean       SD
+------------------------------------
+0.1s           16    88.19     5.79
+1.0s           16    93.10     4.82
+2.0s            1    94.14     0.00
+5.0s           16    92.45     6.48
+10.0s          16    92.58     7.38
