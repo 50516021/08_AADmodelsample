@@ -17,7 +17,7 @@ import numpy as np
 
 # e.g. "2026-11-04 12:00:00,123 - result - INFO - KUL_S1_1.0s loss:0.61 acc:0.83"
 LINE_RE = re.compile(r"^(?P<time>\S+ \S+) - result - INFO - "
-                     r"(?P<dataset>KUL|DTU)_S(?P<subject>\d+)_(?P<time_len>[\d.]+)s "
+                     r"(?P<dataset>KUL|DTU)_(?P<loso>LOSO_)?S(?P<subject>\d+)_(?P<time_len>[\d.]+)s "
                      r"loss:(?P<loss>\S+) acc:(?P<acc>\S+)$")
 
 
@@ -29,7 +29,7 @@ def main():
     parser.add_argument("--since", default=None, help='ignore entries before this time, e.g. "2026-11-04 12:00"')
     args = parser.parse_args()
 
-    # results[(dataset, time_len)][subject] = (time, acc, loss); later lines overwrite earlier ones
+    # results[(dataset, loso, time_len)][subject] = (time, acc, loss)
     results = defaultdict(dict)
     with open(args.log) as f:
         for line in f:
@@ -38,19 +38,20 @@ def main():
                 continue
             if args.since is not None and m["time"] < args.since:
                 continue
-            key = (m["dataset"], float(m["time_len"]))
+            key = (m["dataset"], bool(m["loso"]), float(m["time_len"]))
             results[key][int(m["subject"])] = (m["time"], float(m["acc"]), float(m["loss"]))
 
     keys = sorted(k for k in results
                   if (args.dataset is None or k[0] == args.dataset)
-                  and (args.time_len is None or k[1] == args.time_len))
+                  and (args.time_len is None or k[2] == args.time_len))
     if not keys:
         print(f"no matching entries in {args.log}")
         return
 
-    for dataset, time_len in keys:
-        subjects = results[(dataset, time_len)]
-        print(f"===== {dataset} {time_len}s ({len(subjects)} subjects) =====")
+    for dataset, loso, time_len in keys:
+        subjects = results[(dataset, loso, time_len)]
+        evaluation = "LOSO" if loso else "subject-dependent"
+        print(f"===== {dataset} {time_len}s {evaluation} ({len(subjects)} subjects) =====")
         for s in sorted(subjects):
             t, acc, loss = subjects[s]
             print(f"  S{s:<3d} acc {acc:.4f}  loss {loss:.4f}  ({t})")

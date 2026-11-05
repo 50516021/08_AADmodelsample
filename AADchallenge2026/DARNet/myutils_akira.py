@@ -11,6 +11,7 @@ np.set_printoptions(suppress=True)
 import os
 import time
 import torch
+from torch.utils.data import ConcatDataset, DataLoader
 from sklearn.preprocessing import scale
 from scipy.interpolate import griddata
 from scipy.io import loadmat
@@ -87,6 +88,45 @@ def getData(name="S1", time_len=1, dataset="DTU"):
         return data_loader.get_KUL_data_correct(name, time_len, KUL_document_path)
 
 
+def get_loso_data(held_out_subject, time_len=1, dataset="DTU", people_number=None):
+    """Build loaders for leave-one-subject-out training.
+
+    The held-out subject contributes only its test loader. The other subjects'
+    training and validation windows are concatenated for model fitting.
+    """
+    if people_number is None:
+        people_number = {"KUL": 16, "DTU": 18}[dataset]
+    if not 1 <= held_out_subject <= people_number:
+        raise ValueError(f"held-out subject must be between 1 and {people_number}")
+
+    train_loaders = []
+    valid_loaders = []
+    held_out_test_loader = None
+    for subject_number in range(1, people_number + 1):
+        loaders = getData(f"S{subject_number}", time_len, dataset)
+        if subject_number == held_out_subject:
+            held_out_test_loader = loaders[2]
+        else:
+            train_loaders.append(loaders[0])
+            valid_loaders.append(loaders[1])
+
+    train_dataset = ConcatDataset([loader.dataset for loader in train_loaders])
+    valid_dataset = ConcatDataset([loader.dataset for loader in valid_loaders])
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=train_loaders[0].batch_size,
+        drop_last=True,
+        pin_memory=True,
+    )
+    valid_loader = DataLoader(
+        valid_dataset,
+        batch_size=valid_loaders[0].batch_size,
+        drop_last=True,
+        pin_memory=True,
+    )
+    return train_loader, valid_loader, held_out_test_loader
+
+
 def setup_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
@@ -130,5 +170,3 @@ def gen_images(data, args):
     images[~np.isnan(images)] = scale(images[~np.isnan(images)])
     images = np.nan_to_num(images)
     return images
-
-
