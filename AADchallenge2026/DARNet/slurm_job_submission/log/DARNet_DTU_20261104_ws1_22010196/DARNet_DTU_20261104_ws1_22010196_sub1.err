@@ -1,0 +1,2 @@
+ls: cannot access 'ffmpeg-*-static': No such file or directory
+cp: cannot create regular file './log/DARNet_DTU_20261104_ws1_22010196/slurm_script': File exists

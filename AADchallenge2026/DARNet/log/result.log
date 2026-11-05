@@ -1,0 +1,78 @@
+2026-11-04 09:47:35,155 - result - INFO - KUL_S1_1.0s loss:0.5741559320508713 acc:0.8915441036224365
+2026-11-04 09:47:35,182 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.8915 std:0.0000
+2026-11-04 09:49:35,057 - result - INFO - KUL_S2_1.0s loss:0.15084282365130683 acc:0.9724264740943909
+2026-11-04 09:49:35,079 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9724 std:0.0000
+2026-11-04 09:50:39,718 - result - INFO - KUL_S3_1.0s loss:0.03020094946858829 acc:0.9944853186607361
+2026-11-04 09:50:39,719 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9945 std:0.0000
+2026-11-04 09:52:33,516 - result - INFO - KUL_S4_1.0s loss:0.9604312629397849 acc:0.7849264740943909
+2026-11-04 09:52:33,635 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.7849 std:0.0000
+2026-11-04 09:53:59,860 - result - INFO - DTU_S1_1.0s loss:0.9805196101984216 acc:0.8142361044883728
+2026-11-04 09:53:59,862 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8142 std:0.0000
+2026-11-04 09:55:04,362 - result - INFO - KUL_S5_1.0s loss:0.016285214445601656 acc:0.9963235259056091
+2026-11-04 09:55:04,364 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9963 std:0.0000
+2026-11-04 09:55:52,246 - result - INFO - KUL_S6_1.0s loss:0.4919908875202536 acc:0.8786764740943909
+2026-11-04 09:55:52,248 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.8787 std:0.0000
+2026-11-04 09:57:07,328 - result - INFO - KUL_S7_1.0s loss:0.23771415486343733 acc:0.9577205777168274
+2026-11-04 09:57:07,387 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9577 std:0.0000
+2026-11-04 09:58:06,335 - result - INFO - KUL_S8_1.0s loss:0.3102714604409651 acc:0.9301470518112183
+2026-11-04 09:58:06,336 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9301 std:0.0000
+2026-11-04 09:58:51,997 - result - INFO - DTU_S2_1.0s loss:0.2574743948583394 acc:0.9444444179534912
+2026-11-04 09:58:51,998 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9444 std:0.0000
+2026-11-04 09:59:50,764 - result - INFO - DTU_S3_1.0s loss:0.4032948146296904 acc:0.9097222089767456
+2026-11-04 09:59:50,766 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9097 std:0.0000
+2026-11-04 10:00:45,818 - result - INFO - KUL_S9_1.0s loss:0.139226592520679 acc:0.9650735259056091
+2026-11-04 10:00:45,820 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9651 std:0.0000
+2026-11-04 10:01:32,434 - result - INFO - KUL_S10_1.0s loss:0.5797108754940221 acc:0.8658088445663452
+2026-11-04 10:01:32,435 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.8658 std:0.0000
+2026-11-04 10:02:24,168 - result - INFO - KUL_S11_1.0s loss:1.624545256004614 acc:0.6176470518112183
+2026-11-04 10:02:24,169 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.6176 std:0.0000
+2026-11-04 10:03:05,547 - result - INFO - DTU_S4_1.0s loss:0.47296587030480924 acc:0.9010416865348816
+2026-11-04 10:03:05,548 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9010 std:0.0000
+2026-11-04 10:04:48,871 - result - INFO - DTU_S5_1.0s loss:0.953115648486548 acc:0.8402777910232544
+2026-11-04 10:04:48,984 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8403 std:0.0000
+2026-11-04 10:05:40,755 - result - INFO - KUL_S12_1.0s loss:1.4341411467038971 acc:0.6911764740943909
+2026-11-04 10:05:40,756 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.6912 std:0.0000
+2026-11-04 10:06:34,223 - result - INFO - KUL_S13_1.0s loss:0.31553940700959016 acc:0.9448529481887817
+2026-11-04 10:06:34,225 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9449 std:0.0000
+2026-11-04 10:07:38,729 - result - INFO - KUL_S14_1.0s loss:0.2993979742698296 acc:0.9246323704719543
+2026-11-04 10:07:38,730 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.9246 std:0.0000
+2026-11-04 10:08:19,910 - result - INFO - DTU_S6_1.0s loss:0.9427686151531007 acc:0.7986111044883728
+2026-11-04 10:08:19,911 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.7986 std:0.0000
+2026-11-04 10:09:08,389 - result - INFO - KUL_S15_1.0s loss:0.5395879244929614 acc:0.876838207244873
+2026-11-04 10:09:08,391 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.8768 std:0.0000
+2026-11-04 10:10:19,792 - result - INFO - KUL_S16_1.0s loss:0.00011944937004420139 acc:1.0
+2026-11-04 10:10:19,797 - result - INFO - The average accuracy of KUL_1.0s (1 subjects) avg_acc:1.0000 std:0.0000
+2026-11-05 03:37:28,118 - result - INFO - DTU_S2_1.0s loss:0.2747423877899564 acc:0.9236111044883728
+2026-11-05 03:37:28,130 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9236 std:0.0000
+2026-11-05 03:37:32,014 - result - INFO - DTU_S3_1.0s loss:0.4089378176516523 acc:0.9149305820465088
+2026-11-05 03:37:32,015 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9149 std:0.0000
+2026-11-05 03:38:28,720 - result - INFO - DTU_S4_1.0s loss:0.35293147396360935 acc:0.8958333134651184
+2026-11-05 03:38:28,721 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8958 std:0.0000
+2026-11-05 03:38:45,736 - result - INFO - DTU_S5_1.0s loss:1.0544235035340535 acc:0.8142361044883728
+2026-11-05 03:38:45,737 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8142 std:0.0000
+2026-11-05 03:39:07,838 - result - INFO - DTU_S6_1.0s loss:0.5749754826020863 acc:0.8177083134651184
+2026-11-05 03:39:07,838 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8177 std:0.0000
+2026-11-05 03:39:41,075 - result - INFO - DTU_S7_1.0s loss:0.3210227099775188 acc:0.9288194179534912
+2026-11-05 03:39:41,076 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9288 std:0.0000
+2026-11-05 03:39:48,965 - result - INFO - DTU_S8_1.0s loss:0.4142672640777568 acc:0.9027777910232544
+2026-11-05 03:39:48,966 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9028 std:0.0000
+2026-11-05 03:40:26,622 - result - INFO - DTU_S9_1.0s loss:0.7300100062663356 acc:0.8385416865348816
+2026-11-05 03:40:26,623 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8385 std:0.0000
+2026-11-05 03:40:32,901 - result - INFO - DTU_S10_1.0s loss:0.5871804354149693 acc:0.8541666865348816
+2026-11-05 03:40:32,902 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8542 std:0.0000
+2026-11-05 03:41:12,712 - result - INFO - DTU_S12_1.0s loss:0.24492390390433785 acc:0.9288194179534912
+2026-11-05 03:41:12,713 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9288 std:0.0000
+2026-11-05 03:41:37,890 - result - INFO - DTU_S11_1.0s loss:0.7038209301212596 acc:0.875
+2026-11-05 03:41:37,892 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8750 std:0.0000
+2026-11-05 03:42:11,241 - result - INFO - DTU_S13_1.0s loss:1.1403580904006958 acc:0.7638888955116272
+2026-11-05 03:42:11,242 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.7639 std:0.0000
+2026-11-05 03:42:32,520 - result - INFO - DTU_S14_1.0s loss:0.7055319994373753 acc:0.8784722089767456
+2026-11-05 03:42:32,521 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8785 std:0.0000
+2026-11-05 03:43:07,574 - result - INFO - DTU_S15_1.0s loss:0.4031192049866756 acc:0.8888888955116272
+2026-11-05 03:43:07,575 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8889 std:0.0000
+2026-11-05 03:43:10,515 - result - INFO - DTU_S16_1.0s loss:0.7712802773393277 acc:0.7743055820465088
+2026-11-05 03:43:10,516 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.7743 std:0.0000
+2026-11-05 03:43:54,181 - result - INFO - DTU_S18_1.0s loss:0.3531220005016722 acc:0.9253472089767456
+2026-11-05 03:43:54,183 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9253 std:0.0000
+2026-11-05 03:43:55,760 - result - INFO - DTU_S17_1.0s loss:1.0105417912923764 acc:0.8159722089767456
+2026-11-05 03:43:55,761 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8160 std:0.0000
