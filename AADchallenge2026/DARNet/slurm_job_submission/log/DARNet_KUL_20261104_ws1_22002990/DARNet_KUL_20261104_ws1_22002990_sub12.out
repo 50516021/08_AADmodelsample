@@ -1,0 +1,165 @@
+========== Job Information ==========
+Hostname : skl-a-48.rc.rit.edu
+Date     : Wed Nov  4 10:04:50 AM EST 2026
+Subject  : S12
+GPU(s):
+Wed Nov  4 10:04:50 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.43.02              KMD Version: 610.43.02     CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:3B:00.0 Off |                    0 |
+| N/A   45C    P0             57W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.9.25
+uv 0.9.2
+========== Running ==========
+Num GPUs Available:  True
+S12
+Computing rank from data with rank=None
+    Using tolerance 1.1e+03 (2.2e-16 eps * 64 dim * 7.4e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Data shape: torch.Size([4658, 64, 128])
+DARNet(
+  (token_embedding): TokenEmbedding(
+    (embed_layer): Sequential(
+      (0): Conv2d(1, 64, kernel_size=(1, 8), stride=(1, 1), padding=same)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (embed_layer2): Sequential(
+      (0): Conv2d(64, 16, kernel_size=(64, 1), stride=(1, 1), padding=valid)
+      (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (position_embedding): PositionalEmbedding()
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (out): Linear(in_features=8, out_features=2, bias=True)
+  (stack1): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+  (stack2): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 69,674 trainable parameters.
+
+Epoch  1 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.4863 | Train Acc 0.7651 | Valid Loss 0.4137 | Valid Acc 0.8145
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch  2 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.3666 | Train Acc 0.8334 | Valid Loss 0.3571 | Valid Acc 0.8398
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch  3 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.2908 | Train Acc 0.8757 | Valid Loss 0.2990 | Valid Acc 0.8750
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch  4 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.2292 | Train Acc 0.9053 | Valid Loss 0.2845 | Valid Acc 0.8711
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch  5 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.1823 | Train Acc 0.9257 | Valid Loss 0.2635 | Valid Acc 0.8926
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch  6 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.1467 | Train Acc 0.9377 | Valid Loss 0.2284 | Valid Acc 0.8984
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch  7 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.1180 | Train Acc 0.9521 | Valid Loss 0.4140 | Valid Acc 0.8613
+
+Epoch  8 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.1103 | Train Acc 0.9521 | Valid Loss 0.2178 | Valid Acc 0.9160
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch  9 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0884 | Train Acc 0.9669 | Valid Loss 0.2087 | Valid Acc 0.9219
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch 10 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0815 | Train Acc 0.9661 | Valid Loss 0.2079 | Valid Acc 0.9219
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch 11 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0597 | Train Acc 0.9764 | Valid Loss 0.3263 | Valid Acc 0.8926
+
+Epoch 12 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0486 | Train Acc 0.9794 | Valid Loss 0.1813 | Valid Acc 0.9297
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch 13 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0411 | Train Acc 0.9818 | Valid Loss 0.1681 | Valid Acc 0.9414
+Saved model at pre_trained_models/KUL_1.0s_S12.pt!
+
+Epoch 14 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0503 | Train Acc 0.9781 | Valid Loss 0.2304 | Valid Acc 0.9180
+
+Epoch 15 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0419 | Train Acc 0.9820 | Valid Loss 0.4506 | Valid Acc 0.8809
+
+Epoch 16 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0374 | Train Acc 0.9826 | Valid Loss 0.2891 | Valid Acc 0.9219
+
+Epoch 17 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0345 | Train Acc 0.9830 | Valid Loss 0.4390 | Valid Acc 0.8984
+
+Epoch 18 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0470 | Train Acc 0.9777 | Valid Loss 0.2011 | Valid Acc 0.9375
+
+Epoch 19 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0339 | Train Acc 0.9830 | Valid Loss 0.2877 | Valid Acc 0.9082
+
+Epoch 20 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0247 | Train Acc 0.9886 | Valid Loss 0.4175 | Valid Acc 0.8809
+
+Epoch 21 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0278 | Train Acc 0.9867 | Valid Loss 0.2945 | Valid Acc 0.9160
+
+Epoch 22 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0310 | Train Acc 0.9848 | Valid Loss 0.8208 | Valid Acc 0.8086
+
+Epoch 23 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0142 | Train Acc 0.9914 | Valid Loss 0.3647 | Valid Acc 0.9004
+
+Epoch 24 Finsh | Subject KUL_1.0s_S12 | Train Loss 0.0107 | Train Acc 0.9927 | Valid Loss 0.2408 | Valid Acc 0.9199
+Best epoch: 13
+Subject: S12, Acc: 0.69
+1.4341411467038971 0.6911764740943909
+The average accuracy of KUL_1.0s (1 subjects) avg_acc:0.6912 std:0.0000
+========== Finished ==========

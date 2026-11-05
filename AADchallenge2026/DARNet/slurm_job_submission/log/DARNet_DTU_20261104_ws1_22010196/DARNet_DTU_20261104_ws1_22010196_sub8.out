@@ -1,0 +1,158 @@
+========== Job Information ==========
+Hostname : skl-a-48.rc.rit.edu
+Date     : Thu Nov  5 03:39:09 AM EST 2026
+Subject  : S8
+GPU(s):
+Thu Nov  5 03:39:09 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.43.02              KMD Version: 610.43.02     CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:AF:00.0 Off |                    0 |
+| N/A   44C    P0             59W /  250W |       0MiB /  40960MiB |     20%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.10.19
+uv 0.9.2
+========== Running ==========
+Num GPUs Available:  True
+S8
+(60, 3200, 64)
+(60, 3200, 64)
+Computing rank from data with rank=None
+    Using tolerance 4.1e+02 (2.2e-16 eps * 64 dim * 2.9e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+Data shape: torch.Size([4740, 64, 64])
+DARNet(
+  (token_embedding): TokenEmbedding(
+    (embed_layer): Sequential(
+      (0): Conv2d(1, 64, kernel_size=(1, 8), stride=(1, 1), padding=same)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (embed_layer2): Sequential(
+      (0): Conv2d(64, 16, kernel_size=(64, 1), stride=(1, 1), padding=valid)
+      (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (position_embedding): PositionalEmbedding()
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (out): Linear(in_features=8, out_features=2, bias=True)
+  (stack1): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+  (stack2): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 69,674 trainable parameters.
+
+Epoch  1 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.3241 | Train Acc 0.8937 | Valid Loss 0.2511 | Valid Acc 0.8958
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch  2 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.1629 | Train Acc 0.9401 | Valid Loss 0.1439 | Valid Acc 0.9583
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch  3 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.1086 | Train Acc 0.9618 | Valid Loss 0.1411 | Valid Acc 0.9549
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch  4 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0763 | Train Acc 0.9741 | Valid Loss 0.1272 | Valid Acc 0.9601
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch  5 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0578 | Train Acc 0.9806 | Valid Loss 0.1117 | Valid Acc 0.9583
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch  6 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0440 | Train Acc 0.9835 | Valid Loss 0.1733 | Valid Acc 0.9462
+
+Epoch  7 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0338 | Train Acc 0.9895 | Valid Loss 0.0735 | Valid Acc 0.9618
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch  8 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0288 | Train Acc 0.9901 | Valid Loss 0.0955 | Valid Acc 0.9722
+
+Epoch  9 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0281 | Train Acc 0.9892 | Valid Loss 0.0731 | Valid Acc 0.9774
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch 10 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0279 | Train Acc 0.9899 | Valid Loss 0.1729 | Valid Acc 0.9444
+
+Epoch 11 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0103 | Train Acc 0.9962 | Valid Loss 0.0527 | Valid Acc 0.9844
+Saved model at pre_trained_models/DTU_1.0s_S8.pt!
+
+Epoch 12 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0060 | Train Acc 0.9977 | Valid Loss 0.0730 | Valid Acc 0.9792
+
+Epoch 13 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0125 | Train Acc 0.9958 | Valid Loss 0.1679 | Valid Acc 0.9531
+
+Epoch 14 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0273 | Train Acc 0.9897 | Valid Loss 0.0834 | Valid Acc 0.9688
+
+Epoch 15 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0103 | Train Acc 0.9964 | Valid Loss 0.0723 | Valid Acc 0.9757
+
+Epoch 16 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0035 | Train Acc 0.9985 | Valid Loss 0.0839 | Valid Acc 0.9757
+
+Epoch 17 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0031 | Train Acc 0.9985 | Valid Loss 0.5689 | Valid Acc 0.8767
+
+Epoch 18 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0202 | Train Acc 0.9916 | Valid Loss 0.1350 | Valid Acc 0.9601
+
+Epoch 19 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0112 | Train Acc 0.9954 | Valid Loss 0.0610 | Valid Acc 0.9774
+
+Epoch 20 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0043 | Train Acc 0.9981 | Valid Loss 0.1067 | Valid Acc 0.9653
+
+Epoch 21 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0015 | Train Acc 0.9992 | Valid Loss 0.0864 | Valid Acc 0.9705
+
+Epoch 22 Finsh | Subject DTU_1.0s_S8 | Train Loss 0.0009 | Train Acc 0.9992 | Valid Loss 0.0877 | Valid Acc 0.9757
+Best epoch: 11
+Subject: S8, Acc: 0.90
+0.4142672640777568 0.9027777910232544
+The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9028 std:0.0000
+========== Finished ==========

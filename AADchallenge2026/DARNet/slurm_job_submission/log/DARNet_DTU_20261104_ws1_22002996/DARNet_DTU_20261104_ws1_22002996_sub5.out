@@ -1,0 +1,285 @@
+========== Job Information ==========
+Hostname : skl-a-48.rc.rit.edu
+Date     : Wed Nov  4 10:03:07 AM EST 2026
+Subject  : S5
+GPU(s):
+Wed Nov  4 10:03:07 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.43.02              KMD Version: 610.43.02     CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:3B:00.0 Off |                    0 |
+| N/A   45C    P0             57W /  250W |       0MiB /  40960MiB |      6%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.9.25
+uv 0.9.2
+========== Running ==========
+Num GPUs Available:  True
+S5
+(60, 3200, 64)
+(60, 3200, 64)
+Computing rank from data with rank=None
+    Using tolerance 3.5e+02 (2.2e-16 eps * 64 dim * 2.5e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+Data shape: torch.Size([4740, 64, 64])
+DARNet(
+  (token_embedding): TokenEmbedding(
+    (embed_layer): Sequential(
+      (0): Conv2d(1, 64, kernel_size=(1, 8), stride=(1, 1), padding=same)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (embed_layer2): Sequential(
+      (0): Conv2d(64, 16, kernel_size=(64, 1), stride=(1, 1), padding=valid)
+      (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (position_embedding): PositionalEmbedding()
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (out): Linear(in_features=8, out_features=2, bias=True)
+  (stack1): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+  (stack2): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 69,674 trainable parameters.
+
+Epoch  1 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.3518 | Train Acc 0.8542 | Valid Loss 0.2432 | Valid Acc 0.9062
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch  2 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.2276 | Train Acc 0.9110 | Valid Loss 0.2019 | Valid Acc 0.9201
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch  3 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.1752 | Train Acc 0.9340 | Valid Loss 0.1992 | Valid Acc 0.9149
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch  4 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.1357 | Train Acc 0.9511 | Valid Loss 0.1981 | Valid Acc 0.9219
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch  5 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.1064 | Train Acc 0.9620 | Valid Loss 0.1861 | Valid Acc 0.9340
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch  6 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0862 | Train Acc 0.9686 | Valid Loss 0.2002 | Valid Acc 0.9271
+
+Epoch  7 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0768 | Train Acc 0.9722 | Valid Loss 0.1858 | Valid Acc 0.9358
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch  8 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0599 | Train Acc 0.9783 | Valid Loss 0.1567 | Valid Acc 0.9375
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch  9 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0559 | Train Acc 0.9774 | Valid Loss 0.1723 | Valid Acc 0.9392
+
+Epoch 10 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0372 | Train Acc 0.9873 | Valid Loss 0.2022 | Valid Acc 0.9427
+
+Epoch 11 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0450 | Train Acc 0.9823 | Valid Loss 0.2341 | Valid Acc 0.9271
+
+Epoch 12 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0285 | Train Acc 0.9905 | Valid Loss 0.1448 | Valid Acc 0.9549
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 13 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0290 | Train Acc 0.9892 | Valid Loss 0.1429 | Valid Acc 0.9514
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 14 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0240 | Train Acc 0.9901 | Valid Loss 0.1796 | Valid Acc 0.9514
+
+Epoch 15 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0320 | Train Acc 0.9876 | Valid Loss 0.1762 | Valid Acc 0.9514
+
+Epoch 16 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0153 | Train Acc 0.9949 | Valid Loss 0.1524 | Valid Acc 0.9531
+
+Epoch 17 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0230 | Train Acc 0.9903 | Valid Loss 0.1397 | Valid Acc 0.9618
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 18 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0184 | Train Acc 0.9935 | Valid Loss 0.1540 | Valid Acc 0.9549
+
+Epoch 19 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0134 | Train Acc 0.9941 | Valid Loss 0.1220 | Valid Acc 0.9635
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 20 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0093 | Train Acc 0.9964 | Valid Loss 0.1569 | Valid Acc 0.9583
+
+Epoch 21 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0082 | Train Acc 0.9966 | Valid Loss 0.1801 | Valid Acc 0.9531
+
+Epoch 22 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0173 | Train Acc 0.9922 | Valid Loss 0.1684 | Valid Acc 0.9583
+
+Epoch 23 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0144 | Train Acc 0.9947 | Valid Loss 0.1635 | Valid Acc 0.9601
+
+Epoch 24 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0119 | Train Acc 0.9943 | Valid Loss 0.1656 | Valid Acc 0.9549
+
+Epoch 25 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0207 | Train Acc 0.9916 | Valid Loss 0.1370 | Valid Acc 0.9618
+
+Epoch 26 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0181 | Train Acc 0.9939 | Valid Loss 0.1488 | Valid Acc 0.9549
+
+Epoch 27 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0054 | Train Acc 0.9981 | Valid Loss 0.1259 | Valid Acc 0.9583
+
+Epoch 28 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0049 | Train Acc 0.9977 | Valid Loss 0.1651 | Valid Acc 0.9583
+
+Epoch 29 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0118 | Train Acc 0.9949 | Valid Loss 0.1082 | Valid Acc 0.9670
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 30 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0042 | Train Acc 0.9977 | Valid Loss 0.1721 | Valid Acc 0.9601
+
+Epoch 31 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0058 | Train Acc 0.9970 | Valid Loss 0.1433 | Valid Acc 0.9688
+
+Epoch 32 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0026 | Train Acc 0.9987 | Valid Loss 0.1507 | Valid Acc 0.9688
+
+Epoch 33 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0016 | Train Acc 0.9987 | Valid Loss 0.1668 | Valid Acc 0.9635
+
+Epoch 34 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0235 | Train Acc 0.9905 | Valid Loss 0.1644 | Valid Acc 0.9514
+
+Epoch 35 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0261 | Train Acc 0.9903 | Valid Loss 0.1366 | Valid Acc 0.9601
+
+Epoch 36 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0090 | Train Acc 0.9964 | Valid Loss 0.1052 | Valid Acc 0.9653
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 37 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0026 | Train Acc 0.9985 | Valid Loss 0.1023 | Valid Acc 0.9653
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 38 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0008 | Train Acc 0.9992 | Valid Loss 0.0972 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 39 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0005 | Train Acc 0.9992 | Valid Loss 0.0970 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 40 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0004 | Train Acc 0.9992 | Valid Loss 0.0968 | Valid Acc 0.9740
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 41 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0004 | Train Acc 0.9992 | Valid Loss 0.0966 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 42 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0962 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 43 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0958 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 44 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0953 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 45 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0947 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 46 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0941 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 47 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0934 | Valid Acc 0.9722
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 48 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0926 | Valid Acc 0.9740
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 49 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0918 | Valid Acc 0.9740
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 50 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0908 | Valid Acc 0.9740
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 51 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0897 | Valid Acc 0.9740
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 52 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0884 | Valid Acc 0.9757
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 53 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0867 | Valid Acc 0.9792
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 54 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0848 | Valid Acc 0.9792
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 55 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0833 | Valid Acc 0.9792
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 56 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0003 | Train Acc 0.9992 | Valid Loss 0.0819 | Valid Acc 0.9792
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 57 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0826 | Valid Acc 0.9774
+
+Epoch 58 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0823 | Valid Acc 0.9792
+
+Epoch 59 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0819 | Valid Acc 0.9809
+
+Epoch 60 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0812 | Valid Acc 0.9809
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 61 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0805 | Valid Acc 0.9809
+Saved model at pre_trained_models/DTU_1.0s_S5.pt!
+
+Epoch 62 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0808 | Valid Acc 0.9809
+
+Epoch 63 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0816 | Valid Acc 0.9792
+
+Epoch 64 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0825 | Valid Acc 0.9774
+
+Epoch 65 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0829 | Valid Acc 0.9757
+
+Epoch 66 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0839 | Valid Acc 0.9757
+
+Epoch 67 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0868 | Valid Acc 0.9740
+
+Epoch 68 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0920 | Valid Acc 0.9705
+
+Epoch 69 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0948 | Valid Acc 0.9705
+
+Epoch 70 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.0002 | Train Acc 0.9992 | Valid Loss 0.0986 | Valid Acc 0.9705
+
+Epoch 71 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.1047 | Train Acc 0.9698 | Valid Loss 0.2948 | Valid Acc 0.9062
+
+Epoch 72 Finsh | Subject DTU_1.0s_S5 | Train Loss 0.1418 | Train Acc 0.9432 | Valid Loss 0.1278 | Valid Acc 0.9410
+Best epoch: 61
+Subject: S5, Acc: 0.84
+0.953115648486548 0.8402777910232544
+The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8403 std:0.0000
+========== Finished ==========
