@@ -1,0 +1,2 @@
+ls: cannot access 'ffmpeg-*-static': No such file or directory
+[2026-11-05T08:21:44.798] error: *** JOB 22010867 ON skl-a-48 CANCELLED AT 2026-11-05T08:21:44 DUE to SIGNAL Terminated ***

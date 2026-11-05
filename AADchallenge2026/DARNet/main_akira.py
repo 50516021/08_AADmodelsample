@@ -162,12 +162,18 @@ PEOPLE_NUMBER = {"KUL": 16, "DTU": 18}
 
 
 def main(name="S1", time_len=0.1, dataset="DTU", max_epoch=100):
+    train_loader, valid_loader, test_loader = getData(name, time_len, dataset)
+    return train_one_subject(
+        name, time_len, dataset, max_epoch, train_loader, valid_loader, test_loader
+    )
+
+
+def train_one_subject(name, time_len, dataset, max_epoch, train_loader, valid_loader, test_loader):
     args = DotMap()
     # checkpoint name pre_trained_models/<dataset>_<time_len>s_<subject>.pt, so jobs don't overwrite each other
     args.name = f'{dataset}_{time_len}s_{name}'
     args.max_epoch = max_epoch
-    train_loader, valid_loader, test_loader = getData(name, time_len, dataset)
-    config['Data_shape'] = train_loader.dataset.data.shape
+    config['Data_shape'] = train_loader.dataset[0][0].shape
     print('Data shape:', config['Data_shape'])
 
     loss, acc = initiate(args, train_loader, valid_loader, test_loader, name)
@@ -179,12 +185,25 @@ def main(name="S1", time_len=0.1, dataset="DTU", max_epoch=100):
     return loss, acc
 
 
+def main_loso(held_out_subject, time_len=1, dataset="DTU", max_epoch=100):
+    loaders = get_loso_data(held_out_subject, time_len, dataset)
+    return train_one_subject(
+        f'LOSO_S{held_out_subject}',
+        time_len,
+        dataset,
+        max_epoch,
+        *loaders,
+    )
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="DARNet AAD training (akira variant)")
     parser.add_argument("--dataset", default="KUL", choices=["KUL", "DTU"],
                         help="Dataset to use (default: %(default)s)")
     parser.add_argument("--subject", type=int, default=None,
-                        help="Run a single subject by number, e.g. 1 for S1 (default: all subjects)")
+                        help="Run one subject/fold by number, e.g. 1 for S1 (default: all subjects)")
+    parser.add_argument("--loso", action="store_true",
+                        help="Run leave-one-subject-out evaluation for every subject")
     parser.add_argument("--time_len", type=float, default=1,
                         help="Decision window length in seconds (default: %(default)s)")
     parser.add_argument("--max_epoch", type=int, default=100,
@@ -209,10 +228,16 @@ if __name__ == "__main__":
     subject_range = [cli.subject] if cli.subject else range(1, PEOPLE_NUMBER[cli.dataset] + 1)
     all_test_acc = []
     for i in subject_range:
-        loss, acc = main(name=f'S{i}', time_len=cli.time_len, dataset=cli.dataset, max_epoch=cli.max_epoch)
+        if cli.loso:
+            loss, acc = main_loso(
+                i, time_len=cli.time_len, dataset=cli.dataset, max_epoch=cli.max_epoch
+            )
+        else:
+            loss, acc = main(name=f'S{i}', time_len=cli.time_len, dataset=cli.dataset, max_epoch=cli.max_epoch)
         all_test_acc.append(acc.item())
 
-    info_msg = (f'The average accuracy of {cli.dataset}_{cli.time_len}s ({len(all_test_acc)} subjects) '
+    evaluation = "LOSO" if cli.loso else "subject-dependent"
+    info_msg = (f'The average accuracy of {cli.dataset}_{cli.time_len}s {evaluation} ({len(all_test_acc)} subjects) '
                 f'avg_acc:{np.mean(all_test_acc):.4f} std:{np.std(all_test_acc):.4f}')
     print(info_msg)
     result_logger.info(info_msg)
