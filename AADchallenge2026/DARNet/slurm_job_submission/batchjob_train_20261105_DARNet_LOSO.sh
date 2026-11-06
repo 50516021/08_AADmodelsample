@@ -3,8 +3,8 @@
 # This is were we go for slurm documentation https://slurm.schedmd.com/sbatch.html
 # 20261105 run one subject per SLURM array task (subject = SLURM_ARRAY_TASK_ID)
 
-#SBATCH --job-name=DARNet_KUL_20261105_LOSO_ws1              # Name of the job
-#SBATCH --comment="DARNet KUL training"           # Comment for your job
+#SBATCH --job-name=DARNet_DTU_20261105_LOSO_ws1              # Name of the job
+#SBATCH --comment="DARNet DTU training"           # Comment for your job
 #SBATCH --account=spatt
 
 
@@ -22,7 +22,7 @@
 #SBATCH --ntasks=1                              # How many tasks per node
 #SBATCH --cpus-per-task=18                      # Number of CPUs per task
 #SBATCH --gres=gpu:a100:1                            # Number of GPUs per task
-#SBATCH --array=1-16%4                          # Subjects 1-16 (KUL; use 1-18 for DTU), at most 4 tasks concurrently
+#SBATCH --array=1-18%4                          # Subjects 1-16 (KUL; use 1-18 for DTU), at most 4 tasks concurrently
 ##SBATCH --mem-per-cpu=32G                      # Memory per CPU (this line is here as an example but commented out)
 
 set -euo pipefail
@@ -52,7 +52,7 @@ cd "../"
 mkdir -p log pre_trained_models
 
 # KUL needs data_conv_akira/KUL_npz (run data_conv_akira/convert_KUL.py once beforehand)
-DATASET=KUL       # KUL or DTU
+DATASET=DTU       # KUL or DTU
 TIME_LEN=1        # decision window [s]
 
 echo "========== Running =========="

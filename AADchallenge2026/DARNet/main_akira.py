@@ -173,7 +173,8 @@ def train_one_subject(name, time_len, dataset, max_epoch, train_loader, valid_lo
     # checkpoint name pre_trained_models/<dataset>_<time_len>s_<subject>.pt, so jobs don't overwrite each other
     args.name = f'{dataset}_{time_len}s_{name}'
     args.max_epoch = max_epoch
-    config['Data_shape'] = train_loader.dataset[0][0].shape
+    # (N, channels, seq_len); works for plain datasets and LOSO ConcatDataset alike
+    config['Data_shape'] = (len(train_loader.dataset), *train_loader.dataset[0][0].shape)
     print('Data shape:', config['Data_shape'])
 
     loss, acc = initiate(args, train_loader, valid_loader, test_loader, name)
