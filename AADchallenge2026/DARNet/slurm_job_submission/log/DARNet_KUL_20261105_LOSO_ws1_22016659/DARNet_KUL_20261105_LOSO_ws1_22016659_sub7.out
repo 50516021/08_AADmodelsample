@@ -1,0 +1,342 @@
+========== Job Information ==========
+Hostname : skl-a-48.rc.rit.edu
+Date     : Thu Nov  5 08:56:54 PM EST 2026
+Subject  : S7
+GPU(s):
+Thu Nov  5 20:56:54 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.43.02              KMD Version: 610.43.02     CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:AF:00.0 Off |                    0 |
+| N/A   60C    P0             69W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+========== Python Environment ==========
+Python 3.9.25
+uv 0.9.2
+========== Running ==========
+Num GPUs Available:  True
+S1
+Computing rank from data with rank=None
+    Using tolerance 9.1e+02 (2.2e-16 eps * 64 dim * 6.4e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S2
+Computing rank from data with rank=None
+    Using tolerance 5.9e+02 (2.2e-16 eps * 64 dim * 4.2e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S3
+Computing rank from data with rank=None
+    Using tolerance 7.9e+02 (2.2e-16 eps * 64 dim * 5.6e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S4
+Computing rank from data with rank=None
+    Using tolerance 1.1e+03 (2.2e-16 eps * 64 dim * 7.4e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S5
+Computing rank from data with rank=None
+    Using tolerance 7.4e+02 (2.2e-16 eps * 64 dim * 5.2e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S6
+Computing rank from data with rank=None
+    Using tolerance 6.1e+02 (2.2e-16 eps * 64 dim * 4.3e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S7
+Computing rank from data with rank=None
+    Using tolerance 9.4e+02 (2.2e-16 eps * 64 dim * 6.6e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S8
+Computing rank from data with rank=None
+    Using tolerance 1.8e+03 (2.2e-16 eps * 64 dim * 1.3e+17  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S9
+Computing rank from data with rank=None
+    Using tolerance 1.1e+03 (2.2e-16 eps * 64 dim * 7.6e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S10
+Computing rank from data with rank=None
+    Using tolerance 1.2e+03 (2.2e-16 eps * 64 dim * 8.1e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S11
+Computing rank from data with rank=None
+    Using tolerance 9e+02 (2.2e-16 eps * 64 dim * 6.4e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S12
+Computing rank from data with rank=None
+    Using tolerance 1.1e+03 (2.2e-16 eps * 64 dim * 7.4e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S13
+Computing rank from data with rank=None
+    Using tolerance 1.2e+03 (2.2e-16 eps * 64 dim * 8.2e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S14
+Computing rank from data with rank=None
+    Using tolerance 8.7e+02 (2.2e-16 eps * 64 dim * 6.1e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S15
+Computing rank from data with rank=None
+    Using tolerance 1.1e+03 (2.2e-16 eps * 64 dim * 7.6e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Num GPUs Available:  True
+S16
+Computing rank from data with rank=None
+    Using tolerance 1.3e+03 (2.2e-16 eps * 64 dim * 9.3e+16  max singular value)
+    Estimated rank (data): 64
+    data: rank 64 computed from 64 data channels with 0 projectors
+Reducing data rank from 64 -> 64
+Estimating class=0 covariance using EMPIRICAL
+Done.
+Estimating class=1 covariance using EMPIRICAL
+Done.
+(5176, 64, 128)
+(4658, 64, 128)
+Data shape: (69870, 64, 128)
+DARNet(
+  (token_embedding): TokenEmbedding(
+    (embed_layer): Sequential(
+      (0): Conv2d(1, 64, kernel_size=(1, 8), stride=(1, 1), padding=same)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (embed_layer2): Sequential(
+      (0): Conv2d(64, 16, kernel_size=(64, 1), stride=(1, 1), padding=valid)
+      (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GELU(approximate=none)
+    )
+    (position_embedding): PositionalEmbedding()
+  )
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (out): Linear(in_features=8, out_features=2, bias=True)
+  (stack1): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+  (stack2): AttnRefine(
+    (attention): MyAttention(
+      (attention_layer): Attention(
+        (key): Linear(in_features=16, out_features=16, bias=False)
+        (value): Linear(in_features=16, out_features=16, bias=False)
+        (query): Linear(in_features=16, out_features=16, bias=False)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (to_out): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (conv_layer): Refine(
+      (downConv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,))
+      (norm): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ELU(alpha=1.0)
+      (maxPool): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (gap): AdaptiveAvgPool1d(output_size=1)
+    (out): Linear(in_features=16, out_features=4, bias=True)
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+)
+The model has 69,674 trainable parameters.
+
+Epoch  1 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.2655 | Train Acc 0.8916 | Valid Loss 1.4304 | Valid Acc 0.5328
+Saved model at pre_trained_models/KUL_1.0s_LOSO_S7.pt!
+
+Epoch  2 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.2164 | Train Acc 0.9150 | Valid Loss 1.0368 | Valid Acc 0.5772
+Saved model at pre_trained_models/KUL_1.0s_LOSO_S7.pt!
+
+Epoch  3 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.1922 | Train Acc 0.9247 | Valid Loss 1.1457 | Valid Acc 0.5900
+
+Epoch  4 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.1606 | Train Acc 0.9368 | Valid Loss 1.2371 | Valid Acc 0.5892
+
+Epoch  5 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.1404 | Train Acc 0.9442 | Valid Loss 1.2955 | Valid Acc 0.5674
+
+Epoch  6 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.1244 | Train Acc 0.9510 | Valid Loss 1.1767 | Valid Acc 0.5861
+
+Epoch  7 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.1100 | Train Acc 0.9572 | Valid Loss 1.1475 | Valid Acc 0.6142
+
+Epoch  8 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.1004 | Train Acc 0.9610 | Valid Loss 0.9986 | Valid Acc 0.6485
+Saved model at pre_trained_models/KUL_1.0s_LOSO_S7.pt!
+
+Epoch  9 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0894 | Train Acc 0.9658 | Valid Loss 1.0129 | Valid Acc 0.6508
+
+Epoch 10 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0821 | Train Acc 0.9684 | Valid Loss 1.3146 | Valid Acc 0.6437
+
+Epoch 11 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0758 | Train Acc 0.9707 | Valid Loss 1.2868 | Valid Acc 0.6441
+
+Epoch 12 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0717 | Train Acc 0.9727 | Valid Loss 1.2477 | Valid Acc 0.6477
+
+Epoch 13 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0691 | Train Acc 0.9735 | Valid Loss 1.4488 | Valid Acc 0.6448
+
+Epoch 14 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0639 | Train Acc 0.9756 | Valid Loss 1.5943 | Valid Acc 0.6448
+
+Epoch 15 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0594 | Train Acc 0.9773 | Valid Loss 1.6959 | Valid Acc 0.6384
+
+Epoch 16 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0598 | Train Acc 0.9766 | Valid Loss 1.7710 | Valid Acc 0.6529
+
+Epoch 17 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0555 | Train Acc 0.9782 | Valid Loss 1.9766 | Valid Acc 0.6455
+
+Epoch 18 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0540 | Train Acc 0.9792 | Valid Loss 1.8488 | Valid Acc 0.6619
+
+Epoch 19 Finsh | Subject KUL_1.0s_LOSO_S7 | Train Loss 0.0530 | Train Acc 0.9798 | Valid Loss 1.7049 | Valid Acc 0.6597
+Best epoch: 8
+Subject: LOSO_S7, Acc: 0.48
+0.960344565265319 0.47610294818878174
+The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.4761 std:0.0000
+========== Finished ==========
