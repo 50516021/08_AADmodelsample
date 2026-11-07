@@ -76,3 +76,71 @@
 2026-11-05 03:43:54,183 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.9253 std:0.0000
 2026-11-05 03:43:55,760 - result - INFO - DTU_S17_1.0s loss:1.0105417912923764 acc:0.8159722089767456
 2026-11-05 03:43:55,761 - result - INFO - The average accuracy of DTU_1.0s (1 subjects) avg_acc:0.8160 std:0.0000
+2026-11-05 20:22:59,110 - result - INFO - KUL_LOSO_S1_1.0s loss:1.8608774757560562 acc:0.36764705181121826
+2026-11-05 20:22:59,136 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.3676 std:0.0000
+2026-11-05 20:29:28,683 - result - INFO - KUL_LOSO_S2_1.0s loss:1.504374357378658 acc:0.49632352590560913
+2026-11-05 20:29:28,695 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.4963 std:0.0000
+2026-11-05 20:35:59,946 - result - INFO - KUL_LOSO_S3_1.0s loss:1.289550843922531 acc:0.5459558963775635
+2026-11-05 20:35:59,958 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.5460 std:0.0000
+2026-11-05 20:37:40,350 - result - INFO - DTU_LOSO_S1_1.0s loss:0.7948614353727963 acc:0.5954861044883728
+2026-11-05 20:37:40,353 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5955 std:0.0000
+2026-11-05 20:42:30,999 - result - INFO - KUL_LOSO_S4_1.0s loss:1.754390757311793 acc:0.5147058963775635
+2026-11-05 20:42:31,009 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.5147 std:0.0000
+2026-11-05 20:47:28,558 - result - INFO - DTU_LOSO_S2_1.0s loss:1.1017695019642513 acc:0.5104166865348816
+2026-11-05 20:47:28,562 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5104 std:0.0000
+2026-11-05 20:50:42,408 - result - INFO - KUL_LOSO_S5_1.0s loss:0.9933960972446263 acc:0.564338207244873
+2026-11-05 20:50:42,899 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.5643 std:0.0000
+2026-11-05 20:53:36,918 - result - INFO - DTU_LOSO_S3_1.0s loss:0.836681110991372 acc:0.6024305820465088
+2026-11-05 20:53:36,920 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.6024 std:0.0000
+2026-11-05 20:56:52,958 - result - INFO - KUL_LOSO_S6_1.0s loss:1.63410136147457 acc:0.4779411852359772
+2026-11-05 20:56:52,984 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.4779 std:0.0000
+2026-11-05 21:01:30,089 - result - INFO - DTU_LOSO_S4_1.0s loss:1.0326796505186293 acc:0.5017361044883728
+2026-11-05 21:01:30,197 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5017 std:0.0000
+2026-11-05 21:05:47,520 - result - INFO - KUL_LOSO_S7_1.0s loss:0.960344565265319 acc:0.47610294818878174
+2026-11-05 21:05:47,533 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.4761 std:0.0000
+2026-11-05 21:07:59,426 - result - INFO - DTU_LOSO_S5_1.0s loss:1.8355281410945787 acc:0.328125
+2026-11-05 21:07:59,427 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.3281 std:0.0000
+2026-11-05 21:13:38,884 - result - INFO - KUL_LOSO_S8_1.0s loss:3.392892922487055 acc:0.5036764740943909
+2026-11-05 21:13:38,912 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.5037 std:0.0000
+2026-11-05 21:14:12,993 - result - INFO - DTU_LOSO_S6_1.0s loss:1.1756231824143066 acc:0.5868055820465088
+2026-11-05 21:14:12,994 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5868 std:0.0000
+2026-11-05 21:20:15,272 - result - INFO - KUL_LOSO_S9_1.0s loss:1.5763687189011013 acc:0.43382352590560913
+2026-11-05 21:20:15,293 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.4338 std:0.0000
+2026-11-05 21:21:26,989 - result - INFO - DTU_LOSO_S7_1.0s loss:1.2917634604705706 acc:0.5225694179534912
+2026-11-05 21:21:26,991 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5226 std:0.0000
+2026-11-05 21:27:13,526 - result - INFO - DTU_LOSO_S8_1.0s loss:1.4893105088008776 acc:0.3003472089767456
+2026-11-05 21:27:13,530 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.3003 std:0.0000
+2026-11-05 21:28:47,339 - result - INFO - KUL_LOSO_S10_1.0s loss:1.9315757891711067 acc:0.3033088147640228
+2026-11-05 21:28:47,351 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.3033 std:0.0000
+2026-11-05 21:34:05,226 - result - INFO - KUL_LOSO_S11_1.0s loss:1.4474498403861242 acc:0.4779411852359772
+2026-11-05 21:34:05,425 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.4779 std:0.0000
+2026-11-05 21:37:09,879 - result - INFO - DTU_LOSO_S9_1.0s loss:1.7372424490749836 acc:0.4010416567325592
+2026-11-05 21:37:10,070 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.4010 std:0.0000
+2026-11-05 21:41:27,914 - result - INFO - KUL_LOSO_S12_1.0s loss:1.597552278681713 acc:0.5055146813392639
+2026-11-05 21:41:27,925 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.5055 std:0.0000
+2026-11-05 21:44:46,434 - result - INFO - DTU_LOSO_S10_1.0s loss:0.8543897602293227 acc:0.5434027910232544
+2026-11-05 21:44:46,494 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5434 std:0.0000
+2026-11-05 21:47:56,544 - result - INFO - KUL_LOSO_S13_1.0s loss:0.7451487157274695 acc:0.6525735259056091
+2026-11-05 21:47:56,558 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.6526 std:0.0000
+2026-11-05 21:50:14,221 - result - INFO - DTU_LOSO_S11_1.0s loss:0.7475513252947066 acc:0.5694444179534912
+2026-11-05 21:50:14,224 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5694 std:0.0000
+2026-11-05 21:56:04,513 - result - INFO - KUL_LOSO_S14_1.0s loss:0.9500579828506007 acc:0.5055146813392639
+2026-11-05 21:56:04,528 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.5055 std:0.0000
+2026-11-05 21:56:57,475 - result - INFO - DTU_LOSO_S12_1.0s loss:0.654404921664132 acc:0.6493055820465088
+2026-11-05 21:56:57,477 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.6493 std:0.0000
+2026-11-05 22:02:22,752 - result - INFO - DTU_LOSO_S13_1.0s loss:1.4293474819925096 acc:0.4635416567325592
+2026-11-05 22:02:22,756 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.4635 std:0.0000
+2026-11-05 22:03:45,432 - result - INFO - KUL_LOSO_S15_1.0s loss:0.4178168186917901 acc:0.783088207244873
+2026-11-05 22:03:45,511 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.7831 std:0.0000
+2026-11-05 22:08:30,993 - result - INFO - KUL_LOSO_S16_1.0s loss:1.2587765731081806 acc:0.6176470518112183
+2026-11-05 22:08:31,004 - result - INFO - The average accuracy of KUL_1.0s LOSO (1 subjects) avg_acc:0.6176 std:0.0000
+2026-11-05 22:10:39,337 - result - INFO - DTU_LOSO_S14_1.0s loss:0.940082700095243 acc:0.65625
+2026-11-05 22:10:39,339 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.6562 std:0.0000
+2026-11-05 22:13:54,293 - result - INFO - DTU_LOSO_S15_1.0s loss:1.1083550684981875 acc:0.5659722089767456
+2026-11-05 22:13:54,297 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5660 std:0.0000
+2026-11-05 22:18:03,289 - result - INFO - DTU_LOSO_S16_1.0s loss:0.7948212408357196 acc:0.5520833134651184
+2026-11-05 22:18:03,294 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5521 std:0.0000
+2026-11-05 22:19:25,355 - result - INFO - DTU_LOSO_S17_1.0s loss:0.8825908303260803 acc:0.5451388955116272
+2026-11-05 22:19:25,358 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5451 std:0.0000
+2026-11-05 22:26:22,622 - result - INFO - DTU_LOSO_S18_1.0s loss:0.7057984636889564 acc:0.5607638955116272
+2026-11-05 22:26:22,679 - result - INFO - The average accuracy of DTU_1.0s LOSO (1 subjects) avg_acc:0.5608 std:0.0000

@@ -1,1 +1,13 @@
 ls: cannot access 'ffmpeg-*-static': No such file or directory
+Traceback (most recent call last):
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/AADchallenge2026/DARNet/main_akira.py", line 232, in <module>
+    loss, acc = main_loso(
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/AADchallenge2026/DARNet/main_akira.py", line 190, in main_loso
+    return train_one_subject(
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/AADchallenge2026/DARNet/main_akira.py", line 179, in train_one_subject
+    loss, acc = initiate(args, train_loader, valid_loader, test_loader, name)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/AADchallenge2026/DARNet/main_akira.py", line 33, in initiate
+    model = DARNet(config)
+  File "/home/at2163/Desktop/SpatialAttention_analysis/08_AADmodelsample/AADchallenge2026/DARNet/model.py", line 136, in __init__
+    channel_size, seq_len = config['Data_shape'][1], config['Data_shape'][2]
+IndexError: tuple index out of range
